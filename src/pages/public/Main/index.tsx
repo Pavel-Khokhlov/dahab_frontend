@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
-import reactLogo from "@/assets/react.svg";
-import viteLogo from "@/assets/vite.svg";
-import heroImg from "@/assets/hero.png";
-
 import { useTranslator } from "@/context/TranslationContext";
+
+import Header from "@/components/Header";
+import First from "@/sections/First";
+import Contact from "@/sections/Contacts";
 
 import "./Main.css";
 
@@ -15,19 +15,8 @@ function MainPage() {
       <Helmet>
         <title>{t.title.urlLogin}</title>
       </Helmet>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div> 
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test & FUCK <code>HMR</code>
-          </p>
-        </div>
-      </section>
+      <Header />
+      <First />
 
       <div className="ticks"></div>
 
@@ -41,13 +30,11 @@ function MainPage() {
           <ul>
             <li>
               <a href="https://vite.dev/" target="_blank" rel="noopener">
-                <img className="logo" src={viteLogo} alt="" />
                 Explore Vite
               </a>
             </li>
             <li>
               <a href="https://react.dev/" target="_blank" rel="noopener">
-                <img className="button-icon" src={reactLogo} alt="" />
                 Learn more
               </a>
             </li>
@@ -61,7 +48,11 @@ function MainPage() {
           <p>Join the Vite community</p>
           <ul>
             <li>
-              <a href="https://github.com/vitejs/vite" target="_blank" rel="noopener">
+              <a
+                href="https://github.com/vitejs/vite"
+                target="_blank"
+                rel="noopener"
+              >
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -97,7 +88,11 @@ function MainPage() {
               </a>
             </li>
             <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank" rel="noopener">
+              <a
+                href="https://bsky.app/profile/vite.dev"
+                target="_blank"
+                rel="noopener"
+              >
                 <svg
                   className="button-icon"
                   role="presentation"
@@ -114,6 +109,7 @@ function MainPage() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+      <Contact />
     </>
   );
 }

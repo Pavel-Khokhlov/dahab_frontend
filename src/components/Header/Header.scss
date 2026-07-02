@@ -1,0 +1,22 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $header-desktop;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2vw;
+  z-index: 100;
+  box-sizing: border-box;
+  &__logo {
+    margin: auto 0;
+    font-size: min(30px, 7vw);
+    line-height: 1.2;
+  }
+  &__menu {
+    margin: auto 0;
+    font-size: min(18px, 4vw);
+    line-height: 1.2;
+  }
+}

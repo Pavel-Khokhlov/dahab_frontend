@@ -3,12 +3,14 @@ import { translations } from '@/locales/translations'
 
 export type LanguageType = 'ru' | 'en'
 
-export enum LOCALES {
-  ENGLISH = 'en',
-  RUSSIAN = 'ru',
-}
+export const LOCALES = {
+  ENGLISH: 'en',
+  RUSSIAN: 'ru',
+} as const
 
-export type TranslationsType = (typeof translations)[LOCALES.ENGLISH]
+export type LocaleType = (typeof LOCALES)[keyof typeof LOCALES]
+
+export type TranslationsType = (typeof translations)[LocaleType]
 
 // Создаем контекст с дефолтным значением
 export const TranslationContext = createContext<TranslationsType>(

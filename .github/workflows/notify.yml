@@ -3,7 +3,7 @@ name: Notify
 on:
   workflow_call:
     inputs:
-      deploy_result:
+      build_result:
         required: true
         type: string
     secrets:
@@ -18,12 +18,12 @@ jobs:
     steps:
       - name: Notify Telegram
         run: |
-          DEPLOY="${{ inputs.deploy_result }}"
+          BUILD="${{ inputs.build_result }}"
     
-          if [ "$DEPLOY" != "success" ]; then
-            TEXT="❌ Deploy failure%0A${{ github.repository }} @ ${{ github.ref_name }}%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.          run_id }}"
+          if [ "$BUILD" != "success" ]; then
+            TEXT="❌ BUILD failure%0A${{ github.repository }} @ ${{ github.ref_name }}%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.          run_id }}"
           else
-            TEXT="✅ Deploy successful%0A${{ github.repository }} @ ${{ github.ref_name }}%0AActor: ${{ github.actor }}%0AVersion: sha-${{ github.sha }}"
+            TEXT="✅ BUILD successful%0A${{ github.repository }} @ ${{ github.ref_name }}%0AActor: ${{ github.actor }}%0AVersion: sha-${{ github.sha }}"
           fi
     
           RESPONSE=$(curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \

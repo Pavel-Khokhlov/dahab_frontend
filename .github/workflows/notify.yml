@@ -21,9 +21,9 @@ jobs:
           BUILD="${{ inputs.build_result }}"
     
           if [ "$BUILD" != "success" ]; then
-            TEXT="❌ BUILD failure%0A${{ github.repository }} @ ${{ github.ref_name }}%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.          run_id }}"
+            TEXT="❌ BUILD failure%0A${{ github.repository }} @ ${{ github.ref_name }}%0A${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           else
-            TEXT="✅ BUILD successful%0A${{ github.repository }} @ ${{ github.ref_name }}%0AActor: ${{ github.actor }}%0AVersion: sha-${{ github.sha }}"
+            TEXT="✅ BUILD successful%0A${{ github.repository }} @ ${{ github.ref_name }}%0AActor: ${{ github.actor }}%0AVersion: sha-${{ github.sha }}%0ACommit: ${{ github.event.head_commit.message }}%0A%0A🌐 Stage: https://dahab-frontend.vercel.app"
           fi
     
           RESPONSE=$(curl -s -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" \

@@ -13,7 +13,7 @@ function MainPage() {
   return (
     <>
       <Helmet>
-        <title>{t.title.urlLogin}</title>
+        <title>{t.title.urlMain}</title>
       </Helmet>
       <Header />
       <First />

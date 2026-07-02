@@ -1,6 +1,7 @@
 export const translations = {
   en: {
     title: {
+      urlMain: 'Dahab Freediving Molchanovs',
       urlLogin: 'Private message app',
       urlVerify: 'Approve your E-mail',
       login: 'Enter to app',
@@ -39,6 +40,7 @@ export const translations = {
   },
   ru: {
     title: {
+      urlMain: 'Дахаб Фридайвинг Molchanovs',
       urlLogin: 'Приложение для личных сообщений',
       urlVerify: 'Подтвержение вашей почты',
       login: 'Вход в систему',

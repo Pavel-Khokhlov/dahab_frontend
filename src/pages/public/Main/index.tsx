@@ -6,6 +6,7 @@ import First from "@/sections/First";
 import Contact from "@/sections/Contacts";
 
 import "./Main.css";
+import Team from "@/sections/Team";
 
 function MainPage() {
   const t = useTranslator();
@@ -109,6 +110,7 @@ function MainPage() {
 
       <div className="ticks"></div>
       <section id="spacer"></section>
+      <Team />
       <Contact />
     </>
   );

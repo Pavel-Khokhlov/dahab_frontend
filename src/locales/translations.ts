@@ -4,7 +4,7 @@ export const translations = {
       urlMain: 'Dahab Freediving Molchanovs',
       urlLogin: 'Private message app',
       urlVerify: 'Approve your E-mail',
-      login: 'Enter to app',
+      team: 'Our team',
       verify: 'Enter received code',
     },
     subtitle: {
@@ -43,7 +43,7 @@ export const translations = {
       urlMain: 'Дахаб Фридайвинг Molchanovs',
       urlLogin: 'Приложение для личных сообщений',
       urlVerify: 'Подтвержение вашей почты',
-      login: 'Вход в систему',
+      team: 'Наша команда',
       verify: 'Введите полученный код',
     },
     subtitle: {

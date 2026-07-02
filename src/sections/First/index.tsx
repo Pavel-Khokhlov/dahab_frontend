@@ -1,6 +1,6 @@
 import "./First.scss";
 
-const First = () => {
+const FirstSection = () => {
   return (
     <section className="first">
       <h1 className="first__title">TITLE</h1>
@@ -9,4 +9,4 @@ const First = () => {
   );
 };
 
-export default First;
+export default FirstSection;

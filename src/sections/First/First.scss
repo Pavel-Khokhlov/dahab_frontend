@@ -41,4 +41,10 @@
       url("@/assets/images/background/mainH.webp") type("image/webp")
     );
   }
+  &__title {
+    color: var(--text-h);
+  }
+  &__description {
+    color: var(--text-h);
+  }
 }

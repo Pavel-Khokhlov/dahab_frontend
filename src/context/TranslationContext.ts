@@ -7,7 +7,7 @@ import { useStore } from "@/store";
 export type TranslationsType = (typeof translations)[LocaleType];
 
 export const TranslationContext = createContext<TranslationsType>(
-  translations[LOCALES.ENGLISH],
+  translations[LOCALES.ENGLISH as LocaleType],
 );
 
 // Хук useTranslator - использует Zustand store для получения текущего языка

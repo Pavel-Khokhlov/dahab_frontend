@@ -1,4 +1,4 @@
-import { useGlobalUIStore } from "./globalUI";
+import { useGlobalUIStore } from "./globalUI.ts";
 
 export const useStore = () => {
   return {

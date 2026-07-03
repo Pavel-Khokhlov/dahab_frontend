@@ -1,44 +1,33 @@
 name: Build dev
-
+ 
 on:
   push:
     branches: [dev]
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v4
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'  # ← Измените на 20 или 22 (Node.js 24 может быть нестабильным)
-          cache: 'npm'
-      
-      - name: Clean cache
-        run: |
-          npm cache clean --force
-          rm -rf .vite
-          rm -rf node_modules/.vite
-          rm -rf dist
-      
+          node-version: '22'
+          
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit
-      
-      - name: Debug file structure
-        run: |
-          echo "=== Store directory ==="
-          ls -la src/store/ || echo "Directory not found"
-          echo "=== Index.ts content ==="
-          cat src/store/index.ts || echo "File not found"
-          echo "=== GlobalUI.ts content (first 20 lines) ==="
-          head -20 src/store/globalUI.ts || echo "File not found"
+        run: npm ci
       
       - name: Build project
         id: build
         run: npm run build
-        env:
-          NODE_ENV: production
-          
+
+  # notify:
+  #   needs: [build]
+  #   if: always()
+  #   uses: ./.github/workflows/notify.yml
+  #   with:
+  #     build_result: ${{ needs.build.result }}
+  #   secrets:
+  #     TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+  #     TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

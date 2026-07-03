@@ -2,7 +2,7 @@
 import { createContext } from "react";
 import { translations } from "@/locales/translations";
 import { LOCALES, type LocaleType } from "@/locales/locales";
-import { useGlobalUIStore } from "@/store/globalUI";
+import { useStore } from "@/store";
 
 export type TranslationsType = (typeof translations)[LocaleType];
 
@@ -12,18 +12,18 @@ export const TranslationContext = createContext<TranslationsType>(
 
 // Хук useTranslator - использует Zustand store для получения текущего языка
 export const useTranslator = (): TranslationsType => {
-  const { currentLocale } = useGlobalUIStore();
-  return translations[currentLocale];
+  const { globalUIStore } = useStore();
+  return translations[globalUIStore.currentLocale];
 };
 
 // Хук для получения всего объекта с языком и переводами
 export const useLanguage = () => {
-  const { currentLocale, setLanguage, toggleLanguage } = useGlobalUIStore();
+  const { globalUIStore } = useStore();
   return {
-    currentLocale,
-    setLanguage,
-    toggleLanguage,
-    t: translations[currentLocale], // текущие переводы
+    currentLocale: globalUIStore.currentLocale,
+    setLanguage: globalUIStore.setLanguage,
+    toggleLanguage: globalUIStore.toggleLanguage,
+    t: translations[globalUIStore.currentLocale], // текущие переводы
   };
 };
 

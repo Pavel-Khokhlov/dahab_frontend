@@ -7,7 +7,7 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
 
     /* Bundler mode */
     "moduleResolution": "bundler",

@@ -7,12 +7,12 @@
     "module": "esnext",
     "types": ["vite/client"],
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": false,
+    "forceConsistentCasingInFileNames": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": true, 
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",

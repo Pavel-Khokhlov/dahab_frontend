@@ -7,7 +7,8 @@ import { useStore } from "./store";
 
 function App() {
   const { globalUIStore } = useStore();
-  const currentTranslations = translations[globalUIStore.currentLocale];
+  const currentTranslations =
+    translations[globalUIStore.currentLocale as keyof typeof translations];
   return (
     <HelmetProvider>
       <TranslationContext.Provider value={currentTranslations}>

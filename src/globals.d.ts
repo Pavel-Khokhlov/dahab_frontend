@@ -11,3 +11,5 @@ declare module '*.webp';
 declare module '*.avif';
 declare module 'swiper/css';
 declare module 'swiper/css/*';
+declare module '*.js';
+declare module '*.ts';

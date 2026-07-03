@@ -1,4 +1,4 @@
-// store/globalUI.ts
+import React from "react";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { LOCALES, type LocaleType } from "@/locales/locales";
@@ -61,6 +61,14 @@ interface GlobalUIState {
 
   // Метод для обновления размеров окна
   setWindowSize: (width: number) => void;
+
+  isPageScrolled: boolean;
+  setPageScrolled: (scrolled: boolean) => void;
+  pageScrollThreshold: number;
+
+  // Текущая позиция скролла
+  scrollY: number;
+  setScrollY: (y: number) => void;
 }
 
 export const useGlobalUIStore = create<GlobalUIState>()(
@@ -74,6 +82,10 @@ export const useGlobalUIStore = create<GlobalUIState>()(
       isTablet: getDeviceType(window.innerWidth) === "tablet",
       isDesktop: getDeviceType(window.innerWidth) === "desktop",
       windowWidth: window.innerWidth,
+
+      isPageScrolled: false,
+      pageScrollThreshold: 100,
+      scrollY: 0,
 
       // Инициализация слайдера в зависимости от устройства
       sliderPreview: getSliderPreview(getDeviceType(window.innerWidth)),
@@ -111,11 +123,62 @@ export const useGlobalUIStore = create<GlobalUIState>()(
           sliderPreview,
         });
       },
+      // Методы для управления состоянием скролла страницы
+      setPageScrolled: (scrolled: boolean) => {
+        set({ isPageScrolled: scrolled });
+      },
+
+      setScrollY: (y: number) => {
+        set({ scrollY: y });
+      },
     }),
     {
       name: "global-ui-storage",
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ currentLocale: state.currentLocale }),
+      partialize: (state) => ({ 
+        currentLocale: state.currentLocale,
+        pageScrollThreshold: state.pageScrollThreshold 
+      }),
     },
   ),
 );
+
+// Хук для отслеживания скролла страницы
+export const usePageScroll = () => {
+  const { 
+    isPageScrolled, 
+    setPageScrolled, 
+    pageScrollThreshold,
+    scrollY,
+    setScrollY 
+  } = useGlobalUIStore();
+
+  // Эффект для подписки на событие скролла страницы
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrollY(currentScrollY);
+      
+      // Обновляем состояние хедера на основе порога
+      const scrolled = currentScrollY > pageScrollThreshold;
+      if (scrolled !== isPageScrolled) {
+        setPageScrolled(scrolled);
+      }
+    };
+
+    // Проверяем текущую позицию при монтировании
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [pageScrollThreshold, isPageScrolled, setPageScrolled, setScrollY]);
+
+  return {
+    isPageScrolled,
+    scrollY,
+    pageScrollThreshold,
+  };
+};

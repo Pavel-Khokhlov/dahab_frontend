@@ -53,9 +53,8 @@
 #root {
   position: relative;
   width: 100vw;
-  margin: 0 auto;
+  margin: 0;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;

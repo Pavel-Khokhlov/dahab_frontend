@@ -1,13 +1,16 @@
 import { HelmetProvider } from "react-helmet-async";
-import { LOCALES, TranslationContext } from "./context/TranslationContext";
+import { TranslationContext } from "./context/TranslationContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/public/Main";
+import { useGlobalUIStore } from "@/store/GlobalUI";
 import { translations } from "./locales/translations";
 
 function App() {
+  const { currentLocale } = useGlobalUIStore();
+  const currentTranslations = translations[currentLocale];
   return (
     <HelmetProvider>
-      <TranslationContext.Provider value={translations[LOCALES.ENGLISH]}>
+      <TranslationContext.Provider value={currentTranslations}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />

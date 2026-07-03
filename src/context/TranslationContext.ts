@@ -2,7 +2,7 @@
 import { createContext } from "react";
 import { translations } from "@/locales/translations";
 import { LOCALES, type LocaleType } from "@/locales/locales";
-import { useGlobalUIStore } from "@/store/GlobalUI";
+import { useGlobalUIStore } from "@/store/globalUI";
 
 export type TranslationsType = (typeof translations)[LocaleType];
 

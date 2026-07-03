@@ -5,6 +5,8 @@ export const translations = {
       urlLogin: 'Private message app',
       urlVerify: 'Approve your E-mail',
       team: 'Our team',
+      feedback: 'Feedbacks',
+      contacts: 'Contacts',
       verify: 'Enter received code',
     },
     subtitle: {
@@ -44,6 +46,8 @@ export const translations = {
       urlLogin: 'Приложение для личных сообщений',
       urlVerify: 'Подтвержение вашей почты',
       team: 'Наша команда',
+      feedback: 'Отзывы',
+      contacts: 'Контакты',
       verify: 'Введите полученный код',
     },
     subtitle: {

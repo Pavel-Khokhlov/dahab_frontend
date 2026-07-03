@@ -1,0 +1,184 @@
+// ============================================
+//   TYPOGRAPHY MIXINS & VARIABLES
+//   Файл: _typography.scss
+// ============================================
+
+// ---------- Базовые переменные ----------
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-secondary: 'Georgia', 'Times New Roman', serif;
+
+// ---------- Размеры (Mobile-first) ----------
+$font-size-main-title: 60px;
+$font-size-main-subtitle: 24px;
+$font-size-section-title: 32px;
+$font-size-section-subtitle: 20px;
+$font-size-text-main: 16px;
+$font-size-text-link: 16px;
+$font-size-text-button: 15px;
+$font-size-text-description: 14px;
+
+// ---------- Высоты строк ----------
+$line-height-main-title: 1.2;
+$line-height-main-subtitle: 1.4;
+$line-height-section-title: 1.25;
+$line-height-section-subtitle: 1.5;
+$line-height-text-main: 1.6;
+$line-height-text-link: 1.5;
+$line-height-text-button: 1.2;
+$line-height-text-description: 1.5;
+
+// ---------- Веса шрифтов ----------
+$font-weight-main-title: 700;
+$font-weight-main-subtitle: 500;
+$font-weight-section-title: 600;
+$font-weight-section-subtitle: 500;
+$font-weight-text-main: 400;
+$font-weight-text-link: 500;
+$font-weight-text-button: 600;
+$font-weight-text-description: 400;
+
+// ============================================
+//   MIXINS
+// ============================================
+
+// ----- Основной заголовок (главный экран) -----
+@mixin main-title {
+  font-family: $font-family-primary;
+  font-size: $font-size-main-title;
+  font-weight: $font-weight-main-title;
+  line-height: $line-height-main-title;
+  letter-spacing: -0.02em;
+  color: inherit;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-main-title * 0.75; // 31.5px
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-main-title * 0.6; // 25.2px
+  }
+}
+
+// ----- Подзаголовок (главный экран) -----
+@mixin main-subtitle {
+  font-family: $font-family-primary;
+  font-size: $font-size-main-subtitle;
+  font-weight: $font-weight-main-subtitle;
+  line-height: $line-height-main-subtitle;
+  letter-spacing: -0.01em;
+  color: inherit;
+  opacity: 0.85;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-main-subtitle * 0.8; // 19.2px
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-main-subtitle * 0.7; // 16.8px
+  }
+}
+
+// ----- Заголовок секции -----
+@mixin section-title {
+  font-family: $font-family-primary;
+  font-size: $font-size-section-title;
+  font-weight: $font-weight-section-title;
+  line-height: $line-height-section-title;
+  letter-spacing: -0.015em;
+  color: inherit;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-section-title * 0.8; // 25.6px
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-section-title * 0.7; // 22.4px
+  }
+}
+
+// ----- Подзаголовок секции -----
+@mixin section-subtitle {
+  font-family: $font-family-primary;
+  font-size: $font-size-section-subtitle;
+  font-weight: $font-weight-section-subtitle;
+  line-height: $line-height-section-subtitle;
+  letter-spacing: 0;
+  color: inherit;
+  opacity: 0.8;
+  
+  @media (max-width: 768px) {
+    font-size: $font-size-section-subtitle * 0.85; // 17px
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-section-subtitle * 0.75; // 15px
+  }
+}
+
+// ----- Основной текст -----
+@mixin text-main {
+  font-family: $font-family-primary;
+  font-size: $font-size-text-main;
+  font-weight: $font-weight-text-main;
+  line-height: $line-height-text-main;
+  letter-spacing: 0.01em;
+  color: inherit;
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-text-main * 0.9; // 14.4px
+  }
+}
+
+// ----- Текст-ссылка -----
+@mixin text-link {
+  font-family: $font-family-primary;
+  font-size: $font-size-text-link;
+  font-weight: $font-weight-text-link;
+  line-height: $line-height-text-link;
+  letter-spacing: 0.02em;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-text-link * 0.9; // 14.4px
+  }
+}
+
+// ----- Текст кнопки -----
+@mixin text-button {
+  font-family: $font-family-primary;
+  font-size: $font-size-text-button;
+  font-weight: $font-weight-text-button;
+  line-height: $line-height-text-button;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: inherit;
+  cursor: pointer;
+  // user-select: none;
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-text-button * 0.9; // 13.5px
+  }
+}
+
+// ----- Текст-описание -----
+@mixin text-description {
+  font-family: $font-family-secondary;
+  font-size: $font-size-text-description;
+  font-weight: $font-weight-text-description;
+  line-height: $line-height-text-description;
+  letter-spacing: 0.02em;
+  color: inherit;
+  opacity: 0.7;
+  
+  @media (max-width: 480px) {
+    font-size: $font-size-text-description * 0.9; // 12.6px
+  }
+}

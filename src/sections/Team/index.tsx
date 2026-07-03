@@ -8,8 +8,8 @@ const TeamSection = () => {
   const t = useTranslator();
   return (
     <section className="team">
-      <h1 className="team__title">{t.title.team}</h1>
-      <h2 className="title__subtitle">Description</h2>
+      <h2 className="team__title">{t.title.team}</h2>
+      <h3 className="team__subtitle">Description</h3>
       <div className="team__grid">
         {team.map((member, index) => (
           <div className="team__card" key={index}>

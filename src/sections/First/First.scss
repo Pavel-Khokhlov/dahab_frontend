@@ -42,6 +42,7 @@
     );
   }
   &__title {
+    @include main-title;
     color: var(--text-h);
   }
   &__description {

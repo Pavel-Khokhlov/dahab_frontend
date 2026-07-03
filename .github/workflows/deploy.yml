@@ -1,9 +1,9 @@
 name: Build dev
- 
+
 on:
   push:
     branches: [dev]
- 
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,13 +14,63 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          
+          cache: 'npm'
+      
+      - name: Clean npm cache
+        run: npm cache clean --force
+      
+      - name: Remove Vite cache
+        run: |
+          rm -rf .vite
+          rm -rf node_modules/.vite
+          rm -rf dist
+          rm -rf node_modules/.cache
+      
+      - name: Debug - Check files
+        run: |
+          echo "=== Node version ==="
+          node --version
+          echo "=== NPM version ==="
+          npm --version
+          echo "=== Check src/store ==="
+          ls -la src/store/ || echo "❌ src/store not found"
+          echo "=== Check globalUI.ts ==="
+          if [ -f "src/store/globalUI.ts" ]; then
+            echo "✅ globalUI.ts exists"
+            head -5 src/store/globalUI.ts
+          else
+            echo "❌ globalUI.ts NOT FOUND"
+            exit 1
+          fi
+          echo "=== Check index.ts ==="
+          if [ -f "src/store/index.ts" ]; then
+            echo "✅ index.ts exists"
+            cat src/store/index.ts
+          else
+            echo "❌ index.ts NOT FOUND"
+            exit 1
+          fi
+      
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit
       
       - name: Build project
         id: build
         run: npm run build
+        env:
+          NODE_ENV: production
+          CI: true
+      
+      - name: Verify build
+        if: always()
+        run: |
+          if [ -d "dist" ] && [ "$(ls -A dist)" ]; then
+            echo "✅ Build successful"
+            ls -la dist/
+          else
+            echo "❌ Build failed - dist directory is empty or missing"
+            exit 1
+          fi
 
   # notify:
   #   needs: [build]

@@ -14,9 +14,9 @@ export default defineConfig({
       scss: {
         // Автоматический импорт глобальных файлов
         additionalData: `
-          @import "@/styles/variables.scss";
-          @import "@/styles/mixins.scss";
-          @import "@/styles/typography.scss";
+          @use "@/styles/variables" as *;
+          @use "@/styles/mixins.scss" as *;
+          @use "@/styles/typography.scss" as *;
         `,
       },
     },
@@ -30,6 +30,7 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
   },
   server: {
     host: "0.0.0.0", // Важно для доступа из контейнера

@@ -17,8 +17,8 @@ const FeedbacksSection: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
   return (
-    <section className="feedback">
-      <h2 className="feedback__title">{t.title.feedback}</h2>
+    <section className="feedback" id="feedbacks">
+      <h2 className="feedback__title">{t.title.feedbacks}</h2>
       <h3 className="feedback__subtitle">Description</h3>
       <Swiper
         slidesPerView={globalUIStore.sliderPreview}

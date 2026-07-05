@@ -6,7 +6,7 @@ import { useTranslator } from "@/context/TranslationContext";
 const ContactSection = () => {
     const t = useTranslator();
   return (
-    <section id="center">
+    <section id="contact">
       <h2 className="feedback__title">{t.title.contacts}</h2>
       <h3 className="feedback__subtitle">Description</h3>
       <div className="hero">

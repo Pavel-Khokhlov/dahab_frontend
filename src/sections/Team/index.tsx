@@ -1,9 +1,8 @@
+import { useStore } from "@/store";
+import { useTranslator } from "@/context/TranslationContext";
 import { team } from "@/data/team";
-import Roma from "@/assets/images/team/roma.webp";
 
 import "./Team.scss";
-import { useTranslator } from "@/context/TranslationContext";
-import { useStore } from "@/store";
 
 const TeamSection = () => {
   const t = useTranslator();

@@ -50,6 +50,7 @@ const Header = () => {
   };
   // Block scroll when menu is open
   useEffect(() => {
+    console.log("HEADER", isMenuOpen);
     if (isMenuOpen) {
       // Save current scroll position
       const scrollY = window.scrollY;

@@ -17,7 +17,7 @@ const TeamSection = () => {
           <div className="team__card" key={index}>
             <div className="team__card-image">
               <img
-                src={Roma}
+                src={member.image}
                 alt={
                   `picture portrait ` +
                   member[`name_${globalUIStore.currentLocale}`]
@@ -29,12 +29,22 @@ const TeamSection = () => {
             </h3>
             {member[`position_${globalUIStore.currentLocale}`].map(
               (p, index) => {
-                return <p key={index} className="team__card-position">{p}</p>;
+                return (
+                  <p key={index} className="team__card-position">
+                    {p}
+                  </p>
+                );
               },
             )}
-            <p className="team__card-description">
-              {member[`description_${globalUIStore.currentLocale}`]}
-            </p>
+            {member[`description_${globalUIStore.currentLocale}`].map(
+              (d, index) => {
+                return (
+                  <p key={index} className="team__card-description">
+                    {d}
+                  </p>
+                );
+              },
+            )}
           </div>
         ))}
       </div>

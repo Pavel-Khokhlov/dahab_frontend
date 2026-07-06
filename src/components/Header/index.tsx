@@ -5,6 +5,8 @@ import BurgerMenu from "../BurgerMenu";
 import "./Header.scss";
 import LanguageSwitcher from "../LanguageSwitcher";
 import { useTranslator } from "@/context/TranslationContext";
+import whiteLogoUrl from "@/assets/images/logo/MolchanovsLogoWhite.svg";
+import blackLogoUrl from "@/assets/images/logo/MolchanovsLogoBlack.svg";
 
 const MAX_OPACITY = 0.95;
 const MAX_SHADOW = 0.15;
@@ -93,7 +95,19 @@ const Header = () => {
           boxShadow: `4px 0 16px rgba(0, 0, 0, ${isMenuOpen ? MAX_SHADOW : shadow})`,
         }}
       >
-        <h2 className="header__logo">LOGO</h2>
+        <button
+          className="header__logo"
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
+          aria-label="На главную"
+        >
+          <img
+            src={isMenuOpen || scrollY > 280 ? blackLogoUrl : whiteLogoUrl}
+            alt="Logo"
+            width={130}
+          />
+        </button>
         <h5 className="header__menu">menu</h5>
         <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
       </div>

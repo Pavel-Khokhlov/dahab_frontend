@@ -11,10 +11,9 @@
   z-index: 100;
   box-sizing: border-box;
   &__logo {
-    font-size: min(30px, 7vw);
-    line-height: 1.2;
+    border: none;
+    background: transparent;
     margin: 0;
-    color: black;
   }
   &__menu {
     font-size: min(18px, 4vw);

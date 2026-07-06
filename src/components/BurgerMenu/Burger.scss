@@ -11,9 +11,13 @@
 .burger-line {
   width: 30px;
   height: 1px;
-  background: #333;
+  background: white;
   transition: all 0.5s ease;
   transform-origin: center;
+  &._active {
+    transition: all 0.5s ease;
+    background: black;
+  }
 }
 
 .burger.active .burger-line:nth-child(1) {

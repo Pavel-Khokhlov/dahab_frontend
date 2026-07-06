@@ -1,3 +1,4 @@
+import { usePageScroll } from "@/store/globalUI";
 import "./Burger.scss";
 
 interface BurgerMenuProps {
@@ -6,6 +7,7 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu = ({ isClicked, onClick }: BurgerMenuProps) => {
+  const { scrollY } = usePageScroll();
   return (
     <button
       className={`burger ${isClicked ? "active" : ""}`}
@@ -13,9 +15,15 @@ const BurgerMenu = ({ isClicked, onClick }: BurgerMenuProps) => {
       aria-label="Toggle menu"
       type="button"
     >
-      <span className="burger-line"></span>
-      <span className="burger-line"></span>
-      <span className="burger-line"></span>
+      <span
+        className={`burger-line ${isClicked || scrollY > 280 ? "_active" : ""}`}
+      ></span>
+      <span
+        className={`burger-line ${isClicked || scrollY > 280 ? "_active" : ""}`}
+      ></span>
+      <span
+        className={`burger-line ${isClicked || scrollY > 280 ? "_active" : ""}`}
+      ></span>
     </button>
   );
 };

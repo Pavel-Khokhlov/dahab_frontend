@@ -46,14 +46,4 @@ export const team = [
       "Beyond teaching, she has a passion for underwater videography, capturing the beauty of the underwater world and sharing the unique experiences freediving has to offer.",
     ],
   },
-  {
-    id: "003",
-    image: Roma,
-    name_ru: "РОМАН ГАРАЙХАНОВ",
-    name_en: "ROMAN GARAYKHANOV",
-    position_ru: ["position1"],
-    position_en: ["position1"],
-    description_ru: ["", "", "", "", ""],
-    description_en: ["", "", "", "", ""],
-  },
 ];

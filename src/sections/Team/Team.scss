@@ -1,16 +1,14 @@
 .team {
   padding: 20px 0px;
-  max-width: 1200px;
   margin: 0 auto;
+  background: var(--primary-white);
 
   &__title {
     @include section-title;
-    color: #fff;
   }
 
   &__subtitle {
     @include section-subtitle;
-    color: #666;
   }
 
   &__grid {
@@ -58,14 +56,14 @@
       font-size: 22px;
       font-weight: 700;
       margin: 16px;
-      color: #1a1a1a;
+      color: var(--primary-black);
       text-align: center;
     }
 
     &-position {
       font-size: 16px;
       font-weight: 500;
-      color: #1a1a1a;
+      color: var(--primary-black);
       margin: 0 min(30px, 6vw) 10px;
       text-align: start;
     }
@@ -73,9 +71,17 @@
     &-description {
       font-size: 14px;
       line-height: 1.6;
-      color: #666;
+      color: var(--primary-light-black);
       margin: 0 min(30px, 6vw) 5px;
       text-align: start;
+    }
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .team {
+    &__grid {
+        width: 80vw;
     }
   }
 }

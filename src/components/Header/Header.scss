@@ -3,7 +3,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: $header-desktop;
+  height: 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,6 +15,10 @@
     background: transparent;
     margin: 0;
   }
+  &__back {
+    background: transparent;
+    border: none;
+  }
   &__menu {
     font-size: min(18px, 4vw);
     line-height: 1.2;
@@ -22,6 +26,12 @@
     @media (max-width: 1024px) {
       display: none;
     }
+  }
+  @media (orientation: landscape) and (max-height: 500px) {
+    height: 40px;
+  }
+  @media (orientation: portrait) {
+    height: 45px;
   }
 }
 

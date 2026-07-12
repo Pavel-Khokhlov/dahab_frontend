@@ -7,12 +7,17 @@ import LanguageSwitcher from "../LanguageSwitcher";
 import { useTranslator } from "@/context/TranslationContext";
 import whiteLogoUrl from "@/assets/images/logo/MolchanovsLogoWhite.svg";
 import blackLogoUrl from "@/assets/images/logo/MolchanovsLogoBlack.svg";
+import backBlack from "@/assets/images/icons/back-black.svg";
+import backWhite from "@/assets/images/icons/back-white.svg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const MAX_OPACITY = 0.95;
 const MAX_SHADOW = 0.15;
 
 const Header = () => {
   const t = useTranslator();
+  const navigate = useNavigate();
+  const location = useLocation();
   const { scrollY } = usePageScroll();
   const opacity = Math.min(scrollY / 400, MAX_OPACITY);
   const shadow = Math.min(scrollY / 800, MAX_SHADOW);
@@ -20,6 +25,11 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleScheduleClick = () => {
+    navigate("/schedule");
+    setIsMenuOpen(false);
   };
 
   const handleMenuItemClick = (
@@ -50,7 +60,6 @@ const Header = () => {
   };
   // Block scroll when menu is open
   useEffect(() => {
-    console.log("HEADER", isMenuOpen);
     if (isMenuOpen) {
       // Save current scroll position
       const scrollY = window.scrollY;
@@ -106,11 +115,22 @@ const Header = () => {
           <img
             src={isMenuOpen || scrollY > 280 ? blackLogoUrl : whiteLogoUrl}
             alt="Logo"
-            width={130}
+            width={120}
           />
         </button>
         <h5 className="header__menu">menu</h5>
-        <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
+        {location.pathname === "/schedule" && (
+          <button className="header__back" onClick={() => navigate(-1)}>
+            <img
+              src={isMenuOpen || scrollY > 280 ? backBlack : backWhite}
+              alt="button back"
+              width={30}
+            />
+          </button>
+        )}
+        {location.pathname === "/" && (
+          <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
+        )}
       </div>
       {/* Dropdown Menu */}
       <nav className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
@@ -145,6 +165,9 @@ const Header = () => {
             >
               {t.title.contacts}
             </a>
+          </li>
+          <li>
+            <button onClick={handleScheduleClick}>Перейти к Расписанию</button>
           </li>
         </ul>
         <LanguageSwitcher />

@@ -9,9 +9,9 @@ $font-family-secondary: 'Georgia', 'Times New Roman', serif;
 
 // ---------- Размеры (Mobile-first) ----------
 $font-size-main-title: 60px;
-$font-size-main-subtitle: 24px;
-$font-size-section-title: 32px;
-$font-size-section-subtitle: 20px;
+$font-size-main-subtitle: 60px;
+$font-size-section-title: 48px;
+$font-size-section-subtitle: 26px;
 $font-size-text-main: 16px;
 $font-size-text-link: 16px;
 $font-size-text-button: 15px;
@@ -48,14 +48,15 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-main-title;
   line-height: $line-height-main-title;
   letter-spacing: -0.02em;
-  color: inherit;
+  color: var(--title);
+  margin: 0;
   
   @media (max-width: 768px) {
     font-size: $font-size-main-title * 0.75; // 31.5px
   }
   
   @media (max-width: 480px) {
-    font-size: $font-size-main-title * 0.6; // 25.2px
+    font-size: $font-size-main-title * 0.9; // 25.2px
   }
 }
 
@@ -66,15 +67,16 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-main-subtitle;
   line-height: $line-height-main-subtitle;
   letter-spacing: -0.01em;
-  color: inherit;
+  color: var(--subtitle);
   opacity: 0.85;
+  margin: 0;
   
   @media (max-width: 768px) {
     font-size: $font-size-main-subtitle * 0.8; // 19.2px
   }
   
   @media (max-width: 480px) {
-    font-size: $font-size-main-subtitle * 0.7; // 16.8px
+    font-size: $font-size-main-subtitle * 0.9; // 16.8px
   }
 }
 
@@ -85,7 +87,7 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-section-title;
   line-height: $line-height-section-title;
   letter-spacing: -0.015em;
-  color: inherit;
+  color: var(--title);
   
   @media (max-width: 768px) {
     font-size: $font-size-section-title * 0.8; // 25.6px
@@ -103,8 +105,8 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-section-subtitle;
   line-height: $line-height-section-subtitle;
   letter-spacing: 0;
-  color: inherit;
   opacity: 0.8;
+  color: var(--text-h);
   
   @media (max-width: 768px) {
     font-size: $font-size-section-subtitle * 0.85; // 17px
@@ -159,7 +161,6 @@ $font-weight-text-description: 400;
   line-height: $line-height-text-button;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: inherit;
   cursor: pointer;
   // user-select: none;
   

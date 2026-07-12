@@ -1,11 +1,17 @@
 .burger {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 6px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 10px;
+  @media (orientation: landscape) and (max-height: 500px) {
+    display: flex;
+  }
+  @media (orientation: portrait) {
+    display: flex;
+  }
 }
 
 .burger-line {

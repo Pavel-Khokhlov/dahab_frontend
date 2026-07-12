@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/public/Main";
 import { translations } from "./locales/translations";
 import { useStore } from "./store";
+import SchedulePage from "./pages/public/Schedule";
 
 function App() {
   const { globalUIStore } = useStore();
@@ -15,6 +16,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />
+            <Route path="/schedule" element={<SchedulePage />} />
           </Routes>
         </BrowserRouter>
       </TranslationContext.Provider>

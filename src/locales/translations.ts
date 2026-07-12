@@ -1,18 +1,24 @@
 export const translations = {
   en: {
     title: {
-      urlMain: 'Dahab Freediving Molchanovs',
+      urlMain: 'Dahab Freediving Molchanovs | Egypt',
+      urlSchedule: 'Dahab Freediving Molchanovs | Egypt | Schedule',
       urlLogin: 'Private message app',
       urlVerify: 'Approve your E-mail',
       main: 'Home',
       about: 'About',
       team: 'Our team',
       feedbacks: 'Feedbacks',
+      prices: 'The prices of training',
+      trial: 'Trial training',
       contacts: 'Contacts',
+      weekSchedule: 'Week training schedule',
       verify: 'Enter received code',
     },
     subtitle: {
       verify: 'The code has been sent to your e-mail',
+      team: 'Review our team',
+      feedbacks: 'About our feedbacks',
     },
     placeholder: {
       email: 'example@mail.ru',
@@ -44,7 +50,8 @@ export const translations = {
   },
   ru: {
     title: {
-      urlMain: 'Дахаб Фридайвинг Molchanovs',
+      urlMain: 'Дахаб Фридайвинг Molchanovs | Египет',
+      urlSchedule: 'Дахаб Freediving Molchanovs | Египет | Тренировки',
       urlLogin: 'Приложение для личных сообщений',
       urlVerify: 'Подтвержение вашей почты',
       main: 'Главная',
@@ -52,10 +59,15 @@ export const translations = {
       team: 'Наша команда',
       feedbacks: 'Отзывы',
       contacts: 'Контакты',
+      prices: 'Стоимость тренировок',
+      trial: 'Пробная тренировка',
+      weekSchedule: 'Расписание тренировочной недели',
       verify: 'Введите полученный код',
     },
     subtitle: {
       verify: 'Код подтверждения отправлен на вашу почту',
+      team: 'Описание нашей команды',
+      feedbacks: 'Благодарность от нас нашим клиентам',
     },
     placeholder: {
       email: 'example@mail.ru',

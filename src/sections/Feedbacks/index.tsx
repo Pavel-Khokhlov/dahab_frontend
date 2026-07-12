@@ -12,14 +12,17 @@ import "swiper/css/pagination";
 import "./Feedbacks.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
+import SectionWrapper from "@/components/SectionWrapper";
 
 const FeedbacksSection: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
   return (
-    <section className="feedback" id="feedbacks">
-      <h2 className="feedback__title">{t.title.feedbacks}</h2>
-      <h3 className="feedback__subtitle">Description</h3>
+    <SectionWrapper
+      id="feedback"
+      title={t.title.feedbacks}
+      description={t.subtitle.feedbacks}
+    >
       <Swiper
         slidesPerView={globalUIStore.sliderPreview}
         spaceBetween={20}
@@ -69,7 +72,7 @@ const FeedbacksSection: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </SectionWrapper>
   );
 };
 

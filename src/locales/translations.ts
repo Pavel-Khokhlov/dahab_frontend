@@ -17,8 +17,12 @@ export const translations = {
     },
     subtitle: {
       verify: 'The code has been sent to your e-mail',
+      main: 'Freediving Camp in Egypt',
       team: 'Review our team',
       feedbacks: 'About our feedbacks',
+    },
+    text: {
+      main: 'A trip for the whole family!',
     },
     placeholder: {
       email: 'example@mail.ru',
@@ -66,8 +70,12 @@ export const translations = {
     },
     subtitle: {
       verify: 'Код подтверждения отправлен на вашу почту',
+      main: 'Фридайвинг Лагерь в Египте',
       team: 'Описание нашей команды',
       feedbacks: 'Благодарность от нас нашим клиентам',
+    },
+    text: {
+      main: 'Путешествие для всей семьи!',
     },
     placeholder: {
       email: 'example@mail.ru',

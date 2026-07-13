@@ -1,7 +1,6 @@
 import { useTranslator } from "@/context/TranslationContext";
 import SectionWrapper from "@/components/SectionWrapper";
-
-import "./Trial.scss";
+import PriceItem from "@/components/PriceItem";
 
 const data = [
   {
@@ -34,13 +33,7 @@ const TrialSection = () => {
   return (
     <SectionWrapper id="trial" title={t.title.trial}>
       {data.map((p) => {
-        return (
-          <div key={p.price} className="price__wrapper">
-            <h3 className="price__title">{p.title_ru}</h3>
-            <p className="price__text">{p.text_ru}</p>
-            <p className="price__value">{p.price}</p>
-          </div>
-        );
+        return <PriceItem key={p.price} item={p} />;
       })}
     </SectionWrapper>
   );

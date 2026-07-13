@@ -7,6 +7,7 @@
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
+  --text-plashka: rgba(10, 10, 10, 1);
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #aa3bff;
@@ -37,7 +38,8 @@
     --subtitle: var(--primary-white);
     --text: #9ca3af;
     --text-h: #08060d;
-    --bg: rgba(10, 25, 42, 1);
+    --bg: #fff;
+    --text-plashka: rgba(10, 10, 10, 1);
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;

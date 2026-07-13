@@ -10,6 +10,7 @@ import Team from "@/sections/Team";
 import FeedbacksSection from "@/sections/Feedbacks";
 import PriceSection from "@/sections/Price";
 import TrialSection from "@/sections/TrialTraining";
+import AboutSection from "@/sections/About";
 
 function MainPage() {
   const t = useTranslator();
@@ -21,6 +22,7 @@ function MainPage() {
       </Helmet>
       <Header />
       <First />
+      <AboutSection />
       <TrialSection />
       <PriceSection />
       <Team />

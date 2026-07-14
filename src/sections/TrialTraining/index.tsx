@@ -2,6 +2,32 @@ import { useTranslator } from "@/context/TranslationContext";
 import SectionWrapper from "@/components/SectionWrapper";
 import PriceItem from "@/components/PriceItem";
 
+import trialImg from "@/assets/images/background/trial.webp";
+
+import "./Trial.scss";
+import { useStore } from "@/store";
+
+const trialData = {
+  textOne_ru: `Хотите познакомиться с фридайвингом без покупки полного курса?`,
+  textOne_en: `Хотите познакомиться с фридайвингом без покупки полного курса? en`,
+  textTwo_ru: `Мы подготовили специальные ознакомительные программы продолжительностью 2,5 часа.`,
+  textTwo_en: `Мы подготовили специальные ознакомительные программы продолжительностью 2,5 часа. en`,
+  textThree_ru: `В стоимость входит:`,
+  textThree_en: `В стоимость входит: en`,
+  list_ru: [
+    `полный комплект оборудования (гидрокостюм, маска, ласты);`,
+    `водная теория;`,
+    `мастер-класс по правильному надеванию гидрокостюма;`,
+    `полуторачасовая практика в море с инструктором.`,
+  ],
+  list_en: [
+    `полный комплект оборудования (гидрокостюм, маска, ласты);`,
+    `водная теория;`,
+    `мастер-класс по правильному надеванию гидрокостюма;`,
+    `полуторачасовая практика в море с инструктором.`,
+  ],
+};
+
 const data = [
   {
     title_ru: "Индивидуальная",
@@ -30,8 +56,38 @@ const data = [
 
 const TrialSection = () => {
   const t = useTranslator();
+  const { globalUIStore } = useStore();
   return (
     <SectionWrapper id="trial" title={t.title.trial}>
+      <p className="trial__text">
+        {trialData[`textOne_${globalUIStore.currentLocale}`]}
+      </p>
+      <p className="trial__text">
+        {trialData[`textTwo_${globalUIStore.currentLocale}`]}
+      </p>
+
+      <div className="trial__block">
+        <img
+          src={trialImg}
+          alt="picture trial training"
+          className="trial__image"
+        />
+        <div className="trial__include">
+          <p className="trial__text">
+            {trialData[`textThree_${globalUIStore.currentLocale}`]}
+          </p>
+          <ul className="trial__list">
+            {trialData[`list_${globalUIStore.currentLocale}`].map((i) => {
+              return (
+                <li key={i}>
+                  <p className="trial__list-item">{i}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+
       {data.map((p) => {
         return <PriceItem key={p.price} item={p} />;
       })}

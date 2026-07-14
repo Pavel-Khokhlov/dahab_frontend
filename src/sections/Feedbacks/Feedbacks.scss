@@ -75,6 +75,7 @@
       hsla(208.00000000000003, 70.86614173228347%, 49.80392156862745%, 1) 0%,
       hsla(208.00000000000003, 70.86614173228347%, 49.80392156862745%, 0) 100%
     );
+    padding: 20px 0;
   &__title {
     @include section-title;
     color: #fff;
@@ -91,6 +92,7 @@
   min-height: 250px;
   width: 100%;
   box-sizing: border-box;
+  border-radius: $border-radius;
 }
 
 .review-header {

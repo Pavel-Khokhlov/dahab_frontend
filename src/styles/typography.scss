@@ -143,6 +143,7 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-text-main;
   line-height: $line-height-text-main;
   letter-spacing: 0.01em;
+  color: var(--text-main);
 
   @media (max-width: 480px) {
     font-size: $font-size-text-main * 0.9; // 14.4px
@@ -156,6 +157,7 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-text-second;
   line-height: $line-height-text-second;
   letter-spacing: 0.01em;
+  color: var(--text-second);
 
   @media (max-width: 480px) {
     font-size: $font-size-text-second * 0.95; // 14.4px

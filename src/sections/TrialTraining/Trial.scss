@@ -24,13 +24,14 @@
   }
   &__list {
     margin: 0;
-    padding: 0 20px;
+    padding: 0 0 0 10px;
     text-align: start;
     &-item {
       @include text-second;
     }
   }
   &__text {
+    @include text-main;
     font-size: 16px;
   }
 }

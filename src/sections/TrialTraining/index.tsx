@@ -79,8 +79,8 @@ const TrialSection = () => {
           <ul className="trial__list">
             {trialData[`list_${globalUIStore.currentLocale}`].map((i) => {
               return (
-                <li key={i}>
-                  <p className="trial__list-item">{i}</p>
+                <li key={i} className="trial__list-item">
+                  <p>{i}</p>
                 </li>
               );
             })}

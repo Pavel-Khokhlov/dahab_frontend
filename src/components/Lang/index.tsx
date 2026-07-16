@@ -1,14 +1,9 @@
-import { useState } from "react";
-import "./Lang.scss";
 import { useStore } from "@/store";
 import { LOCALES } from "@/context/TranslationContext";
 
-const LanguageSwitcher2 = () => {
-  const [language, setLanguage] = useState("ru");
+import "./Lang.scss";
 
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === "ru" ? "en" : "ru"));
-  };
+const LanguageSwitcher2 = () => {
   const { globalUIStore } = useStore();
 
   return (

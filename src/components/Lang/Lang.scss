@@ -1,0 +1,125 @@
+language-switcher {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: -webkit-linear-gradient(90deg, #d1d1cc, #dcdddb, #d1d1cc);
+  background: linear-gradient(90deg, #d1d1cc, #dcdddb, #d1d1cc);
+  border-radius: 60px;
+  padding: 4px;
+  width: 120px;
+  height: 44px;
+  transition: all 0.3s ease;
+}
+
+.option {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 2;
+  position: relative;
+}
+
+.option.active {
+  color: white;
+}
+
+.lang-text {
+  position: relative;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.slider-thumb {
+  position: absolute;
+  top: 4px;
+  width: 52px;
+  height: 36px;
+  background: -webkit-linear-gradient(109deg, #52c57a, #0082c5, #2f0093);
+  background: linear-gradient(109deg, #52c57a, #0082c5, #2f0093);
+  border-radius: 30px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.slider.en .slider-thumb {
+  transform: translateX(0px);
+}
+
+.slider.ru .slider-thumb {
+  transform: translateX(60px);
+}
+
+/* Дополнительный эффект при нажатии */
+.slider:active .slider-thumb {
+  transform: scale(0.92);
+}
+
+.slider.en:active .slider-thumb {
+  transform: translateX(0px) scale(0.92);
+}
+
+.slider.ru:active .slider-thumb {
+  transform: translateX(60px) scale(0.92);
+}
+
+/* Анимация текста */
+.slider.en .option:first-child .lang-text {
+  opacity: 1;
+}
+
+.slider.en .option:last-child .lang-text {
+  opacity: 1;
+}
+
+.slider.ru .option:first-child .lang-text {
+  opacity: 1;
+}
+
+.slider.ru .option:last-child .lang-text {
+  opacity: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .slider {
+    width: 100px;
+    height: 38px;
+  }
+
+  .slider-thumb {
+    width: 50px;
+    height: 38px;
+  }
+
+  .slider.ru .slider-thumb {
+    transform: translateX(50px);
+  }
+
+  .slider.en:active .slider-thumb {
+    transform: translateX(0px) scale(0.92);
+  }
+
+  .slider.ru:active .slider-thumb {
+    transform: translateX(50px) scale(0.92);
+  }
+}

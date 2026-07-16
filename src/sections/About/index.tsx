@@ -50,7 +50,7 @@ const AboutSection = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
   return (
-    <SectionWrapper id="about" title={t.title.about} isWhite={true}>
+    <SectionWrapper id="about" title={t.title.aboutSection} isWhite={true}>
       {data.map((p) => {
         return (
           <div key={p.id} className="about__item">

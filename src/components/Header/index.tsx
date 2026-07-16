@@ -3,13 +3,13 @@ import { usePageScroll } from "@/store/globalUI";
 import BurgerMenu from "../BurgerMenu";
 
 import "./Header.scss";
-import LanguageSwitcher from "../LanguageSwitcher";
 import { useTranslator } from "@/context/TranslationContext";
 import whiteLogoUrl from "@/assets/images/logo/MolchanovsLogoWhite.svg";
 import blackLogoUrl from "@/assets/images/logo/MolchanovsLogoBlack.svg";
 import backBlack from "@/assets/images/icons/back-black.svg";
 import backWhite from "@/assets/images/icons/back-white.svg";
 import { useLocation, useNavigate } from "react-router-dom";
+import LanguageSwitcher2 from "../Lang";
 
 const MAX_OPACITY = 0.95;
 const MAX_SHADOW = 0.15;
@@ -19,17 +19,12 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { scrollY } = usePageScroll();
-  const opacity = Math.min(scrollY / 400, MAX_OPACITY);
-  const shadow = Math.min(scrollY / 800, MAX_SHADOW);
+  const opacity = Math.min(scrollY / 300, MAX_OPACITY);
+  const shadow = Math.min(scrollY / 600, MAX_SHADOW);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const handleClick = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleScheduleClick = () => {
-    navigate("/schedule");
-    setIsMenuOpen(false);
   };
 
   const handleMenuItemClick = (
@@ -46,7 +41,7 @@ const Header = () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         // Учитываем высоту фиксированного хедера (если есть)
-        const headerHeight = 80; // Настройте под ваш хедер
+        const headerHeight = 50; // Настройте под ваш хедер
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition =
           elementPosition + window.pageYOffset - headerHeight;
@@ -166,11 +161,9 @@ const Header = () => {
               {t.title.contacts}
             </a>
           </li>
-          <li>
-            <button onClick={handleScheduleClick}>Перейти к Расписанию</button>
-          </li>
         </ul>
-        <LanguageSwitcher />
+        {/* <LanguageSwitcher /> */}
+        <LanguageSwitcher2 />
       </nav>
     </>
   );

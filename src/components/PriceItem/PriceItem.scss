@@ -1,12 +1,16 @@
 .price {
   &__wrapper {
     width: min(700px, 100%);
-    margin: 0 auto 30px;
+    margin: 0 auto;
     border-radius: $border-radius;
     padding: 18px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
     background: var(--primary-white);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 150px;
   }
   &__title {
     @include section-subtitle;
@@ -17,7 +21,7 @@
     color: var(--text-plashka);
   }
   &__value {
-    margin: 0 0 10px;
+    margin: auto 0 10px;
     color: var(--text-plashka);
     font-size: 30px;
     font-weight: 700;

@@ -59,10 +59,10 @@ const TrialSection = () => {
   const { globalUIStore } = useStore();
   return (
     <SectionWrapper id="trial" title={t.title.trial}>
-      <p className="trial__text">
+      <p className="text-main trial">
         {trialData[`textOne_${globalUIStore.currentLocale}`]}
       </p>
-      <p className="trial__text">
+      <p className="text-main trial">
         {trialData[`textTwo_${globalUIStore.currentLocale}`]}
       </p>
 
@@ -88,9 +88,11 @@ const TrialSection = () => {
         </div>
       </div>
 
-      {data.map((p) => {
-        return <PriceItem key={p.price} item={p} />;
-      })}
+      <div className="trial__grid">
+        {data.map((p) => {
+          return <PriceItem key={p.price} item={p} />;
+        })}
+      </div>
     </SectionWrapper>
   );
 };

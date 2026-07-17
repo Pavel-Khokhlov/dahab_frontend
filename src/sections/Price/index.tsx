@@ -35,9 +35,11 @@ const PriceSection = () => {
   const t = useTranslator();
   return (
     <SectionWrapper id="price" title={t.title.prices}>
-      {data.map((p) => {
-        return <PriceItem key={p.price} item={p} />;
-      })}
+      <div className="trial__grid">
+        {data.map((p) => {
+          return <PriceItem key={p.price} item={p} />;
+        })}
+      </div>
     </SectionWrapper>
   );
 };

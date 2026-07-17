@@ -1,0 +1,291 @@
+// WhyDahabSection.scss
+.why-dahab {
+  position: relative;
+  padding: 6rem 1.5rem;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: #0a1628;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  overflow: hidden;
+
+  // Декоративные градиентные круги (водная тема)
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__gradient-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: float 20s ease-in-out infinite alternate;
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      top: -200px;
+      right: -100px;
+      background: radial-gradient(circle, #00d4ff, transparent 70%);
+      animation-duration: 25s;
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      left: -100px;
+      background: radial-gradient(circle, #7b2ffc, transparent 70%);
+      animation-duration: 20s;
+      animation-delay: 5s;
+    }
+
+    &--3 {
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #00ff87, transparent 70%);
+      animation-duration: 30s;
+      animation-delay: 10s;
+      opacity: 0.15;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+
+    &-icon {
+      font-size: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__highlight {
+    background: linear-gradient(135deg, #00d4ff, #7b2ffc, #00ff87);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease-in-out infinite;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__divider {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #00d4ff 45%,
+      #7b2ffc 55%,
+      transparent 100%
+    );
+    border-radius: 2px;
+    margin: 1.5rem auto 2rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    position: relative;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 1rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: default;
+
+    &:hover {
+      transform: translateY(-4px);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    &--featured {
+      background: linear-gradient(
+        135deg,
+        rgba(0, 212, 255, 0.08),
+        rgba(123, 47, 252, 0.08)
+      );
+      border-color: rgba(0, 212, 255, 0.15);
+      grid-column: span 2;
+
+      @media (max-width: 480px) {
+        grid-column: span 1;
+      }
+
+      &:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(0, 212, 255, 0.12),
+          rgba(123, 47, 252, 0.12)
+        );
+        border-color: rgba(0, 212, 255, 0.3);
+        box-shadow: 0 12px 40px rgba(0, 212, 255, 0.1);
+      }
+    }
+
+    &-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    &-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    &-text {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.4;
+      margin: 0;
+    }
+  }
+
+  &__footnote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 100px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+
+    em {
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    &-icon {
+      font-size: 1.2rem;
+      color: #ffd700;
+    }
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Анимации
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -20px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 30px) scale(0.9);
+  }
+  100% {
+    transform: translate(20px, -10px) scale(1.05);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

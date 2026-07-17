@@ -14,7 +14,7 @@ import LanguageSwitcher2 from "../Lang";
 const MAX_OPACITY = 0.95;
 const MAX_SHADOW = 0.15;
 
-const Header = () => {
+const Header2 = () => {
   const t = useTranslator();
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,16 +32,12 @@ const Header = () => {
     targetId: string,
   ) => {
     event.preventDefault();
-
-    // Закрываем меню
     setIsMenuOpen(false);
 
-    // Небольшая задержка для плавного закрытия меню
     setTimeout(() => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        // Учитываем высоту фиксированного хедера (если есть)
-        const headerHeight = 50; // Настройте под ваш хедер
+        const headerHeight = 50;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition =
           elementPosition + window.pageYOffset - headerHeight;
@@ -51,24 +47,18 @@ const Header = () => {
           behavior: "smooth",
         });
       }
-    }, 300); // Задержка соответствует времени анимации закрытия меню
+    }, 300);
   };
-  // Block scroll when menu is open
+
   useEffect(() => {
     if (isMenuOpen) {
-      // Save current scroll position
       const scrollY = window.scrollY;
-
-      // Add styles to prevent scrolling
       document.body.style.position = "fixed";
       document.body.style.top = `-${scrollY}px`;
       document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
-
-      // Optional: prevent scrolling on html as well for better compatibility
       document.documentElement.style.overflow = "hidden";
     } else {
-      // Restore scrolling
       const scrollY = document.body.style.top;
       document.body.style.position = "";
       document.body.style.top = "";
@@ -76,13 +66,11 @@ const Header = () => {
       document.body.style.overflow = "";
       document.documentElement.style.overflow = "";
 
-      // Restore scroll position
       if (scrollY) {
         window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
       }
     }
 
-    // Cleanup function
     return () => {
       document.body.style.position = "";
       document.body.style.top = "";
@@ -91,6 +79,7 @@ const Header = () => {
       document.documentElement.style.overflow = "";
     };
   }, [isMenuOpen]);
+
   return (
     <>
       <div
@@ -127,46 +116,66 @@ const Header = () => {
           <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
         )}
       </div>
-      {/* Dropdown Menu */}
+
+      {/* Molchanovs — строгое подводное меню */}
       <nav className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
-        <ul className="dropdown-menu__list">
-          <li className="dropdown-menu__item">
-            <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
-              {t.title.main}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a href="#about" onClick={(e) => handleMenuItemClick(e, "#about")}>
-              <p className="">{t.title.about}</p>
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
-              {t.title.team}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a
-              href="#feedbacks"
-              onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
-            >
-              {t.title.feedbacks}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a
-              href="#contact"
-              onClick={(e) => handleMenuItemClick(e, "#contact")}
-            >
-              {t.title.contacts}
-            </a>
-          </li>
-        </ul>
-        {/* <LanguageSwitcher /> */}
-        <LanguageSwitcher2 />
+        {/* Декоративный элемент — сонар/волна */}
+        <div className="dropdown-menu__sonar" />
+
+        <div className="dropdown-menu__inner">
+          <ul className="dropdown-menu__list">
+            <li className="dropdown-menu__item">
+              <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
+                <span className="item-index">— 01</span>
+                <span className="item-label">{t.title.main}</span>
+              </a>
+            </li>
+            <li className="dropdown-menu__item">
+              <a
+                href="#about"
+                onClick={(e) => handleMenuItemClick(e, "#about")}
+              >
+                <span className="item-index">— 02</span>
+                <span className="item-label">{t.title.about}</span>
+              </a>
+            </li>
+            <li className="dropdown-menu__item">
+              <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
+                <span className="item-index">— 03</span>
+                <span className="item-label">{t.title.team}</span>
+              </a>
+            </li>
+            <li className="dropdown-menu__item">
+              <a
+                href="#feedbacks"
+                onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
+              >
+                <span className="item-index">— 04</span>
+                <span className="item-label">{t.title.feedbacks}</span>
+              </a>
+            </li>
+            <li className="dropdown-menu__item">
+              <a
+                href="#contact"
+                onClick={(e) => handleMenuItemClick(e, "#contact")}
+              >
+                <span className="item-index">— 05</span>
+                <span className="item-label">{t.title.contacts}</span>
+              </a>
+            </li>
+          </ul>
+
+          <div className="dropdown-menu__bottom">
+            <LanguageSwitcher2 />
+            <div className="depth-badge">
+              <span className="depth-icon">⟐</span>
+              <span className="depth-text">-42m</span>
+            </div>
+          </div>
+        </div>
       </nav>
     </>
   );
 };
 
-export default Header;
+export default Header2;

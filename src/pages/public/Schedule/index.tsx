@@ -6,7 +6,6 @@ import Contact from "@/sections/Contacts";
 
 import "./Schedule.css";
 import First from "@/sections/First";
-import WeekScheduleSection from "@/sections/WeekSchedule";
 
 function SchedulePage() {
   const t = useTranslator();
@@ -17,7 +16,6 @@ function SchedulePage() {
         <title>{t.title.urlSchedule}</title>
       </Helmet>
       <Header />
-      <WeekScheduleSection />
       <First />
       <Contact />
     </>

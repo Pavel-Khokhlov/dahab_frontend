@@ -1,0 +1,318 @@
+// =============================================
+// HEADER — строгая подводная тематика Molchanovs
+// =============================================
+
+// Палитра глубин
+$deep-blue: #0b1a26;
+$abyss: #0f1f2e;
+$water-dark: #1a3042;
+$water-mid: #2a4b62;
+$accent-cyan: #3ba9d9;
+$accent-dark: #1b6b8c;
+$ice-white: #eaf2f9;
+$gray-cold: #b0c8d9;
+$text-dim: #7f9bb0;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2vw;
+  z-index: 100;
+  box-sizing: border-box;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(2px);
+
+  // подсветка снизу — как отражение от воды
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $accent-cyan, transparent);
+    opacity: 0.15;
+    transition: opacity 0.4s;
+  }
+
+  &:hover::after {
+    opacity: 0.4;
+  }
+
+  &__logo {
+    border: none;
+    background: transparent;
+    margin: 0;
+    padding: 4px 0;
+    cursor: pointer;
+    filter: drop-shadow(0 0 8px rgba(59, 169, 217, 0.1));
+    transition: filter 0.3s;
+
+    &:hover {
+      filter: drop-shadow(0 0 16px rgba(59, 169, 217, 0.25));
+    }
+  }
+
+  &__back {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 30px;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(59, 169, 217, 0.08);
+    }
+  }
+
+  &__menu {
+    font-size: min(18px, 4vw);
+    line-height: 1.2;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: $gray-cold;
+    text-transform: uppercase;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+
+    @media (max-width: 1024px) {
+      display: none;
+    }
+  }
+
+  @media (orientation: landscape) and (max-height: 500px) {
+    height: 40px;
+  }
+  @media (orientation: portrait) {
+    height: 45px;
+  }
+}
+
+// =============================================
+// DROPDOWN MENU — подводная глубина
+// =============================================
+.dropdown-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(8, 14, 20, 0.97);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.8), inset 0 0 120px rgba(26, 48, 66, 0.2);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 99;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgba(59, 169, 217, 0.2);
+
+  // линия глубины — имитация термоклина
+  &__depth-line {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      rgba(59, 169, 217, 0.05) 20px,
+      rgba(59, 169, 217, 0.15) 40px,
+      transparent 60px
+    );
+    pointer-events: none;
+  }
+
+  &.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 1.5rem 2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 640px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__item {
+    padding: 0.6rem 0.8rem;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+    border-left: 2px solid transparent;
+    position: relative;
+
+    &:hover {
+      background: rgba(59, 169, 217, 0.06);
+      border-left-color: $accent-cyan;
+      transform: translateX(6px);
+    }
+
+    a {
+      text-decoration: none;
+      color: $ice-white;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+      width: 100%;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+
+      .item-number {
+        font-size: 0.7rem;
+        font-weight: 400;
+        color: $text-dim;
+        letter-spacing: 1px;
+        opacity: 0.6;
+        min-width: 32px;
+        font-feature-settings: "tnum";
+        transition: opacity 0.2s, color 0.2s;
+      }
+
+      &:hover {
+        color: #fff;
+        .item-number {
+          opacity: 1;
+          color: $accent-cyan;
+        }
+      }
+    }
+  }
+
+  &__footer {
+    margin-top: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 2rem 1.5rem;
+    width: 100%;
+    max-width: 640px;
+    justify-content: space-between;
+    border-top: 1px solid rgba(59, 169, 217, 0.08);
+    padding-top: 1.8rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+  }
+
+  .depth-indicator {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $text-dim;
+
+    .depth-label {
+      opacity: 0.5;
+      font-weight: 300;
+    }
+
+    .depth-value {
+      color: $accent-cyan;
+      font-weight: 600;
+      text-shadow: 0 0 20px rgba(59, 169, 217, 0.2);
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Адаптив для мобильных
+@media (max-width: 640px) {
+  .dropdown-menu {
+    &__list {
+      padding: 1rem 1.2rem;
+      gap: 0.1rem;
+    }
+
+    &__item {
+      padding: 0.4rem 0.6rem;
+      a {
+        font-size: 1.6rem;
+        gap: 0.8rem;
+        .item-number {
+          font-size: 0.6rem;
+          min-width: 24px;
+        }
+      }
+    }
+
+    &__footer {
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+      padding: 1.2rem 1.2rem 1.2rem;
+    }
+
+    .depth-indicator {
+      font-size: 0.6rem;
+    }
+  }
+}
+
+// Кастомный скролл в стиле "глубина"
+.dropdown-menu {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 169, 217, 0.15) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(59, 169, 217, 0.25);
+    border-radius: 20px;
+  }
+}
+
+// =============================================
+// Адаптация для бургера (если используете свой компонент)
+// =============================================
+// Если ваш BurgerMenu не имеет собственных стилей — можно добавить:
+// .burger-menu {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5px;
+//   cursor: pointer;
+//   padding: 8px 4px;
+//   span {
+//     display: block;
+//     width: 28px;
+//     height: 2px;
+//     background: $ice-white;
+//     border-radius: 4px;
+//     transition: 0.3s;
+//   }
+//   &.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+//   &.active span:nth-child(2) { opacity: 0; }
+//   &.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+// }

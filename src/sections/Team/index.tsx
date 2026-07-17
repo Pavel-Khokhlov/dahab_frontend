@@ -12,9 +12,11 @@ const TeamSection = () => {
     <SectionWrapper
       id="team"
       title={t.title.team}
-      description={t.subtitle.team}
       isWhite={true}
     >
+      <p className="text-main black indent">
+        В Дахебе, Египет, команда Molchanovs предлагает уникальную возможность освоить фридайвинг в идеальных условиях Красного моря — от пологой лагуны Lighthouse до легендарного Blue Hole — под руководством сертифицированных инструкторов, которые проводят обучение по прогрессивной системе Wave от начального уровня (12–16 м) до продвинутых глубин (40+ м), сочетая методики задержки дыхания, безопасность, философию чемпионов и открыть для себя глубину с первого вдоха.
+      </p>
       <div className="team__grid">
         {team.map((member, index) => (
           <div className="team__card" key={index}>
@@ -42,7 +44,7 @@ const TeamSection = () => {
             {member[`description_${globalUIStore.currentLocale}`].map(
               (d, index) => {
                 return (
-                  <p key={index} className="team__card-description">
+                  <p key={index} className="text-inside black">
                     {d}
                   </p>
                 );

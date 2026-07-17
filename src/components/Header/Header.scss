@@ -84,7 +84,15 @@
 .dropdown-menu__item a {
   text-decoration: none;
   color: #333;
-  font-size: 1.1rem;
+  font-size: 28px;
+  font-weight: 600;
   display: block;
   width: 100%;
+}
+
+.gradient-horizontal {
+  background: linear-gradient(135deg, #00a49b,#026773,#092c4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

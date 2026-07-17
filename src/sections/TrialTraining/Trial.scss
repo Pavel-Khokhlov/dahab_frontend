@@ -30,8 +30,13 @@
       @include text-second;
     }
   }
-  &__text {
-    @include text-main;
-    font-size: 16px;
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: min(40px, 5vw);
+    @media (max-width: 480px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

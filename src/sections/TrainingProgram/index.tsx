@@ -10,9 +10,6 @@ const TrainingProgramSection: React.FC = () => {
       <div className="training-program__water-bubble training-program__water-bubble--2"></div>
       <div className="training-program__water-bubble training-program__water-bubble--3"></div>
 
-      <div className="training-program__wave training-program__wave--top"></div>
-      <div className="training-program__wave training-program__wave--bottom"></div>
-
       <div className="training-program__container">
         <h2 className="training-program__title">
           Комплексная программа подготовки

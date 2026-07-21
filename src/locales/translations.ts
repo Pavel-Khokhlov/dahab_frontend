@@ -15,7 +15,7 @@ export const translations = {
       prices: 'The prices of training',
       trial: 'Introduction freediving',
       contacts: 'Contacts',
-      weekSchedule: 'Week training schedule',
+      weekSchedule: 'Training week schedule',
       verify: 'Enter received code',
     },
     subtitle: {

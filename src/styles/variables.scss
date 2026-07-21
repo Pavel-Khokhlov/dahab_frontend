@@ -16,7 +16,10 @@ $breakpoint-lg: 1024px;
 // Header
 $header-desktop: min(70px, 12vw);
 
-//
-$app-transition: all 0.3s ease;
-
 $border-radius: min(20px, 5vw);
+
+// TRANSITIONS
+$app-transition: all 0.3s ease;
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+

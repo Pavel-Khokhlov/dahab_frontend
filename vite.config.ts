@@ -14,6 +14,7 @@ export default defineConfig({
       scss: {
         // Автоматический импорт глобальных файлов
         additionalData: `
+          @use "@/styles/colors" as *;
           @use "@/styles/variables" as *;
           @use "@/styles/mixins.scss" as *;
           @use "@/styles/typography.scss" as *;

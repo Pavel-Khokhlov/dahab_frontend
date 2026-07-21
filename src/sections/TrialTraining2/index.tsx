@@ -18,14 +18,13 @@ const TrialSection2: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
-  console.log("LANG", currentLang);
 
   const trialData: TrialCard[] = [
     {
       id: "individual",
       title: {
         ru: "Индивидуальная",
-        en: "Individual",
+        en: "Personal",
       },
       description: {
         ru: "Для одного участника.",
@@ -50,8 +49,8 @@ const TrialSection2: React.FC = () => {
     {
       id: "family2",
       title: {
-        ru: "Семейная «Family 2»",
-        en: "Family 2",
+        ru: "«Семья 2»",
+        en: "«Family 2»",
       },
       description: {
         ru: "Для взрослого и ребенка. Два инструктора. Два буйка.",
@@ -77,8 +76,8 @@ const TrialSection2: React.FC = () => {
     {
       id: "family4",
       title: {
-        ru: "Семейная «Family 4»",
-        en: "Family 4",
+        ru: "«Семья 4»",
+        en: "«Family 4»",
       },
       description: {
         ru: "Для 1-2 взрослых и 1-2 детей. Два инструктора. Два буйка. Идеальный вариант для семейного знакомства с фридайвингом.",
@@ -142,17 +141,6 @@ const TrialSection2: React.FC = () => {
               ))}
             </ul>
           </div>
-        </div>
-
-        <div className={styles.includedBlock}>
-          <h3 className={styles.includedTitle}>
-            {currentLang === "ru" ? "Что включено:" : "What's included:"}
-          </h3>
-          <ul className={styles.includedList}>
-            {commonFeatures[currentLang].map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
         </div>
         <div className={styles.cardsGrid}>
           {trialData.map((card) => (

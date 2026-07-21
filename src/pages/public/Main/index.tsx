@@ -19,6 +19,9 @@ import FooterSection from "@/components/Footer";
 import PricingSection from "@/sections/PriceNew";
 import Header from "@/components/Header";
 import TrialSection2 from "@/sections/TrialTraining2";
+import FeatureSection from "@/sections/Feature";
+import TrainingDaySection from "@/sections/TrainingDay";
+import FamilyFormatSection from "@/sections/FamilyFormat";
 
 function MainPage() {
   const t = useTranslator();
@@ -32,14 +35,17 @@ function MainPage() {
       {/* <First /> */}
       {/* <AboutSection /> */}
       <AboutSection2 />
+      <FeatureSection />
       <WhyDahabSection />
       {/* <TrialSection /> */}
       <TrialSection2 />
       {/* <PriceSection /> */}
+      <TrainingDaySection />
       <PricingSection />
       <TrainingScheduleSection />
       <Team />
       <TrainingProgramSection />
+      <FamilyFormatSection />
       <FeedbacksSection />
       {/* <Contact /> */}
       <FooterSection />

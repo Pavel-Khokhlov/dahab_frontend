@@ -8,7 +8,7 @@ export const team = [
     name_ru: "Роман Гарайханов",
     name_en: "Roman Garaikhanov",
     position_ru: [
-      "Взрослый инструктор W3I и детский инструктор W1,2 международной системы обучения Molchanovs. Опытный страхующий, коуч.",
+      "Инструктор W3I,\nИнструктор детский W1,W2, Опытный страхующий, коуч.",
     ],
     position_en: [
       "As a certified Molchanovs Wave 3 Instructor for adults and Junior Wave 1 & 2 Instructor, as well as an experienced safety freediver and coach, Roman is passionate about creating a safe, supportive, and inspiring learning environment for students of all ages.",
@@ -28,7 +28,7 @@ export const team = [
     name_ru: "Сахарова Дарья",
     name_en: "Sakharova Daria",
     position_ru: [
-      "Инструктор Molchanovs Wave 2. Она также является международным судьей AIDA и сертифицированным специалистом по оказанию первой помощи и спасению.",
+      "Инструктор W2. Судья AIDA, Специалистом по оказанию первой помощи и спасению.",
     ],
     position_en: [
       "Daria is  a certified Molchanovs Wave 2 Instructor. She is also an AIDA International Judge and a certified freediving rescue and first aid provider.",

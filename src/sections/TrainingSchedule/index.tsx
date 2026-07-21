@@ -1,10 +1,15 @@
 // TrainingSchedule.tsx
 import React, { useEffect, useRef, useState } from "react";
 import "./TrainingSchedule.scss";
+import { useTranslator } from "@/context/TranslationContext";
 
 const TrainingScheduleSection: React.FC = () => {
+  const t = useTranslator();
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  const today = new Date();
+  const dayOfWeek = today.getDay();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,10 +42,7 @@ const TrainingScheduleSection: React.FC = () => {
   return (
     <section className="training-schedule" ref={sectionRef}>
       <div className={`schedule-container ${isVisible ? "visible" : ""}`}>
-        <h2 className="schedule-title">
-          {/* <span className="title-icon">📋</span> */}
-          Расписание тренировочной недели
-        </h2>
+        <h2 className="schedule-title">{t.title.weekSchedule}</h2>
 
         <div className="schedule-grid">
           {schedule.map((item, index) => (

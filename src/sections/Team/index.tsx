@@ -1,7 +1,7 @@
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
 import { team } from "@/data/team";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 import "./Team.scss";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -22,7 +22,7 @@ const TeamSection = () => {
         ease: "easeOut",
       },
     }),
-  };
+  } satisfies Variants;
 
   return (
     <SectionWrapper id="team" title={t.title.team} isWhite={true}>
@@ -96,7 +96,7 @@ const TeamSection = () => {
                 )}
               </div>
 
-              <Divider color={`var(--color-teal)`}/>
+              <Divider color={`var(--color-teal)`} />
 
               <div className="team__card-descriptions">
                 {member[`description_${globalUIStore.currentLocale}`].map(

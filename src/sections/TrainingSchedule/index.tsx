@@ -8,8 +8,8 @@ const TrainingScheduleSection: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const today = new Date();
-  const dayOfWeek = today.getDay();
+  // const today = new Date();
+  // const dayOfWeek = today.getDay();
 
   useEffect(() => {
     const observer = new IntersectionObserver(

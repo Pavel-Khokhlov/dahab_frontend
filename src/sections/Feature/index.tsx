@@ -66,7 +66,7 @@ const FeatureCard: React.FC<{ item: FeatureItemWithSVG; index: number }> = ({
   item,
   index,
 }) => {
-  const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.9);
+  const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.7);
 
   return (
     <div

@@ -1,16 +1,12 @@
 // Features
 .features {
   flex: 1;
-  background: $gd-section;
   padding: 6rem 0;
-  border-top: 1px solid rgba($color-teal, 0.15);
-  border-bottom: 1px solid rgba($color-teal, 0.15);
 }
 
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .featuresGrid {
@@ -40,13 +36,7 @@
   transition: $app-transition;
   position: relative;
   overflow: hidden;
-
-  &._active, &:hover {
-    transform: scale(1.05);
-    transition: $app-transition;
-    border: 1px solid rgba($color-accent, 0.4);
-    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.6);
-  }
+  opacity: 0.3;
 
   &::before {
     content: "";
@@ -62,17 +52,18 @@
   }
 
   &._active, &:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
     transition: $app-transition;
     border: 1px solid rgba($color-accent, 0.4);
     box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.6);
+    opacity: 1;
 
     &::before {
       opacity: 1;
     }
 
     .cardIcon {
-      color: $color-accent;
+      color: var(--color-lightblue);
       transform: scale(1.05);
     }
 

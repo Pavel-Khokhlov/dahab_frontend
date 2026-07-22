@@ -14,14 +14,15 @@ import FeedbacksSection from "@/sections/Feedbacks";
 import TrainingProgramSection from "@/sections/TrainingProgram";
 import TrainingScheduleSection from "@/sections/TrainingSchedule";
 import WhyDahabSection from "@/sections/WhyDahab";
-import AboutSection2 from "@/sections/About2";
+// import AboutSection2 from "@/sections/About2";
 import FooterSection from "@/components/Footer";
 import PricingSection from "@/sections/PriceNew";
 import Header from "@/components/Header";
 import TrialSection2 from "@/sections/TrialTraining2";
-import FeatureSection from "@/sections/Feature";
+// import FeatureSection from "@/sections/Feature";
 import TrainingDaySection from "@/sections/TrainingDay";
 import FamilyFormatSection from "@/sections/FamilyFormat";
+import AboutSection3 from "@/sections/About3";
 
 function MainPage() {
   const t = useTranslator();
@@ -34,8 +35,8 @@ function MainPage() {
       <Header />
       {/* <First /> */}
       {/* <AboutSection /> */}
-      <AboutSection2 />
-      <FeatureSection />
+      <AboutSection3 />
+      {/* <FeatureSection /> */}
       <WhyDahabSection />
       {/* <TrialSection /> */}
       <TrialSection2 />

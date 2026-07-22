@@ -1,7 +1,9 @@
 .team {
+  position: relative;
   margin: 0 auto;
   background: var(--primary-white);
   padding: 60px 0;
+  z-index: 2;
 
   &__header {
     max-width: 900px;
@@ -73,7 +75,6 @@
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
 
     @media (max-width: 1024px) {
       grid-template-columns: repeat(2, 1fr);

@@ -135,7 +135,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    border-left: 6px solid #5ac8fa;
+    border-left: 2px solid var(--color-lightblue);
     padding-left: 1.5rem;
 
     @media (max-width: 480px) {
@@ -181,7 +181,7 @@
     padding: 1.8rem 2.2rem;
     margin-bottom: 2.5rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-left: 4px solid #5ac8fa;
+    border-left: 2px solid var(--color-lightblue);
 
     @media (max-width: 480px) {
       padding: 1.2rem 1.2rem;
@@ -221,7 +221,7 @@
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        color: #5ac8fa;
+        color: var(--color-lightblue);
         font-size: 1.2rem;
         font-weight: 300;
       }

@@ -19,8 +19,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { scrollY } = usePageScroll();
-  const opacity = Math.min(scrollY / 300, MAX_OPACITY);
-  const shadow = Math.min(scrollY / 600, MAX_SHADOW);
+  const opacity = Math.min(scrollY / 200, MAX_OPACITY);
+  const shadow = Math.min(scrollY / 400, MAX_SHADOW);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const handleClick = () => {

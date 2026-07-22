@@ -2,7 +2,8 @@
 @use "sass:color";
 
 .trialSection {
-  padding: 4rem 1.5rem;
+  position: relative;
+  padding: 4rem 20px;
   background: $gd-section;
   color: #f0f7ff;
   font-family:
@@ -272,7 +273,7 @@
 
 @media (max-width: 500px) {
   .trialSection {
-    padding: 2.5rem 1rem;
+    padding: 2.5rem 20px;
   }
 
   .heading {

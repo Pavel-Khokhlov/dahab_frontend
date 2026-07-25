@@ -1,5 +1,5 @@
-import { usePageScroll } from "@/store/globalUI";
 import "./Burger.scss";
+import { useStore } from "@/store";
 
 interface BurgerMenuProps {
   isClicked: boolean;
@@ -7,7 +7,9 @@ interface BurgerMenuProps {
 }
 
 const BurgerMenu = ({ isClicked, onClick }: BurgerMenuProps) => {
-  const { scrollY } = usePageScroll();
+  // const { scrollY } = usePageScroll();
+  const { globalUIStore } = useStore();
+  const scrollY = globalUIStore.valueHeroScrolled;
   return (
     <button
       className={`burger ${isClicked ? "active" : ""}`}

@@ -56,8 +56,10 @@ interface GlobalUIState {
   isDesktop: boolean;
   windowWidth: number;
   sliderPreview: number;
+  valueHeroScrolled: number;
 
   setSliderPreview: (value: number) => void;
+  setValueHeroScrolled: (value: number) => void;
 
   // Метод для обновления размеров окна
   setWindowSize: (width: number) => void;
@@ -89,6 +91,12 @@ export const useGlobalUIStore = create<GlobalUIState>()(
 
       // Инициализация слайдера в зависимости от устройства
       sliderPreview: getSliderPreview(getDeviceType(window.innerWidth)),
+
+      valueHeroScrolled: 0,
+
+      setValueHeroScrolled: (value: number) => {
+        set({ valueHeroScrolled: value });
+      },
 
       setLanguage: (locale: LocaleType) => {
         set({ currentLocale: locale });
@@ -135,9 +143,9 @@ export const useGlobalUIStore = create<GlobalUIState>()(
     {
       name: "global-ui-storage",
       storage: createJSONStorage(() => localStorage),
-      partialize: (state) => ({ 
+      partialize: (state) => ({
         currentLocale: state.currentLocale,
-        pageScrollThreshold: state.pageScrollThreshold 
+        pageScrollThreshold: state.pageScrollThreshold,
       }),
     },
   ),
@@ -145,12 +153,12 @@ export const useGlobalUIStore = create<GlobalUIState>()(
 
 // Хук для отслеживания скролла страницы
 export const usePageScroll = () => {
-  const { 
-    isPageScrolled, 
-    setPageScrolled, 
+  const {
+    isPageScrolled,
+    setPageScrolled,
     pageScrollThreshold,
     scrollY,
-    setScrollY 
+    setScrollY,
   } = useGlobalUIStore();
 
   // Эффект для подписки на событие скролла страницы
@@ -158,7 +166,7 @@ export const usePageScroll = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrollY(currentScrollY);
-      
+
       // Обновляем состояние хедера на основе порога
       const scrolled = currentScrollY > pageScrollThreshold;
       if (scrolled !== isPageScrolled) {
@@ -169,10 +177,10 @@ export const usePageScroll = () => {
     // Проверяем текущую позицию при монтировании
     handleScroll();
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [pageScrollThreshold, isPageScrolled, setPageScrolled, setScrollY]);
 

@@ -3,9 +3,16 @@ import { useTranslator } from "@/context/TranslationContext";
 import { team } from "@/data/team";
 import { motion, Variants } from "framer-motion";
 
-import "./Team.scss";
 import SectionWrapper from "@/components/SectionWrapper";
 import Divider from "@/elements/Divider";
+import "./Team.scss";
+
+const teamData = {
+  description_ru:
+    "Откройте для себя фридайвинг в Дахабе вместе с командой Molchanovs. Мы обучаем по международной системе Molchanovs Wave в лучших локациях Красного моря — от спокойного Lighthouse до легендарного Blue Hole. Независимо от вашего опыта, наши сертифицированные инструкторы помогут пройти путь от первых погружений до продвинутых глубин 40+ метров — безопасно, уверенно и с удовольствием.",
+  description_en:
+    "Откройте для себя фридайвинг в Дахабе вместе с командой Molchanovs. Мы обучаем по международной системе Molchanovs Wave в лучших локациях Красного моря — от спокойного Lighthouse до легендарного Blue Hole. Независимо от вашего опыта, наши сертифицированные инструкторы помогут пройти путь от первых погружений до продвинутых глубин 40+ метров — безопасно, уверенно и с удовольствием.",
+};
 
 const TeamSection = () => {
   const t = useTranslator();
@@ -28,14 +35,7 @@ const TeamSection = () => {
     <SectionWrapper id="team" title={t.title.team} isWhite={true}>
       <div className="team__header">
         <p className="team__description text-main black indent">
-          В Дахабе, Египет, команда Molchanovs предлагает уникальную возможность
-          освоить фридайвинг в идеальных условиях Красного моря — от пологой
-          лагуны Lighthouse до легендарного Blue Hole — под руководством
-          сертифицированных инструкторов, которые проводят обучение по
-          прогрессивной системе Wave от начального уровня (12–16 м) до
-          продвинутых глубин (40+ м), сочетая методики задержки дыхания,
-          безопасность, философию чемпионов и открыть для себя глубину с первого
-          вдоха.
+          {teamData[`description_${globalUIStore.currentLocale}`]}
         </p>
         <div className="team__stats">
           <div className="team__stat-item">

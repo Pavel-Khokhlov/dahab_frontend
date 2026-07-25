@@ -1,3 +1,4 @@
+import LogoIcon from "../LogoIcon";
 import styles from "./Footer.module.scss";
 
 const FooterSection = () => {
@@ -6,7 +7,7 @@ const FooterSection = () => {
       <div className={styles.container}>
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
-            <span className={styles.footerLogo}>∞</span>
+            <LogoIcon color={"var(--color-lightblue)"} size={40}/>
             <span className={styles.footerName}>
               Molchanovs · Дахаб · Египет
             </span>

@@ -1,6 +1,7 @@
 // WhyDahabSection.tsx
-import React from 'react';
-import './WhyDahab.scss';
+import React from "react";
+import dahabImg from "@/assets/images/background/bluehole.webp";
+import "./WhyDahab.scss";
 
 const WhyDahabSection: React.FC = () => {
   return (
@@ -12,14 +13,23 @@ const WhyDahabSection: React.FC = () => {
       </div>
 
       <div className="why-dahab__container">
-        <div className="why-dahab__badge">
+        {/* <div className="why-dahab__badge">
           <span className="why-dahab__badge-icon">🌊</span>
           Дахаб
-        </div>
+        </div> */}
 
         <h2 className="why-dahab__title">
           Почему именно <span className="why-dahab__highlight">Дахаб</span>?
         </h2>
+
+        {/* Блок с фотографией на всю ширину */}
+        <div className="why-dahab__full-image-wrapper">
+          <img
+            src={dahabImg}
+            alt="Дахаб - мировая столица фридайвинга"
+            className="why-dahab__full-image"
+          />
+        </div>
 
         <p className="why-dahab__subtitle">
           Дахаб по праву считается <strong>мировой столицей фридайвинга</strong>
@@ -35,7 +45,9 @@ const WhyDahabSection: React.FC = () => {
           <div className="why-dahab__card">
             <div className="why-dahab__card-icon">🌡️</div>
             <h3 className="why-dahab__card-title">Тёплая вода</h3>
-            <p className="why-dahab__card-text">Комфортная температура круглый год</p>
+            <p className="why-dahab__card-text">
+              Комфортная температура круглый год
+            </p>
           </div>
 
           <div className="why-dahab__card">
@@ -47,19 +59,25 @@ const WhyDahabSection: React.FC = () => {
           <div className="why-dahab__card">
             <div className="why-dahab__card-icon">🌊</div>
             <h3 className="why-dahab__card-title">Отсутствие сильных волн</h3>
-            <p className="why-dahab__card-text">Защищённая бухта для спокойных тренировок</p>
+            <p className="why-dahab__card-text">
+              Защищённая бухта для спокойных тренировок
+            </p>
           </div>
 
           <div className="why-dahab__card">
             <div className="why-dahab__card-icon">📍</div>
             <h3 className="why-dahab__card-title">Доступность локаций</h3>
-            <p className="why-dahab__card-text">Лучшие места для погружения рядом</p>
+            <p className="why-dahab__card-text">
+              Лучшие места для погружения рядом
+            </p>
           </div>
 
           <div className="why-dahab__card why-dahab__card--featured">
             <div className="why-dahab__card-icon">✨</div>
             <h3 className="why-dahab__card-title">Уникальная атмосфера</h3>
-            <p className="why-dahab__card-text">Спокойствие и свобода в каждом вдохе</p>
+            <p className="why-dahab__card-text">
+              Спокойствие и свобода в каждом вдохе
+            </p>
           </div>
         </div>
 

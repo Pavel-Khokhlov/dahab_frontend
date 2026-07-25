@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./TrainingSchedule.scss";
 import { useTranslator } from "@/context/TranslationContext";
+import LogoIcon from "@/components/LogoIcon";
 
 const TrainingScheduleSection: React.FC = () => {
   const t = useTranslator();
@@ -66,6 +67,7 @@ const TrainingScheduleSection: React.FC = () => {
           </p>
         </div>
 
+        <LogoIcon color={"var(--color-lightblue)"} size={40}/>
         <div className={`brand-section ${isVisible ? "visible" : ""}`}>
           <span className="brand-name">molchanovs</span>
         </div>

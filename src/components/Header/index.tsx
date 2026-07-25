@@ -1,25 +1,26 @@
 import { useEffect, useState } from "react";
-import { usePageScroll } from "@/store/globalUI";
 import BurgerMenu from "../BurgerMenu";
 
 import "./Header.scss";
 import { useTranslator } from "@/context/TranslationContext";
-import whiteLogoUrl from "@/assets/images/logo/MolchanovsLogoWhite.svg";
-import blackLogoUrl from "@/assets/images/logo/MolchanovsLogoBlack.svg";
 import backBlack from "@/assets/images/icons/back-black.svg";
 import backWhite from "@/assets/images/icons/back-white.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import LanguageSwitcher2 from "../Lang";
+import { useStore } from "@/store";
+import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
 
 const MAX_OPACITY = 0.95;
 const MAX_SHADOW = 0.15;
 
 const Header = () => {
   const t = useTranslator();
+  const { globalUIStore } = useStore();
   const navigate = useNavigate();
   const location = useLocation();
-  const { scrollY } = usePageScroll();
-  const opacity = Math.min(scrollY / 200, MAX_OPACITY);
+  // const { scrollY } = usePageScroll();
+  const scrollY = globalUIStore.valueHeroScrolled;
+  const opacity = Math.min(scrollY / 280, MAX_OPACITY);
   const shadow = Math.min(scrollY / 400, MAX_SHADOW);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -107,10 +108,18 @@ const Header = () => {
           }}
           aria-label="На главную"
         >
-          <img
-            src={isMenuOpen || scrollY > 280 ? blackLogoUrl : whiteLogoUrl}
-            alt="Logo"
-            width={120}
+          <LogoMolchanovsIcon
+            colorIcon={
+              isMenuOpen || scrollY > 280
+                ? "var(--color-lightblue)"
+                : "var(--primary-white)"
+            }
+            colorText={
+              isMenuOpen || scrollY > 280
+                ? "var(--primary-black)"
+                : "var(--primary-white)"
+            }
+            size={120}
           />
         </button>
         <h5 className="header__menu">menu</h5>

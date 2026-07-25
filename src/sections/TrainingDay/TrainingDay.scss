@@ -1,6 +1,6 @@
 .training-day {
   position: relative;
-  padding: 6rem 1.5rem;
+  padding: 3rem 1.5rem 6rem;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -92,9 +92,9 @@
   &__title {
     font-size: 3.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--primary-white);
     line-height: 1.1;
-    margin-bottom: 1rem;
+    margin: 0 auto 1rem;
     letter-spacing: -0.02em;
 
     @media (max-width: 768px) {

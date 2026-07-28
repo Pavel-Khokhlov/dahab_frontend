@@ -31,14 +31,14 @@ const TrainingScheduleSection: React.FC = () => {
   }, []);
 
   const schedule = [
-    { day: "Понедельник", type: "тренировка", icon: "🏊" },
-    { day: "Вторник", type: "тренировка", icon: "🏊" },
-    { day: "Среда", type: "лекция и восстановление", icon: "📚" },
-    { day: "Четверг", type: "день отдыха", icon: "🧘" },
-    { day: "Пятница", type: "тренировка", icon: "🏊" },
-    { day: "Суббота", type: "тренировка", icon: "🏊" },
-    { day: "Воскресенье", type: "свободный день", icon: "🌅" },
-  ];
+    { day: "monday", type: "training", icon: "🏊" },
+    { day: "tuesday", type: "training", icon: "🏊" },
+    { day: "wednesday", type: "lecture", icon: "📚" },
+    { day: "thursday", type: "relax", icon: "🧘" },
+    { day: "friday", type: "training", icon: "🏊" },
+    { day: "saturday", type: "training", icon: "🏊" },
+    { day: "sunday", type: "relax", icon: "🌅" },
+  ] as const;
 
   return (
     <section className="training-schedule" ref={sectionRef}>
@@ -50,24 +50,20 @@ const TrainingScheduleSection: React.FC = () => {
             <div
               key={item.day}
               className={`schedule-item ${isVisible ? "visible" : ""}`}
-              style={{ transitionDelay: `${index * 0.08}s` }}
+              style={{ transitionDelay: `${index * 0.1}s` }}
             >
               <div className="day-icon">{item.icon}</div>
-              <div className="day-name">{item.day}</div>
-              <div className="day-type">{item.type}</div>
+              <div className="day-name">{t.week[item.day]}</div>
+              <div className="day-type">{t.text[item.type]}</div>
             </div>
           ))}
         </div>
 
         <div className={`schedule-note ${isVisible ? "visible" : ""}`}>
-          <p className="note-text">
-            🌊 Между тренировками предусмотрено достаточно времени для отдыха,
-            экскурсий, семейных прогулок, снорклинга или знакомства с атмосферой
-            Дахаба
-          </p>
+          <p className="note-text">{t.text.weekFooter}</p>
         </div>
 
-        <LogoIcon color={"var(--color-lightblue)"} size={40}/>
+        <LogoIcon color={"var(--color-lightblue)"} size={40} />
         <div className={`brand-section ${isVisible ? "visible" : ""}`}>
           <span className="brand-name">molchanovs</span>
         </div>

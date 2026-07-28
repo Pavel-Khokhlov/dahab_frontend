@@ -50,7 +50,7 @@ const FeedbacksSection: React.FC = () => {
   const { globalUIStore } = useStore();
 
   return (
-    <section id="feedback" className="feedback-section">
+    <section id="feedbacks" className="feedback-section">
       {/* Океанический оверлей */}
       <div className="feedback-section__ocean-overlay" />
 

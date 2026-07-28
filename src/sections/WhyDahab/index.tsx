@@ -2,8 +2,96 @@
 import React from "react";
 import dahabImg from "@/assets/images/background/bluehole.webp";
 import "./WhyDahab.scss";
+import { useTranslator } from "@/context/TranslationContext";
+import { useStore } from "@/store";
+import { useVisibilityObserver } from "@/hooks/useVisibilityObserver";
+
+export interface WhyDahabItem {
+  id: string;
+  icon: string;
+  title: Record<"ru" | "en", string>;
+  text: Record<"ru" | "en", string>;
+  featured?: boolean;
+}
+
+// data.ts
+const whyDahabData: WhyDahabItem[] = [
+  {
+    id: "warm-water",
+    icon: "🌡️",
+    title: {
+      ru: "Тёплая вода",
+      en: "Warm water",
+    },
+    text: {
+      ru: "Комфортная температура круглый год",
+      en: "Comfortable temperature all year round",
+    },
+  },
+  {
+    id: "visibility",
+    icon: "👁️",
+    title: {
+      ru: "Отличная видимость",
+      en: "Great visibility",
+    },
+    text: {
+      ru: "Прозрачность до 30+ метров",
+      en: "Visibility up to 30+ meters",
+    },
+  },
+  {
+    id: "no-waves",
+    icon: "🌊",
+    title: { ru: "Отсутствие сильных волн", en: "No strong waves" },
+    text: {
+      ru: "Защищённая бухта для спокойных тренировок",
+      en: "Sheltered bay for peaceful training",
+    },
+  },
+  {
+    id: "accessibility",
+    icon: "📍",
+    title: { ru: "Доступность локаций", en: "Accessible locations" },
+    text: {
+      ru: "Лучшие места для погружения рядом",
+      en: "Best dive sites nearby",
+    },
+  },
+  {
+    id: "atmosphere",
+    icon: "✨",
+    title: { ru: "Уникальная атмосфера", en: "Unique atmosphere" },
+    text: {
+      ru: "Спокойствие и свобода в каждом вдохе",
+      en: "Peace and freedom in every breath",
+    },
+    featured: true,
+  },
+];
 
 const WhyDahabSection: React.FC = () => {
+  const t = useTranslator();
+
+  const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
+    item,
+    index,
+  }) => {
+    const { globalUIStore } = useStore();
+    const currentLang = globalUIStore.currentLocale;
+    const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.7);
+    return (
+      <div
+        ref={ref}
+        className={`why-dahab__card ${item.featured ? "why-dahab__card--featured" : ""} ${isVisible ? "_active" : ""}`}
+        style={{ transitionDelay: `${index * 0.1}s` }}
+      >
+        <div className="why-dahab__card-icon">{item.icon}</div>
+        <h3 className="why-dahab__card-title">{item.title[currentLang]}</h3>
+        <p className="why-dahab__card-text">{item.text[currentLang]}</p>
+      </div>
+    );
+  };
   return (
     <section className="why-dahab">
       <div className="why-dahab__background">
@@ -13,13 +101,9 @@ const WhyDahabSection: React.FC = () => {
       </div>
 
       <div className="why-dahab__container">
-        {/* <div className="why-dahab__badge">
-          <span className="why-dahab__badge-icon">🌊</span>
-          Дахаб
-        </div> */}
-
         <h2 className="why-dahab__title">
-          Почему именно <span className="why-dahab__highlight">Дахаб</span>?
+          {t.title.why}{" "}
+          <span className="why-dahab__highlight">{t.title.dahab}</span>?
         </h2>
 
         {/* Блок с фотографией на всю ширину */}
@@ -32,58 +116,22 @@ const WhyDahabSection: React.FC = () => {
         </div>
 
         <p className="why-dahab__subtitle">
-          Дахаб по праву считается <strong>мировой столицей фридайвинга</strong>
+          {t.text.dahabTextOne} <strong>{t.text.dahabTextTwo}</strong>
         </p>
 
         <div className="why-dahab__divider"></div>
 
-        <p className="why-dahab__description">
-          Здесь практически идеальные условия:
-        </p>
+        <p className="why-dahab__description">{t.text.dahabConditions}</p>
 
         <div className="why-dahab__grid">
-          <div className="why-dahab__card">
-            <div className="why-dahab__card-icon">🌡️</div>
-            <h3 className="why-dahab__card-title">Тёплая вода</h3>
-            <p className="why-dahab__card-text">
-              Комфортная температура круглый год
-            </p>
-          </div>
-
-          <div className="why-dahab__card">
-            <div className="why-dahab__card-icon">👁️</div>
-            <h3 className="why-dahab__card-title">Отличная видимость</h3>
-            <p className="why-dahab__card-text">Прозрачность до 30+ метров</p>
-          </div>
-
-          <div className="why-dahab__card">
-            <div className="why-dahab__card-icon">🌊</div>
-            <h3 className="why-dahab__card-title">Отсутствие сильных волн</h3>
-            <p className="why-dahab__card-text">
-              Защищённая бухта для спокойных тренировок
-            </p>
-          </div>
-
-          <div className="why-dahab__card">
-            <div className="why-dahab__card-icon">📍</div>
-            <h3 className="why-dahab__card-title">Доступность локаций</h3>
-            <p className="why-dahab__card-text">
-              Лучшие места для погружения рядом
-            </p>
-          </div>
-
-          <div className="why-dahab__card why-dahab__card--featured">
-            <div className="why-dahab__card-icon">✨</div>
-            <h3 className="why-dahab__card-title">Уникальная атмосфера</h3>
-            <p className="why-dahab__card-text">
-              Спокойствие и свобода в каждом вдохе
-            </p>
-          </div>
+          {whyDahabData.map((item, index) => (
+            <WhyDahabCard key={item.id} item={item} index={index} />
+          ))}
         </div>
 
         <div className="why-dahab__footnote">
           <span className="why-dahab__footnote-icon">⭐</span>
-          <em>Именно сюда ежегодно приезжают лучшие фридайверы мира</em>
+          <em>{t.text.dahabFooter}</em>
         </div>
       </div>
     </section>

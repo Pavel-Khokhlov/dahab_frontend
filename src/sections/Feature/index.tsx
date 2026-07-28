@@ -1,20 +1,27 @@
 import React, { ReactNode } from "react";
 import styles from "./Feature.module.scss";
 import { useVisibilityObserver } from "@/hooks/useVisibilityObserver";
+import { useStore } from "@/store";
 // import { useTranslator } from "@/context/TranslationContext";
 
 export interface FeatureItemWithSVG {
   id: number;
-  title: string;
-  text: string;
+  title: Record<"ru" | "en", string>;
+  text: Record<"ru" | "en", string>;
   icon: ReactNode;
 }
 
 const featuresData: FeatureItemWithSVG[] = [
   {
     id: 1,
-    title: "Особенное место",
-    text: "Прозрачное Красное море, теплое солнце, размеренный ритм жизни и невероятная атмосфера Дахаба — пространство для настоящего отдыха. И взрослые, и дети смогут прочувствовать истинную магию этого места.",
+    title: {
+      ru: "Особенное место",
+      en: "A Special Place",
+    },
+    text: {
+      ru: "Прозрачное Красное море, теплое солнце, размеренный ритм жизни и невероятная атмосфера Дахаба — пространство для настоящего отдыха. И взрослые, и дети смогут прочувствовать истинную магию этого места.",
+      en: "Crystal-clear waters of the Red Sea, warm sunshine, the relaxed pace of life, and the unique atmosphere of Dahab create the perfect setting for a truly restorative getaway. Both adults and children will experience the genuine magic of this extraordinary place.",
+    },
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -30,8 +37,14 @@ const featuresData: FeatureItemWithSVG[] = [
   },
   {
     id: 2,
-    title: "Погружение в себя",
-    text: "Наш выезд — это не просто обучение фридайвингу. Это возможность научиться управлять своим дыханием, познакомиться с подводным миром Красного моря и получить новый опыт, который останется с вами на всю жизнь.",
+    title: {
+      ru: "Погружение в себя",
+      en: "Dive Within",
+    },
+    text: {
+      ru: "Наш выезд — это не просто обучение фридайвингу. Это возможность научиться управлять своим дыханием, познакомиться с подводным миром Красного моря и получить новый опыт, который останется с вами на всю жизнь.",
+      en: `Our retreat is about much more than learning to freedive. It's an opportunity to master your breath, discover the underwater world of the Red Sea, and gain an experience that will stay with you for a lifetime.`,
+    },
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -46,8 +59,14 @@ const featuresData: FeatureItemWithSVG[] = [
   },
   {
     id: 3,
-    title: "Поддержка профессионалов",
-    text: "Программа подойдет как тем, кто делает первые шаги во фридайвинге, так и тем, кто уже имеет опыт и хочет совершенствовать свои навыки под руководством профессиональных инструкторов.",
+    title: {
+      ru: "Поддержка профессионалов",
+      en: "Professional Guidance",
+    },
+    text: {
+      ru: "Программа подойдет как тем, кто делает первые шаги во фридайвинге, так и тем, кто уже имеет опыт и хочет совершенствовать свои навыки под руководством профессиональных инструкторов.",
+      en: "Whether you're taking your very first breath into freediving or already have experience and want to refine your skills, our program is designed for you. Train under the guidance of experienced professional instructors and progress safely at your own pace.",
+    },
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -66,6 +85,8 @@ const FeatureCard: React.FC<{ item: FeatureItemWithSVG; index: number }> = ({
   item,
   index,
 }) => {
+  const { globalUIStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
   const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.7);
 
   return (
@@ -75,8 +96,8 @@ const FeatureCard: React.FC<{ item: FeatureItemWithSVG; index: number }> = ({
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
       <div className={styles.cardIcon}>{item.icon}</div>
-      <h3 className={styles.cardTitle}>{item.title}</h3>
-      <p className={styles.cardText}>{item.text}</p>
+      <h3 className={styles.cardTitle}>{item.title[currentLang]}</h3>
+      <p className={styles.cardText}>{item.text[currentLang]}</p>
     </div>
   );
 };

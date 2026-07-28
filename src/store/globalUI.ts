@@ -44,6 +44,24 @@ const getSliderPreview = (deviceType: DeviceType): number => {
   }
 };
 
+// Функция для проверки наличия скролла на странице
+const hasPageScroll = (): boolean => {
+  if (typeof window === "undefined") return false;
+
+  // Проверяем, есть ли скролл у документа
+  const scrollHeight = document.documentElement.scrollHeight;
+  const clientHeight = document.documentElement.clientHeight;
+
+  // Также проверяем body для надежности
+  const bodyScrollHeight = document.body.scrollHeight;
+  const bodyClientHeight = document.body.clientHeight;
+
+  return (
+    Math.max(scrollHeight, bodyScrollHeight) >
+    Math.max(clientHeight, bodyClientHeight)
+  );
+};
+
 interface GlobalUIState {
   currentLocale: LocaleType;
   setLanguage: (locale: LocaleType) => void;
@@ -71,6 +89,14 @@ interface GlobalUIState {
   // Текущая позиция скролла
   scrollY: number;
   setScrollY: (y: number) => void;
+
+  // Новые поля для отслеживания наличия скролла
+  hasScroll: boolean;
+  setHasScroll: (has: boolean) => void;
+
+  // Функция инициализации приложения
+  initializeApp: () => void;
+  checkScrollOnLoad: () => void;
 }
 
 export const useGlobalUIStore = create<GlobalUIState>()(
@@ -93,6 +119,8 @@ export const useGlobalUIStore = create<GlobalUIState>()(
       sliderPreview: getSliderPreview(getDeviceType(window.innerWidth)),
 
       valueHeroScrolled: 0,
+
+      hasScroll: false,
 
       setValueHeroScrolled: (value: number) => {
         set({ valueHeroScrolled: value });
@@ -136,8 +164,85 @@ export const useGlobalUIStore = create<GlobalUIState>()(
         set({ isPageScrolled: scrolled });
       },
 
+      setHasScroll: (has: boolean) => {
+        set({ hasScroll: has });
+      },
+
       setScrollY: (y: number) => {
         set({ scrollY: y });
+      },
+      // Функция проверки скролла при загрузке
+      checkScrollOnLoad: () => {
+        if (typeof window === "undefined") return;
+
+        // Проверяем наличие скролла после полной загрузки
+        const checkScroll = () => {
+          const hasScroll = hasPageScroll();
+          const { setHasScroll, setPageScrolled, setScrollY } = get();
+
+          setHasScroll(hasScroll);
+
+          // Если есть скролл, проверяем порог прокрутки
+          if (hasScroll) {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const threshold = get().pageScrollThreshold;
+            setPageScrolled(scrollY > threshold);
+          }
+
+          console.log("[App Init] Scroll check:", {
+            hasScroll,
+            scrollY: window.scrollY,
+            threshold: get().pageScrollThreshold,
+            isPageScrolled: get().isPageScrolled,
+          });
+          setScrollY(window.scrollY);
+        };
+
+        // Проверяем сразу, если документ уже загружен
+        if (document.readyState === "complete") {
+          // Даем время на полный рендер
+          setTimeout(checkScroll, 100);
+        } else {
+          // Ждем полной загрузки
+          window.addEventListener("load", () => {
+            setTimeout(checkScroll, 100);
+          });
+        }
+
+        // Дополнительная проверка при изменении размера
+        let resizeTimeout: ReturnType<typeof setTimeout>;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            const hasScroll = hasPageScroll();
+            get().setHasScroll(hasScroll);
+          }, 200);
+        });
+
+        // Следим за изменениями в DOM (динамический контент)
+        if (window.MutationObserver) {
+          const observer = new MutationObserver(() => {
+            const hasScroll = hasPageScroll();
+            const currentHasScroll = get().hasScroll;
+
+            if (hasScroll !== currentHasScroll) {
+              get().setHasScroll(hasScroll);
+            }
+          });
+
+          observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ["style", "class", "height", "data-*"],
+          });
+
+          // Сохраняем observer для очистки
+          (window as any).__scrollObserver = observer;
+        }
+      },
+      initializeApp: () => {
+        get().checkScrollOnLoad();
       },
     }),
     {

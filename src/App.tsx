@@ -5,11 +5,16 @@ import MainPage from "./pages/public/Main";
 import { translations } from "./locales/translations";
 import { useStore } from "./store";
 import SchedulePage from "./pages/public/Schedule";
+import { useEffect } from "react";
 
 function App() {
   const { globalUIStore } = useStore();
   const currentTranslations =
     translations[globalUIStore.currentLocale as keyof typeof translations];
+
+  useEffect(()=> {
+    globalUIStore.initializeApp();
+  }, [])
   return (
     <HelmetProvider>
       <TranslationContext.Provider value={currentTranslations}>

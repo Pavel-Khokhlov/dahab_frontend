@@ -178,6 +178,13 @@
     border-radius: 1rem;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: default;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+
+    &._active {
+      opacity: 1;
+      transition: all 0.3s ease;
+    }
 
     &:hover {
       transform: translateY(-4px);

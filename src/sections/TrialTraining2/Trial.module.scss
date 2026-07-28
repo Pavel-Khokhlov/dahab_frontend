@@ -55,6 +55,7 @@
   display: block;
   width: 100%; /* Растянуть по ширине */
   height: auto;
+  pointer-events: none;
 }
 
 .includedBlock {

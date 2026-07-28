@@ -17,6 +17,8 @@ export const translations = {
       contacts: 'Contacts',
       weekSchedule: 'Training week schedule',
       verify: 'Enter received code',
+      why: 'Why',
+      dahab: 'Dahab',
     },
     subtitle: {
       verify: 'The code has been sent to your e-mail',
@@ -27,6 +29,10 @@ export const translations = {
     },
     text: {
       main: 'Diving',
+      dahabTextOne: "Dahab is widely recognized",
+      dahabTextTwo: "as the world's freediving capital.",
+      dahabConditions: "It offers some of the best freediving conditions anywhere in the world:",
+      dahabFooter: "Every year, the world's top freedivers come to Dahab to train and prepare for international competitions.",
     },
     placeholder: {
       email: 'example@mail.ru',
@@ -74,6 +80,8 @@ export const translations = {
       trial: 'Пробная тренировка',
       weekSchedule: 'Расписание тренировочной недели',
       verify: 'Введите полученный код',
+      why: 'Почему',
+      dahab: 'Дахаб',
     },
     subtitle: {
       verify: 'Код подтверждения отправлен на вашу почту',
@@ -84,6 +92,10 @@ export const translations = {
     },
     text: {
       main: 'Погружение',
+      dahabTextOne: "Дахаб по праву считается",
+      dahabTextTwo: "мировой столицей фридайвинга.",
+      dahabConditions: "Здесь практически идеальные условия:",
+      dahabFooter: "Именно сюда ежегодно приезжают лучшие фридайверы мира чтобы тренироваться и готовиться к соревнованиям.",
     },
     placeholder: {
       email: 'example@mail.ru',

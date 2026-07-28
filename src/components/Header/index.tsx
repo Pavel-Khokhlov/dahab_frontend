@@ -19,7 +19,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   // const { scrollY } = usePageScroll();
-  const scrollY = globalUIStore.valueHeroScrolled;
+  const scrollY = globalUIStore.valueHeroScrolled || globalUIStore.scrollY;
   const opacity = Math.min(scrollY / 280, MAX_OPACITY);
   const shadow = Math.min(scrollY / 400, MAX_SHADOW);
 

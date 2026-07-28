@@ -9,7 +9,8 @@ interface BurgerMenuProps {
 const BurgerMenu = ({ isClicked, onClick }: BurgerMenuProps) => {
   // const { scrollY } = usePageScroll();
   const { globalUIStore } = useStore();
-  const scrollY = globalUIStore.valueHeroScrolled;
+  const scrollY =
+    globalUIStore.valueHeroScrolled || globalUIStore.scrollY;
   return (
     <button
       className={`burger ${isClicked ? "active" : ""}`}

@@ -7,7 +7,7 @@ import SectionWrapper from "@/components/SectionWrapper";
 const ContactSection = () => {
   const t = useTranslator();
   return (
-    <SectionWrapper id="contact" title={t.title.contacts}>
+    <SectionWrapper id="contacts" title={t.title.contacts}>
       <div className="hero">
         <img src={heroImg} className="base" width="170" height="179" alt="" />
         <img src={reactLogo} className="framework" alt="React logo" />

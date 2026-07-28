@@ -132,12 +132,12 @@ const TrialSection2: React.FC = () => {
             className={styles.includedImage}
           />
           <div className={styles.includedBlock}>
-            <h3 className={styles.includedTitle}>
-              {currentLang === "ru" ? "Что включено:" : "What's included:"}
-            </h3>
+            <h3 className={styles.includedTitle}>{t.text.include}</h3>
             <ul className={styles.includedList}>
               {commonFeatures[currentLang].map((feature, index) => (
-                <li key={index}>{feature}</li>
+                <li key={index}>
+                  <p className="text-second">{feature}</p>
+                </li>
               ))}
             </ul>
           </div>
@@ -149,9 +149,7 @@ const TrialSection2: React.FC = () => {
               className={`${styles.card} ${card.isPopular ? styles.popular : ""}`}
             >
               {card.isPopular && (
-                <div className={styles.popularBadge}>
-                  {currentLang === "ru" ? "Популярно" : "Popular"}
-                </div>
+                <div className={styles.popularBadge}>{t.text.popular}</div>
               )}
               <div className={styles.cardContent}>
                 <h3 className={styles.cardTitle}>{card.title[currentLang]}</h3>
@@ -166,11 +164,13 @@ const TrialSection2: React.FC = () => {
                 </div>
                 <ul className={styles.featuresList}>
                   {card.features[currentLang].map((feature, index) => (
-                    <li key={index}>{feature}</li>
+                    <li key={index}>
+                      <p className="text-second">{feature}</p>
+                    </li>
                   ))}
                 </ul>
                 <button className={styles.bookButton} type="button">
-                  {currentLang === "ru" ? "Забронировать" : "Book now"}
+                  {t.button.bookin}
                 </button>
               </div>
             </article>

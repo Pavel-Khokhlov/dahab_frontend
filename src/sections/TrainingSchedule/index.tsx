@@ -43,7 +43,7 @@ const TrainingScheduleSection: React.FC = () => {
   return (
     <section className="training-schedule" ref={sectionRef}>
       <div className={`schedule-container ${isVisible ? "visible" : ""}`}>
-        <h2 className="schedule-title">{t.title.weekSchedule}</h2>
+        <h2 className="section__title">{t.title.weekSchedule}</h2>
 
         <div className="schedule-grid">
           {schedule.map((item, index) => (

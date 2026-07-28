@@ -40,6 +40,8 @@ export const translations = {
       relax: "relax day",
       lecture: "lecture and restoration",
       weekFooter: "There is plenty of time between workouts for relaxation, excursions, family walks, snorkeling or exploring the atmosphere of Dahab",
+      include: "What's included:",
+      popular: "Popular",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -67,6 +69,7 @@ export const translations = {
     button: {
       enter: "Enter",
       apply: "Apply",
+      bookin: "Book Now",
     },
     week: {
       monday: "Monday",
@@ -103,7 +106,7 @@ export const translations = {
       verify: "Код подтверждения отправлен на вашу почту",
       main: "Дахаб · Красное море · Фридайвинг",
       trial:
-        "Try freediving without buying a full course — special 2.5-hour introductory programs",
+        "Попробуйте фридайвинг, не покупая полный курс — специальные 2,5-часовые пробные тренировки.",
       team: "Описание нашей команды",
       feedbacks: "Благодарность от нас нашим клиентам",
     },
@@ -118,6 +121,8 @@ export const translations = {
       relax: "день отдыха",
       lecture: "лекции и восстановление",
       weekFooter: " Между тренировками предусмотрено достаточно времени для отдыха, экскурсий, семейных прогулок, снорклинга или знакомства атмосферой Дахаба",
+      include: "Что включено:",
+      popular: "Популярно",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -145,6 +150,7 @@ export const translations = {
     button: {
       enter: "Войти",
       apply: "Подтвердить",
+      bookin: "Забронировать",
     },
     week: {
       monday: "Понедельник",

@@ -105,7 +105,7 @@ $font-weight-text-description: 400;
   line-height: $line-height-section-title;
   letter-spacing: -0.015em;
   color: var(--title);
-  margin: 0 auto 30px;
+  margin: 0 auto min(80px, 12vw);
 
   @media (max-width: 768px) {
     font-size: $font-size-section-title * 0.8; // 25.6px
@@ -248,5 +248,11 @@ $font-weight-text-description: 400;
     &.black {
       color: var(--primary-black);
     }
+  }
+  &-second {
+    @include text-second;
+  }
+  &-description {
+    @include text-description;
   }
 }

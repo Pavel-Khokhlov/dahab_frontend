@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BurgerMenu from "../BurgerMenu";
 
-import "./Header.scss";
+// import "./Header.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import backBlack from "@/assets/images/icons/back-black.svg";
 import backWhite from "@/assets/images/icons/back-white.svg";

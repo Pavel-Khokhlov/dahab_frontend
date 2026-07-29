@@ -44,35 +44,17 @@ const Header2 = () => {
     }, 300);
   };
 
+  const handleClickOverlay = () => {
+    setIsMenuOpen(false);
+  };
+
   useEffect(() => {
-    if (isMenuOpen) {
-      const scrollY = window.scrollY;
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
+     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
     } else {
-      const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-      }
+      document.body.style.overflow = "auto";
     }
-
-    return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
-  }, [isMenuOpen]);
+  }, [isMenuOpen])
 
   return (
     <>
@@ -106,16 +88,21 @@ const Header2 = () => {
       </div>
 
       {/* Molchanovs — строгое подводное меню */}
-      <nav className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
+      <nav
+        className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}
+        onClick={handleClickOverlay}
+      >
         {/* Декоративный элемент — сонар/волна */}
-        <div className="dropdown-menu__sonar" />
+        {/* <div className="dropdown-menu__sonar" /> */}
 
-        <div className="dropdown-menu__inner">
+        <div
+          className={`dropdown-menu__inner ${isMenuOpen ? "open" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
           <ul className="dropdown-menu__list">
             <li className="dropdown-menu__item">
               <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
-                <span className="item-index">— 01</span>
-                <span className="item-label">{t.title.main}</span>
+                {t.title.main}
               </a>
             </li>
             <li className="dropdown-menu__item">
@@ -123,13 +110,11 @@ const Header2 = () => {
                 href="#about"
                 onClick={(e) => handleMenuItemClick(e, "#about")}
               >
-                <span className="item-index">— 02</span>
                 <span className="item-label">{t.title.about}</span>
               </a>
             </li>
             <li className="dropdown-menu__item">
               <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
-                <span className="item-index">— 03</span>
                 <span className="item-label">{t.title.team}</span>
               </a>
             </li>
@@ -138,7 +123,6 @@ const Header2 = () => {
                 href="#feedbacks"
                 onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
               >
-                <span className="item-index">— 04</span>
                 <span className="item-label">{t.title.feedbacks}</span>
               </a>
             </li>
@@ -147,7 +131,6 @@ const Header2 = () => {
                 href="#contact"
                 onClick={(e) => handleMenuItemClick(e, "#contact")}
               >
-                <span className="item-index">— 05</span>
                 <span className="item-label">{t.title.contacts}</span>
               </a>
             </li>
@@ -155,10 +138,6 @@ const Header2 = () => {
 
           <div className="dropdown-menu__bottom">
             <LanguageSwitcher2 />
-            <div className="depth-badge">
-              <span className="depth-icon">⟐</span>
-              <span className="depth-text">-42m</span>
-            </div>
           </div>
         </div>
       </nav>

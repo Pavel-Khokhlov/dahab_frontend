@@ -11,7 +11,7 @@ $font-primary:
   font-family: $font-primary;
   background: $gd-section;
   color: $color-light;
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -19,7 +19,7 @@ $font-primary:
 // Hero
 .hero {
   position: relative;
-  height: 100vh;
+  height: 100dvh;
   min-height: 720px;
   display: flex;
   align-items: center;

@@ -27,7 +27,7 @@ const AboutSection3: React.FC = () => {
     };
   }, []);
   return (
-    <section ref={blockRef} className={styles.hero} id="hero">
+    <section ref={blockRef} className={styles.hero} id="main">
       {/* <div className={styles.heroBackground} /> */}
       {/* <div className={styles.heroOverlay} /> */}
       <div className={styles.heroContent}>

@@ -110,7 +110,7 @@ $text-dim: #7f9bb0;
   visibility: hidden;
   transition: all 0.55s cubic-bezier(0.23, 1, 0.32, 1);
   z-index: 99;
-  height: 100dvh;
+  height: 100lvh;
   overflow-y: auto;
   @include flex-center-column;
   justify-content: start;

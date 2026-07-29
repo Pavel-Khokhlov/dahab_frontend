@@ -7,7 +7,6 @@
   --subtitle: #ffffff;
   --text: #6b6375;
   --text-h: #08060d;
-  --bg: #fff;
   --text-main: #fff;
   --text-second: #fff;
   --text-plashka: rgba(10, 10, 10, 1);
@@ -20,8 +19,8 @@
   --shadow:
     rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
   --color-teal: #2c5f7a;
@@ -30,7 +29,6 @@
   letter-spacing: 0.1px;
   color-scheme: light dark;
   color: var(--primary-black);
-  background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -48,7 +46,6 @@
     --text-second: #fff;
     --text-plashka: rgba(10, 10, 10, 1);
     --border: #2e303a;
-    --code-bg: #1f2028;
     --accent: #c084fc;
     --accent-bg: rgba(192, 132, 252, 0.15);
     --accent-border: rgba(192, 132, 252, 0.5);
@@ -75,8 +72,35 @@
 }
 
 body {
+  position: relative;
   margin: 0;
+  padding: 0;
+  background: transparent;
+  z-index: 0;
+  &::before {
+    content: "";
+    position: fixed; // фиксируем фон
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("@/assets/images/background/mainV.webp");
+    background-size: cover;
+    background-position: center;
+    z-index: -2;
+  }
+  &::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); // полупрозрачный чёрный
+    z-index: -1; // должен быть выше фона (::before), но ниже контента
+  }
 }
+
 p {
   margin: 0;
 }
@@ -87,11 +111,4 @@ code,
   display: inline-flex;
   border-radius: 4px;
   color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }

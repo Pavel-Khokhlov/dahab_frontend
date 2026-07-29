@@ -19,18 +19,21 @@ $text-dim: #7f9bb0;
   left: 0;
   right: 0;
   height: 60px;
+  border-radius: 30px;
+  border: 1px solid var(--primary-white);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2vw;
+  margin: 5px;
+  padding: 0 10px 0 20px;
   z-index: 100;
   box-sizing: border-box;
-  background: transparent;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-  backdrop-filter: blur(2px);
+  background: rgba(255,255,255, 0.8);
+  backdrop-filter: blur(3px);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 
   // подсветка снизу — как отражение от воды
-  &::after {
+  /* &::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -44,20 +47,14 @@ $text-dim: #7f9bb0;
 
   &:hover::after {
     opacity: 0.4;
-  }
+  } */
 
   &__logo {
     border: none;
     background: transparent;
     margin: 0;
-    padding: 4px 0;
+    padding: 0;
     cursor: pointer;
-    filter: drop-shadow(0 0 8px rgba(59, 169, 217, 0.1));
-    transition: filter 0.3s;
-
-    &:hover {
-      filter: drop-shadow(0 0 16px rgba(59, 169, 217, 0.25));
-    }
   }
 
   &__back {

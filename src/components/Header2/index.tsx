@@ -10,17 +10,13 @@ import backBlack from "@/assets/images/icons/back-black.svg";
 import backWhite from "@/assets/images/icons/back-white.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import LanguageSwitcher2 from "../Lang";
-
-const MAX_OPACITY = 0.95;
-const MAX_SHADOW = 0.15;
+import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
 
 const Header2 = () => {
   const t = useTranslator();
   const navigate = useNavigate();
   const location = useLocation();
   const { scrollY } = usePageScroll();
-  const opacity = Math.min(scrollY / 300, MAX_OPACITY);
-  const shadow = Math.min(scrollY / 600, MAX_SHADOW);
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const handleClick = () => {
@@ -82,13 +78,7 @@ const Header2 = () => {
 
   return (
     <>
-      <div
-        className="header"
-        style={{
-          backgroundColor: `rgba(255, 255, 255, ${isMenuOpen ? MAX_OPACITY : opacity})`,
-          boxShadow: `4px 0 16px rgba(0, 0, 0, ${isMenuOpen ? MAX_SHADOW : shadow})`,
-        }}
-      >
+      <div className="header">
         <button
           className="header__logo"
           onClick={() => {
@@ -96,10 +86,10 @@ const Header2 = () => {
           }}
           aria-label="На главную"
         >
-          <img
-            src={isMenuOpen || scrollY > 280 ? blackLogoUrl : whiteLogoUrl}
-            alt="Logo"
-            width={120}
+          <LogoMolchanovsIcon
+            colorIcon={"var(--color-lightblue)"}
+            colorText={"var(--primary-black)"}
+            size={120}
           />
         </button>
         <h5 className="header__menu">menu</h5>

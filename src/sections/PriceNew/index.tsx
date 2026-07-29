@@ -5,7 +5,7 @@ import "./PricingSection.scss"; // Import the SCSS styles
 
 const PricingSection = () => {
   const t = useTranslator();
-  const { globalUIStore } = useStore();
+  const { globalUIStore, tgStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
   // Data for the pricing plans
   const plans = [
@@ -57,7 +57,7 @@ const PricingSection = () => {
   ];
 
   const handleBook = (message: string) => {
-    window.open(`tg://t.me/@Garaihachka?text=${message}`);
+    tgStore.openTelegramChat(message);
   };
 
   return (

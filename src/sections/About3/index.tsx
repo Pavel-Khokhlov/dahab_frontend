@@ -28,8 +28,8 @@ const AboutSection3: React.FC = () => {
   }, []);
   return (
     <section ref={blockRef} className={styles.hero} id="hero">
-      <div className={styles.heroBackground} />
-      <div className={styles.heroOverlay} />
+      {/* <div className={styles.heroBackground} /> */}
+      {/* <div className={styles.heroOverlay} /> */}
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>
           <span className={styles.titleLine}>{t.title.mainFirst}</span>

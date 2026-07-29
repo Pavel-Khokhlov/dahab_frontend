@@ -16,7 +16,7 @@ interface TrialCard {
 
 const TrialSection2: React.FC = () => {
   const t = useTranslator();
-  const { globalUIStore } = useStore();
+  const { globalUIStore, tgStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
 
   const trialData: TrialCard[] = [
@@ -116,6 +116,10 @@ const TrialSection2: React.FC = () => {
     ],
   };
 
+  const handleBook = (message: string) => {
+    tgStore.openTelegramChat(message);
+  };
+
   return (
     <section className={styles.trialSection} aria-labelledby="trial-heading">
       <div className={styles.container}>
@@ -169,7 +173,11 @@ const TrialSection2: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <button className={styles.bookButton} type="button">
+                <button
+                  className={styles.bookButton}
+                  type="button"
+                  onClick={() => handleBook(card.title[currentLang])}
+                >
                   {t.button.bookin}
                 </button>
               </div>

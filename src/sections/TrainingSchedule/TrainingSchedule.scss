@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: $gd-section;
+  // background: $gd-section;
   position: relative;
   overflow: hidden;
 
@@ -17,7 +17,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background:
+    /* background:
       radial-gradient(
         circle at 20% 80%,
         rgba(64, 224, 208, 0.08) 0%,
@@ -27,7 +27,7 @@
         circle at 80% 20%,
         rgba(64, 224, 208, 0.05) 0%,
         transparent 50%
-      );
+      ); */
     pointer-events: none;
   }
 

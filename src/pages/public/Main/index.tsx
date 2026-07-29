@@ -17,7 +17,7 @@ import WhyDahabSection from "@/sections/WhyDahab";
 // import AboutSection2 from "@/sections/About2";
 import FooterSection from "@/components/Footer";
 import PricingSection from "@/sections/PriceNew";
-import Header from "@/components/Header";
+import Header from "@/components/Header2";
 import TrialSection2 from "@/sections/TrialTraining2";
 // import FeatureSection from "@/sections/Feature";
 import TrainingDaySection from "@/sections/TrainingDay";

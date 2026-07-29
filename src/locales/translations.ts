@@ -11,7 +11,7 @@ export const translations = {
       mainFirst: "Discover the depths",
       mainSecond: "in\u00A0the\u00A0sea\u00A0and\u00A0in yourself",
       team: "Our team",
-      feedbacks: "Feedbacks",
+      feedbacks: "Reviews",
       prices: "The prices of training",
       trial: "Introduction freediving",
       contacts: "Contacts",

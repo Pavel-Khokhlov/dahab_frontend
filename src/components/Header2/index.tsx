@@ -4,8 +4,6 @@ import BurgerMenu from "../BurgerMenu";
 
 import "./Header.scss";
 import { useTranslator } from "@/context/TranslationContext";
-import whiteLogoUrl from "@/assets/images/logo/MolchanovsLogoWhite.svg";
-import blackLogoUrl from "@/assets/images/logo/MolchanovsLogoBlack.svg";
 import backBlack from "@/assets/images/icons/back-black.svg";
 import backWhite from "@/assets/images/icons/back-white.svg";
 import { useLocation, useNavigate } from "react-router-dom";

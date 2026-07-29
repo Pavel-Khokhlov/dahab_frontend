@@ -19,7 +19,7 @@ const LanguageSwitcher2 = () => {
           className="option"
           onClick={() => globalUIStore.setLanguage(LOCALES.RUSSIAN)}
         >
-          <span className="lang-text">Ru</span>
+          <span className="lang-text">Ру</span>
         </button>
         <div className="slider-thumb"></div>
       </div>

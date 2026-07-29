@@ -65,7 +65,7 @@
   width: 100vw;
   margin: 0;
   text-align: center;
-  min-height: 100svh;
+  min-height: 100lvh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -83,7 +83,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 100dvh;
+    min-height: 100lvh;
     background-image: url("@/assets/images/background/mainV.webp");
     background-size: cover;
     background-position: center;

@@ -5,7 +5,6 @@ import { useTranslator } from "@/context/TranslationContext";
 // import First from "@/sections/First";
 // import Contact from "@/sections/Contacts";
 
-import "./Main.css";
 import Team from "@/sections/Team";
 import FeedbacksSection from "@/sections/Feedbacks";
 // import PriceSection from "@/sections/Price";

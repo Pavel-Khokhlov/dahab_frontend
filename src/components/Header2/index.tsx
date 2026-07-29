@@ -31,7 +31,7 @@ const Header2 = () => {
     setTimeout(() => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const headerHeight = 50;
+        const headerHeight = 0;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition =
           elementPosition + window.pageYOffset - headerHeight;
@@ -49,12 +49,12 @@ const Header2 = () => {
   };
 
   useEffect(() => {
-     if (isMenuOpen) {
+    if (isMenuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [isMenuOpen])
+  }, [isMenuOpen]);
 
   return (
     <>

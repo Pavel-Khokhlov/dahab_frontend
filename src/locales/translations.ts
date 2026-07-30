@@ -19,6 +19,8 @@ export const translations = {
       verify: "Enter received code",
       why: "Why",
       dahab: "Dahab",
+      family: "Family-Friendly Format",
+      important: "Important!",
     },
     subtitle: {
       verify: "The code has been sent to your e-mail",
@@ -101,6 +103,8 @@ export const translations = {
       verify: "Введите полученный код",
       why: "Почему",
       dahab: "Дахаб",
+      family: "Семейный формат",
+      important: "Важно!",
     },
     subtitle: {
       verify: "Код подтверждения отправлен на вашу почту",

@@ -1,8 +1,46 @@
 // FamilyFormatSection.tsx
 import React from "react";
 import "./FamilyFormat.scss";
+import { useTranslator } from "@/context/TranslationContext";
+import { useStore } from "@/store";
+
+const dataPage = {
+  subtitle: {
+    ru: "Мы уверены, что совместные впечатления объединяют сильнее любых подарков.",
+    en: "We believe that shared experiences bring families closer than any gift ever could.",
+  },
+  text: {
+    ru: "Поэтому мы создали формат, в котором родители и дети могут открывать подводный мир вместе.",
+    en: "That's why we've created a program where parents and children can discover the underwater world together.",
+  },
+  options: {
+    ru: "Это возможность:",
+    en: "It's an opportunity to:",
+  },
+  list: {
+    ru: [
+      "попробовать новое всей семьей",
+      "поддерживать друг друга",
+      "отдыхать активно",
+      "получить общие воспоминания, которые останутся с вами на долгие годы",
+    ],
+    en: [
+      "try something new as a family",
+      "support one another",
+      "enjoy an active holiday",
+      "create unforgettable memories that will stay with you for years",
+    ],
+  },
+  important: {
+    ru: "Дети и родители занимаются в раздельных группах, с двумя разными тренерами. Это позволяет сделать занятия наиболее эффективными и максимально раскрыть потенциал – Ваш и Вашего ребенка.",
+    en: "Parents and children train in separate groups with two different instructors. This approach allows every participant to receive the attention they need, making each session more effective while helping both you and your child reach your full potential.",
+  },
+};
 
 const FamilyFormatSection: React.FC = () => {
+  const t = useTranslator();
+  const { globalUIStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
   return (
     <section className="family-format">
       {/* Декоративные водные элементы */}
@@ -11,33 +49,31 @@ const FamilyFormatSection: React.FC = () => {
       <div className="family-format__water-bubble family-format__water-bubble--3"></div>
 
       <div className="family-format__container">
-        <h2 className="family-format__title">Семейный формат</h2>
-        
-        <p className="family-format__lead">
-          Мы уверены, что совместные впечатления объединяют сильнее любых подарков.
-        </p>
+        <h2 className="family-format__title">{t.title.family}</h2>
+
+        <p className="family-format__lead">{dataPage.subtitle[currentLang]}</p>
 
         <p className="family-format__description">
-          Поэтому мы создали формат, в котором родители и дети могут открывать 
-          подводный мир вместе.
+          {dataPage.text[currentLang]}
         </p>
 
         <div className="family-format__opportunities">
-          <span className="family-format__opportunities-label">Это возможность:</span>
+          <span className="family-format__opportunities-label">
+            {dataPage.options[currentLang]}
+          </span>
           <ul className="family-format__list">
-            <li>попробовать новое всей семьей;</li>
-            <li>поддерживать друг друга;</li>
-            <li>отдыхать активно;</li>
-            <li>создать воспоминания, которые останутся на долгие годы.</li>
+            {dataPage.list[currentLang].map((item) => {
+              return <li>{item}</li>;
+            })}
           </ul>
         </div>
 
         <div className="family-format__important">
-          <h3 className="family-format__important-title">ВАЖНО!</h3>
+          <h3 className="family-format__important-title">
+            {t.title.important}
+          </h3>
           <p className="family-format__important-text">
-            Дети и родители занимаются в раздельных группах, с двумя разными тренерами. 
-            Это позволяет сделать занятия наиболее эффективными и максимально раскрыть 
-            потенциал – Ваш и Вашего ребенка.
+            {dataPage.important[currentLang]}
           </p>
         </div>
       </div>

@@ -8,15 +8,16 @@ import Divider from "@/elements/Divider";
 import "./Team.scss";
 
 const teamData = {
-  description_ru:
-    "Откройте для себя фридайвинг в Дахабе вместе с командой Molchanovs. Мы обучаем по международной системе Molchanovs Wave в лучших локациях Красного моря — от спокойного Lighthouse до легендарного Blue Hole. Независимо от вашего опыта, наши сертифицированные инструкторы помогут пройти путь от первых погружений до продвинутых глубин 40+ метров — безопасно, уверенно и с удовольствием.",
-  description_en:
-    "Откройте для себя фридайвинг в Дахабе вместе с командой Molchanovs. Мы обучаем по международной системе Molchanovs Wave в лучших локациях Красного моря — от спокойного Lighthouse до легендарного Blue Hole. Независимо от вашего опыта, наши сертифицированные инструкторы помогут пройти путь от первых погружений до продвинутых глубин 40+ метров — безопасно, уверенно и с удовольствием.",
+  description: {
+    ru: "Откройте для себя фридайвинг в Дахабе вместе с командой Molchanovs. Мы обучаем по международной системе Molchanovs Wave в лучших локациях Красного моря — от спокойного Lighthouse до легендарного Blue Hole. Независимо от вашего опыта, наши сертифицированные инструкторы помогут пройти путь от первых погружений до продвинутых глубин 40+ метров — безопасно, уверенно и с удовольствием.",
+    en: "Discover freediving in Dahab with the Molchanova team. We teach using the international Molchanovs Wave system in the best locations of the Red Sea — from the calm Lighthouse to the legendary Blue Hole. Regardless of your experience, our certified instructors will help you go from the first dives to advanced depths of 40+ meters — safely, confidently and with pleasure.",
+  },
 };
 
 const TeamSection = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
 
   const cardVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -35,20 +36,20 @@ const TeamSection = () => {
     <SectionWrapper id="team" title={t.title.team} isWhite={true}>
       <div className="team__header">
         <p className="team__description text-main black indent">
-          {teamData[`description_${globalUIStore.currentLocale}`]}
+          {teamData.description[currentLang]}
         </p>
         <div className="team__stats">
           <div className="team__stat-item">
             <span className="team__stat-number">500+</span>
-            <span className="team__stat-label">Клиентов</span>
+            <span className="team__stat-label">{t.text.clients}</span>
           </div>
           <div className="team__stat-item">
             <span className="team__stat-number">40+</span>
-            <span className="team__stat-label">Макс. глубина</span>
+            <span className="team__stat-label">{t.text.maxDepth}</span>
           </div>
           <div className="team__stat-item">
             <span className="team__stat-number">100%</span>
-            <span className="team__stat-label">Безопасность</span>
+            <span className="team__stat-label">{t.text.safety}</span>
           </div>
         </div>
       </div>
@@ -76,7 +77,7 @@ const TeamSection = () => {
                   loading="lazy"
                 />
                 <div className="team__card-overlay">
-                  <span className="team__card-badge">Инструктор</span>
+                  <span className="team__card-badge">{t.text.instructor}</span>
                 </div>
               </div>
             </div>

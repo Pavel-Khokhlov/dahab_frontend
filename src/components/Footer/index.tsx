@@ -1,21 +1,22 @@
+import { useTranslator } from "@/context/TranslationContext";
 import LogoIcon from "../LogoIcon";
 import styles from "./Footer.module.scss";
 
 const FooterSection = () => {
+  const t = useTranslator();
+  const currentYear = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
-            <LogoIcon color={"var(--color-lightblue)"} size={40}/>
-            <span className={styles.footerName}>
-              Molchanovs · Дахаб · Египет
-            </span>
+            <LogoIcon color={"var(--color-lightblue)"} size={40} />
+            <span className={styles.footerName}>{t.footer.molchanovs}</span>
           </div>
           <div className={styles.footerMeta}>
-            <span>2020 - 2026</span>
+            <span>2020 - {currentYear}</span>
             <span className={styles.footerDot}>•</span>
-            <span>Глубина начинается внутри</span>
+            <span>{t.footer.text}</span>
           </div>
         </div>
       </div>

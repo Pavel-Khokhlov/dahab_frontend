@@ -48,6 +48,10 @@ export const translations = {
       popular: "Popular",
       feedback:
         "We sincerely thank everyone who chose the Molchanova team in Dahab to immerse themselves in the world of freediving. Your kind words, sincere recommendations to friends and detailed reviews are not just pleasant emotions, but real support that inspires us to become even better. We remember every story you tell about the first meters underwater, about overcoming yourself and about the amazing feeling of freedom that the Red Sea gives. It is thanks to you that beginners will learn that there is a place in Dahab where they teach safely and sincerely, and experienced athletes will find a professional team here for new records. Your trust and recommendations help us grow, and we promise to continue sharing with you only the best Molchanovs techniques, the warmth of the sea and the sincere attitude towards each guest. Thank you for being with us — you are making the Molchanovs community in Egypt truly alive and strong!",
+      clients: "clients",
+      instructor: "instructor",
+      safety: "safety",
+      maxDepth: "max.depth",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -85,6 +89,10 @@ export const translations = {
       friday: "Friday",
       saturday: "Saturday",
       sunday: "Sunday",
+    },
+    footer: {
+      molchanovs: "Molchanovs · Dahab · Egypt",
+      text: "The depth begins inside",
     },
   },
   ru: {
@@ -135,6 +143,10 @@ export const translations = {
       popular: "Популярно",
       feedback:
         "От всего сердца благодарим каждого, кто выбрал команду Molchanovs в Дахебе для своего погружения в мир фридайвинга. Ваши тёплые слова, искренние рекомендации друзьям и подробные отзывы — это не просто приятные эмоции, а настоящая поддержка, которая вдохновляет нас становиться ещё лучше. Мы помним каждый ваш рассказ о первых метрах под водой, о преодолении себя и о том удивительном чувстве свободы, которое дарит Красное море. Именно благодаря вам новички узнают, что в Дахебе есть место, где учат безопасно и с душой, а опытные атлеты находят здесь профессиональную команду для новых рекордов. Ваше доверие и рекомендации помогают нам расти, и мы обещаем продолжать делиться с вами только лучшими методиками Molchanovs, теплом моря и искренним отношением к каждому гостю. Спасибо, что вы с нами — вы делаете сообщество Molchanovs в Египте по-настоящему живым и сильным!",
+      clients: "клиентов",
+      instructor: "инструктор",
+      safety: "безопасность",
+      maxDepth: "макс.глубина",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -172,6 +184,10 @@ export const translations = {
       friday: "Пятница",
       saturday: "Суббота",
       sunday: "Воскресенье",
+    },
+    footer: {
+      molchanovs: "Molchanovs · Дахаб · Египет",
+      text: "Глубина начинается внутри",
     },
   },
 };

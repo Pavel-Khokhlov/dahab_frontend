@@ -4,7 +4,7 @@ import dahabImg from "@/assets/images/background/bluehole.webp";
 import "./WhyDahab.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
-import { useVisibilityObserver } from "@/hooks/useVisibilityObserver";
+import { useInView } from "react-intersection-observer";
 
 export interface WhyDahabItem {
   id: string;
@@ -70,28 +70,40 @@ const whyDahabData: WhyDahabItem[] = [
   },
 ];
 
+const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
+  item,
+  index,
+}) => {
+  const { globalUIStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Сработает только один раз
+    threshold: 0.2, // 20% элемента видно
+  });
+  return (
+    <div
+      ref={ref}
+      className={`
+        why-dahab__card 
+        ${item.featured ? "_featured" : ""} 
+        ${inView ? "_active" : ""}
+      `}
+      style={{ transitionDelay: `${index * 0.1}s` }}
+    >
+      <div className="why-dahab__card-icon">{item.icon}</div>
+      <h3 className="why-dahab__card-title">{item.title[currentLang]}</h3>
+      <p className="why-dahab__card-text">{item.text[currentLang]}</p>
+    </div>
+  );
+};
+
 const WhyDahabSection: React.FC = () => {
   const t = useTranslator();
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Сработает только один раз
+    threshold: 0.2, // 20% элемента видно
+  });
 
-  const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
-    item,
-    index,
-  }) => {
-    const { globalUIStore } = useStore();
-    const currentLang = globalUIStore.currentLocale;
-    const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.7);
-    return (
-      <div
-        ref={ref}
-        className={`why-dahab__card ${item.featured ? "why-dahab__card--featured" : ""} ${isVisible ? "_active" : ""}`}
-        style={{ transitionDelay: `${index * 0.1}s` }}
-      >
-        <div className="why-dahab__card-icon">{item.icon}</div>
-        <h3 className="why-dahab__card-title">{item.title[currentLang]}</h3>
-        <p className="why-dahab__card-text">{item.text[currentLang]}</p>
-      </div>
-    );
-  };
   return (
     <section className="why-dahab">
       <div className="why-dahab__background">
@@ -101,7 +113,15 @@ const WhyDahabSection: React.FC = () => {
       </div>
 
       <div className="why-dahab__container">
-        <h2 className="why-dahab__title">
+        <h2
+          ref={ref}
+          className="why-dahab__title"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(50px)",
+            transition: "all 0.6s ease",
+          }}
+        >
           {t.title.why}{" "}
           <span className="why-dahab__highlight">{t.title.dahab}</span>?
         </h2>

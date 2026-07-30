@@ -1,5 +1,6 @@
 import dayImg from "@/assets/images/background/trainingday.webp";
 import "./TrainingDay.scss";
+import { useInView } from "react-intersection-observer";
 
 const TrainingDaySection = () => {
   const timelineData = [
@@ -55,6 +56,11 @@ const TrainingDaySection = () => {
     },
   ];
 
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Сработает только один раз
+    threshold: 0.2, // 20% элемента видно
+  });
+
   return (
     <section className="training-day">
       {/* Декоративные градиентные круги */}
@@ -72,7 +78,15 @@ const TrainingDaySection = () => {
         </div> */}
 
         {/* Заголовок */}
-        <h2 className="training-day__title">
+        <h2
+          ref={ref}
+          className="training-day__title"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(50px)",
+            transition: "all 0.6s ease",
+          }}
+        >
           Как проходит{" "}
           <span className="training-day__highlight">тренировочный день</span>
         </h2>

@@ -1,8 +1,7 @@
 import React, { ReactNode } from "react";
 import styles from "./Feature.module.scss";
-import { useVisibilityObserver } from "@/hooks/useVisibilityObserver";
 import { useStore } from "@/store";
-// import { useTranslator } from "@/context/TranslationContext";
+import { useInView } from 'react-intersection-observer';
 
 export interface FeatureItemWithSVG {
   id: number;
@@ -87,12 +86,15 @@ const FeatureCard: React.FC<{ item: FeatureItemWithSVG; index: number }> = ({
 }) => {
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
-  const { ref, isVisible } = useVisibilityObserver<HTMLDivElement>(0.7);
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Сработает только один раз
+    threshold: 0.2,    // 20% элемента видно
+  });
 
   return (
     <div
       ref={ref}
-      className={`${styles.featureCard} ${isVisible ? styles.active : ""}`}
+      className={`${styles.featureCard} ${inView ? styles.active : ""}`}
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
       <div className={styles.cardIcon}>{item.icon}</div>

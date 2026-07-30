@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Feedbacks.scss";
+import { useInView } from "react-intersection-observer";
 
 // Иконка цитаты
 const QuoteIcon = () => (
@@ -48,6 +49,10 @@ const NavArrow = ({ direction }: { direction: "left" | "right" }) => (
 const FeedbacksSection: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
+  const { ref, inView } = useInView({
+    triggerOnce: true, // Сработает только один раз
+    threshold: 0.2, // 20% элемента видно
+  });
 
   return (
     <section id="feedbacks" className="feedback-section">
@@ -66,7 +71,17 @@ const FeedbacksSection: React.FC = () => {
             <span className="feedback-section__badge-dot" />
             {t.subtitle.feedbacks}
           </div>
-          <h2 className="feedback-section__title">{t.title.feedbacks}</h2>
+          <h2
+            ref={ref}
+            className="feedback-section__title"
+            style={{
+              opacity: inView ? 1 : 0,
+              transform: inView ? "translateY(0)" : "translateY(50px)",
+              transition: "all 0.6s ease",
+            }}
+          >
+            {t.title.feedbacks}
+          </h2>
           <div className="feedback-section__divider" />
         </div>
 

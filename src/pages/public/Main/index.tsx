@@ -38,14 +38,14 @@ function MainPage() {
       {/* <FeatureSection /> */}
       <WhyDahabSection />
       {/* <TrialSection /> */}
+      <FamilyFormatSection />
       <TrialSection2 />
       {/* <PriceSection /> */}
+      <TrainingProgramSection />
       <TrainingDaySection />
       <PricingSection />
       <TrainingScheduleSection />
       <Team />
-      <TrainingProgramSection />
-      <FamilyFormatSection />
       <FeedbacksSection />
       {/* <Contact /> */}
       <FooterSection />

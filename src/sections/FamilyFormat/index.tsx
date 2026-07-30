@@ -63,7 +63,7 @@ const FamilyFormatSection: React.FC = () => {
           </span>
           <ul className="family-format__list">
             {dataPage.list[currentLang].map((item) => {
-              return <li>{item}</li>;
+              return <li key={item}>{item}</li>;
             })}
           </ul>
         </div>

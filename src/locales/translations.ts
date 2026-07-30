@@ -21,6 +21,7 @@ export const translations = {
       dahab: "Dahab",
       family: "Family-Friendly Format",
       important: "Important!",
+      program: "Comprehensive training program",
     },
     subtitle: {
       verify: "The code has been sent to your e-mail",
@@ -28,7 +29,7 @@ export const translations = {
       trial:
         "Try freediving without buying a full course — special 2.5-hour introductory programs",
       team: "Review our team",
-      feedbacks: "About our feedbacks",
+      feedbacks: "Reviews from our guests",
     },
     text: {
       main: "Diving",
@@ -41,9 +42,12 @@ export const translations = {
       training: "training",
       relax: "relax day",
       lecture: "lecture and restoration",
-      weekFooter: "There is plenty of time between workouts for relaxation, excursions, family walks, snorkeling or exploring the atmosphere of Dahab",
+      weekFooter:
+        "There is plenty of time between workouts for relaxation, excursions, family walks, snorkeling or exploring the atmosphere of Dahab",
       include: "What's included:",
       popular: "Popular",
+      feedback:
+        "We sincerely thank everyone who chose the Molchanova team in Dahab to immerse themselves in the world of freediving. Your kind words, sincere recommendations to friends and detailed reviews are not just pleasant emotions, but real support that inspires us to become even better. We remember every story you tell about the first meters underwater, about overcoming yourself and about the amazing feeling of freedom that the Red Sea gives. It is thanks to you that beginners will learn that there is a place in Dahab where they teach safely and sincerely, and experienced athletes will find a professional team here for new records. Your trust and recommendations help us grow, and we promise to continue sharing with you only the best Molchanovs techniques, the warmth of the sea and the sincere attitude towards each guest. Thank you for being with us — you are making the Molchanovs community in Egypt truly alive and strong!",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -105,6 +109,7 @@ export const translations = {
       dahab: "Дахаб",
       family: "Семейный формат",
       important: "Важно!",
+      program: "Комплексная программа подготовки",
     },
     subtitle: {
       verify: "Код подтверждения отправлен на вашу почту",
@@ -112,7 +117,7 @@ export const translations = {
       trial:
         "Попробуйте фридайвинг, не покупая полный курс — специальные 2,5-часовые пробные тренировки.",
       team: "Описание нашей команды",
-      feedbacks: "Благодарность от нас нашим клиентам",
+      feedbacks: "Отзывы наших гостей",
     },
     text: {
       main: "Погружение",
@@ -124,9 +129,12 @@ export const translations = {
       training: "тренировка",
       relax: "день отдыха",
       lecture: "лекции и восстановление",
-      weekFooter: " Между тренировками предусмотрено достаточно времени для отдыха, экскурсий, семейных прогулок, снорклинга или знакомства атмосферой Дахаба",
+      weekFooter:
+        " Между тренировками предусмотрено достаточно времени для отдыха, экскурсий, семейных прогулок, снорклинга или знакомства атмосферой Дахаба",
       include: "Что включено:",
       popular: "Популярно",
+      feedback:
+        "От всего сердца благодарим каждого, кто выбрал команду Molchanovs в Дахебе для своего погружения в мир фридайвинга. Ваши тёплые слова, искренние рекомендации друзьям и подробные отзывы — это не просто приятные эмоции, а настоящая поддержка, которая вдохновляет нас становиться ещё лучше. Мы помним каждый ваш рассказ о первых метрах под водой, о преодолении себя и о том удивительном чувстве свободы, которое дарит Красное море. Именно благодаря вам новички узнают, что в Дахебе есть место, где учат безопасно и с душой, а опытные атлеты находят здесь профессиональную команду для новых рекордов. Ваше доверие и рекомендации помогают нам расти, и мы обещаем продолжать делиться с вами только лучшими методиками Molchanovs, теплом моря и искренним отношением к каждому гостю. Спасибо, что вы с нами — вы делаете сообщество Molchanovs в Египте по-настоящему живым и сильным!",
     },
     placeholder: {
       email: "example@mail.ru",

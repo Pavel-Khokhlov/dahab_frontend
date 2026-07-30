@@ -64,28 +64,14 @@ const FeedbacksSection: React.FC = () => {
         <div className="feedback-section__header">
           <div className="feedback-section__badge">
             <span className="feedback-section__badge-dot" />
-            Отзывы наших гостей
+            {t.subtitle.feedbacks}
           </div>
           <h2 className="feedback-section__title">{t.title.feedbacks}</h2>
           <div className="feedback-section__divider" />
         </div>
 
         {/* Описание */}
-        <p className="feedback-section__description">
-          От всего сердца благодарим каждого, кто выбрал команду Molchanovs в
-          Дахебе для своего погружения в мир фридайвинга. Ваши тёплые слова,
-          искренние рекомендации друзьям и подробные отзывы — это не просто
-          приятные эмоции, а настоящая поддержка, которая вдохновляет нас
-          становиться ещё лучше. Мы помним каждый ваш рассказ о первых метрах
-          под водой, о преодолении себя и о том удивительном чувстве свободы,
-          которое дарит Красное море. Именно благодаря вам новички узнают, что в
-          Дахебе есть место, где учат безопасно и с душой, а опытные атлеты
-          находят здесь профессиональную команду для новых рекордов. Ваше
-          доверие и рекомендации помогают нам расти, и мы обещаем продолжать
-          делиться с вами только лучшими методиками Molchanovs, теплом моря и
-          искренним отношением к каждому гостю. Спасибо, что вы с нами — вы
-          делаете сообщество Molchanovs в Египте по-настоящему живым и сильным!
-        </p>
+        <p className="feedback-section__description">{t.text.feedback}</p>
 
         {/* Карусель */}
         <div className="feedback-section__carousel-wrapper">

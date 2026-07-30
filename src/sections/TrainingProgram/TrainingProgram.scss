@@ -4,7 +4,7 @@
   padding: 5rem 1.5rem;
   min-height: 100dvh;
   overflow: hidden;
-  background: linear-gradient(135deg, #0a1a2b 0%, #1a3a5c 30%, #1e5a7a 60%, #2a7a9a 85%, #4a9aba 100%);
+  /* background: linear-gradient(135deg, #0a1a2b 0%, #1a3a5c 30%, #1e5a7a 60%, #2a7a9a 85%, #4a9aba 100%); */
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 
   // Анимированные водные волны
@@ -70,11 +70,11 @@
     z-index: 2;
     max-width: 820px;
     margin: 0 auto;
-    background: rgba(10, 30, 50, 0.55);
+    background: rgba(10, 30, 50, 0.05);
     backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(4px);
     padding: 3rem 3rem 3.5rem;
-    border-radius: 2.5rem;
+    border-radius: 1.5rem;
     box-shadow: 
       0 30px 60px -20px rgba(0, 0, 0, 0.6),
       inset 0 1px 0 rgba(255, 255, 255, 0.15),
@@ -219,7 +219,7 @@
 
         &::before {
           left: 1rem;
-          font-size: 26px;
+          font-size: 16px;
         }
       }
     }
@@ -245,7 +245,7 @@
       rgba(255, 255, 255, 0.05),
       rgba(90, 200, 250, 0.05)
     );
-    border-radius: 60px;
+    border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-left: 4px solid #5ac8fa;
     border-right: 4px solid rgba(90, 200, 250, 0.2);

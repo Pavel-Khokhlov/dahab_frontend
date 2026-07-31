@@ -67,7 +67,7 @@ const PricingSection = () => {
   };
 
   return (
-    <section className="pricing-section">
+    <section className="pricing-section" id="price">
       <div className="pricing-section__container">
         <h2
           ref={ref}

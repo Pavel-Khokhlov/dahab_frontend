@@ -42,7 +42,7 @@ const FamilyFormatSection: React.FC = () => {
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
   return (
-    <section className="family-format">
+    <section className="family-format" id="family">
       {/* Декоративные водные элементы */}
       <div className="family-format__water-bubble family-format__water-bubble--1"></div>
       <div className="family-format__water-bubble family-format__water-bubble--2"></div>

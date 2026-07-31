@@ -1,15 +1,38 @@
 import dayImg from "@/assets/images/background/trainingday.webp";
 import "./TrainingDay.scss";
 import { useInView } from "react-intersection-observer";
+import { useStore } from "@/store";
+import { useTranslator } from "@/context/TranslationContext";
 
-const TrainingDaySection = () => {
-  const timelineData = [
-    {
-      time: "08:00",
-      title: "Дыхательные практики",
-      description:
-        "В школе фридайвинга мы начинаем день с подготовки организма.",
-      items: [
+export interface PageItem {
+  id: string;
+  icon?: string;
+  time: string;
+  title: Record<"ru" | "en", string>;
+  location?: Record<"ru" | "en", string>;
+  group?: Record<"ru" | "en", string>;
+  description?: Record<"ru" | "en", string>;
+  items?: Record<"ru" | "en", string[]>;
+  techs?: string[];
+  attention?: Record<"ru" | "en", string>;
+  note?: Record<"ru" | "en", string>;
+}
+
+const pageData: PageItem[] = [
+  {
+    id: "breathing-practices",
+    time: "08:00",
+    icon: "🌬️",
+    title: {
+      ru: "Дыхательные практики",
+      en: "Breathing practices",
+    },
+    description: {
+      ru: "В школе фридайвинга мы начинаем день с подготовки организма.",
+      en: "At the freediving school, we start the day with body preparation.",
+    },
+    items: {
+      ru: [
         "растяжка дыхательных мышц",
         "работа с диафрагмой",
         "упражнения для межреберных мышц",
@@ -17,45 +40,103 @@ const TrainingDaySection = () => {
         "упражнения с задержкой дыхания",
         "глубокое расслабление (шавасана)",
       ],
-      note: "Эти практики помогают снять напряжение, подготовить нервную систему и сделать последующее погружение максимально комфортным.",
+      en: [],
     },
-    {
-      time: "10:00 – 10:30",
-      title: "Подготовка оборудования",
-      description: "Переодевание и подготовка к выходу на воду.",
-      items: [],
-      note: "",
+    note: {
+      ru: "Эти практики помогают снять напряжение, подготовить нервную систему и сделать последующее погружение максимально комфортным.",
+      en: "These practices help relieve tension, prepare the nervous system, and make the subsequent dive as comfortable as possible.",
     },
-    {
-      time: "10:30 – 12:30",
-      title: "Глубинная тренировка",
-      description: "",
-      location: "📍 Место проведения — Lighthouse, Дахаб",
-      group: "👥 Тренировки в группах не более 3 человек на одном буйке",
-      attention: "Каждый участник получает максимум внимания инструктора",
-      items: [
+  },
+  {
+    id: "equipment-preparation",
+    time: "10:00 – 10:30",
+    icon: "🤿",
+    title: {
+      ru: "Подготовка оборудования",
+      en: "Equipment preparation",
+    },
+    description: {
+      ru: "Переодевание и подготовка к выходу на воду.",
+      en: "Changing clothes and preparing to go out on the water.",
+    },
+  },
+  {
+    id: "depth-training",
+    time: "10:30 – 12:30",
+    icon: "🏊",
+    title: {
+      ru: "Глубинная тренировка",
+      en: "Depth training",
+    },
+    description: {
+      ru: "",
+      en: "",
+    },
+    items: {
+      ru: [
         "совершенствуем технику ныряния",
         "прислушиваемся к телу и тренируем расслабление",
         "отрабатываем компенсацию давления",
         "практикуем безопасные погружения",
         "постепенно увеличиваем глубину без спешки и стресса",
       ],
-      note: "",
+      en: [
+        "improve diving technique",
+        "develop body awareness and relaxation",
+        "practice equalization",
+        "reinforce safe diving procedures",
+        "gradually increase depth without stress or pressure",
+      ],
     },
-    {
-      time: "18:00 – 19:30",
-      title: "Вечерняя практика",
-      description: "Спокойное завершение дня. В программе:",
-      items: [
+    location: {
+      ru: "Место проведения — Lighthouse, Дахаб",
+      en: "Location: Lighthouse, Dahab",
+    },
+    group: {
+      ru: "Тренировки в группах не более 3 человек на одном буйке",
+      en: "Training in groups of no more than 3 people per buoy",
+    },
+    attention: {
+      ru: "Каждый участник получает максимум внимания инструктора. Что мы делаем:",
+      en: "Each participant receives maximum instructor attention. During the session we:",
+    },
+  },
+  {
+    id: "evening-practice",
+    time: "18:00 – 19:30",
+    icon: "🌅",
+    title: {
+      ru: "Вечерняя практика",
+      en: "Evening practice",
+    },
+    description: {
+      ru: "Спокойное завершение дня. В программе:",
+      en: "A calm end to the day. The program includes:",
+    },
+    items: {
+      ru: [
         "тренировка продувки на суше",
         "растяжка на гимнастическом мяче",
         "закрепление полученных навыков",
       ],
-      techs: ["Frenzel", "Reverse Packing", "Mouthfill"],
-      note: "Эти навыки являются основой комфортного и безопасного погружения на большие глубины.",
+      en: [
+        "dry equalization practice",
+        "stretching for freedivers",
+        "review and reinforcement of the day's skills",
+      ],
     },
-  ];
+    techs: ["Frenzel", "Reverse Packing", "Mouthfill"],
+    note: {
+      ru: "Эти навыки являются основой комфортного и безопасного погружения на большие глубины.",
+      en: "These skills are the foundation for comfortable and safe deep diving.",
+    },
+  },
+];
 
+const TrainingDaySection = () => {
+  const t = useTranslator();
+  const { globalUIStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
   const { ref, inView } = useInView({
     triggerOnce: true, // Сработает только один раз
     threshold: 0.2, // 20% элемента видно
@@ -87,8 +168,8 @@ const TrainingDaySection = () => {
             transition: "all 0.6s ease",
           }}
         >
-          Как проходит{" "}
-          <span className="training-day__highlight">тренировочный день</span>
+          {t.title.dayOne}{" "}
+          <span className="training-day__highlight">{t.title.dayTwo}?</span>
         </h2>
 
         {/* Блок с фотографией на всю ширину */}
@@ -101,15 +182,14 @@ const TrainingDaySection = () => {
         </div>
 
         <p className="training-day__subtitle">
-          <strong>От дыхания до глубины</strong> — каждый этап выстроен для
-          максимального комфорта и прогресса
+          <strong>{t.subtitle.dayOne}</strong> — {t.subtitle.dayTwo}
         </p>
 
         <div className="training-day__divider" />
 
         {/* Таймлайн в виде карточной сетки */}
         <div className="training-day__grid">
-          {timelineData.map((item, index) => (
+          {pageData.map((item, index) => (
             <div
               key={index}
               className={`training-day__card ${
@@ -118,23 +198,27 @@ const TrainingDaySection = () => {
             >
               <span className="training-day__card-time">{item.time}</span>
               <span className="training-day__card-icon">⏱</span>
-              <h4 className="training-day__card-title">{item.title}</h4>
+              <h4 className="training-day__card-title">
+                {item.title[currentLang]}
+              </h4>
 
               {item.description && (
-                <p className="training-day__card-text">{item.description}</p>
+                <p className="training-day__card-text">
+                  {item.description[currentLang]}
+                </p>
               )}
 
               {item.location && (
                 <div className="training-day__card-info">
-                  <div>{item.location}</div>
-                  <div>{item.group}</div>
-                  <div>{item.attention}</div>
+                  <div>{item.location[currentLang]}</div>
+                  {item.group && <div>{item.group[currentLang]}</div>}
+                  {item.attention && <div>{item.attention[currentLang]}</div>}
                 </div>
               )}
 
-              {item.items && item.items.length > 0 && (
+              {item?.items && (
                 <ul className="training-day__card-list">
-                  {item.items.map((li, idx) => (
+                  {item.items[currentLang].map((li, idx) => (
                     <li key={idx}>{li}</li>
                   ))}
                 </ul>
@@ -150,8 +234,10 @@ const TrainingDaySection = () => {
                 </div>
               )}
 
-              {item.note && (
-                <div className="training-day__card-note">{item.note}</div>
+              {item?.note && (
+                <div className="training-day__card-note">
+                  {item.note[currentLang]}
+                </div>
               )}
             </div>
           ))}
@@ -160,7 +246,7 @@ const TrainingDaySection = () => {
         {/* Футер */}
         <div className="training-day__footnote">
           <span className="training-day__footnote-icon">💙</span>
-          <em>Каждое погружение — шаг к гармонии с собой и океаном</em>
+          <em>{t.text.dayFooter}</em>
         </div>
       </div>
     </section>

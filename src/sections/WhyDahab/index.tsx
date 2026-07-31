@@ -6,7 +6,7 @@ import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
 import { useInView } from "react-intersection-observer";
 
-export interface WhyDahabItem {
+interface WhyDahabItem {
   id: string;
   icon: string;
   title: Record<"ru" | "en", string>;

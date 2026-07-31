@@ -22,6 +22,8 @@ export const translations = {
       family: "Family-Friendly Format",
       important: "Important!",
       program: "Comprehensive training program",
+      dayOne: "A Typical",
+      dayTwo: "Training Day",
     },
     subtitle: {
       verify: "The code has been sent to your e-mail",
@@ -30,6 +32,9 @@ export const translations = {
         "Try freediving without buying a full course — special 2.5-hour introductory programs",
       team: "Review our team",
       feedbacks: "Reviews from our guests",
+      dayOne: "From your very first breath",
+      dayTwo:
+        "to your deepest dive, every part of the day is designed for your comfort, safety, and progress.",
     },
     text: {
       main: "Diving",
@@ -52,6 +57,8 @@ export const translations = {
       instructor: "instructor",
       safety: "safety",
       maxDepth: "max.depth",
+      dayFooter:
+        "Every dive is a step towards harmony with yourself and the ocean",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -118,6 +125,8 @@ export const translations = {
       family: "Семейный формат",
       important: "Важно!",
       program: "Комплексная программа подготовки",
+      dayOne: "Как проходит",
+      dayTwo: "тренировочный день",
     },
     subtitle: {
       verify: "Код подтверждения отправлен на вашу почту",
@@ -126,6 +135,8 @@ export const translations = {
         "Попробуйте фридайвинг, не покупая полный курс — специальные 2,5-часовые пробные тренировки.",
       team: "Описание нашей команды",
       feedbacks: "Отзывы наших гостей",
+      dayOne: "От дыхания до глубины",
+      dayTwo: "каждый этап выстроен для максимального комфорта и прогресса",
     },
     text: {
       main: "Погружение",
@@ -147,6 +158,7 @@ export const translations = {
       instructor: "инструктор",
       safety: "безопасность",
       maxDepth: "макс.глубина",
+      dayFooter: "Каждое погружение — шаг к гармонии с собой и океаном",
     },
     placeholder: {
       email: "example@mail.ru",

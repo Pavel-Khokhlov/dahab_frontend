@@ -2,7 +2,7 @@
   position: relative;
   margin: 0 auto;
   background: var(--primary-white);
-  padding: 60px 0;
+  padding: $section-padding;
   z-index: 2;
 
   &__header {
@@ -194,7 +194,7 @@
     &-position {
       font-size: 14px;
       font-weight: 600;
-      color: $color-teal;
+      color: rgba(var(--color-teal-rgb), 1);
       background: rgba(74, 108, 247, 0.08);
       padding: 10px 14px;
       border-radius: 12px;

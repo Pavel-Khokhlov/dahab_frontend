@@ -26,12 +26,10 @@
 }
 
 .featureCard {
-  background: rgba($color-ocean, 0.5);
-  backdrop-filter: blur(4px);
-  border: 1px solid rgba($color-teal, 0.2);
+  @include filter-blur;
+  @include matte-glass;
   border-radius: 24px;
   padding: 2.5rem 2rem 2.8rem;
-  box-shadow: 0px 10px 50px -15px rgba($color-accent, 0);
   transform: scale(1);
   transition: $app-transition;
   position: relative;
@@ -44,18 +42,18 @@
     inset: 0;
     background: linear-gradient(
       135deg,
-      rgba($color-accent, 0.05),
+      rgba(var(--color-accent), 0.05),
       transparent 60%
     );
     opacity: 0;
     transition: opacity 0.6s ease;
   }
 
-  &.active, &:hover {
+  &.active,
+  &:hover {
+    @include matte-glass-active;
     transform: scale(1.03);
     transition: $app-transition;
-    border: 1px solid rgba($color-accent, 0.4);
-    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.6);
     opacity: 1;
 
     &::before {
@@ -63,12 +61,12 @@
     }
 
     .cardIcon {
-      color: var(--color-lightblue);
+      color: var(--primary-brand);
       transform: scale(1.05);
     }
 
     .cardTitle {
-      color: $color-white;
+      color: var(--primary-white);
     }
   }
 

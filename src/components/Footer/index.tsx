@@ -10,7 +10,7 @@ const FooterSection = () => {
       <div className={styles.container}>
         <div className={styles.footerInner}>
           <div className={styles.footerBrand}>
-            <LogoIcon color={"var(--color-lightblue)"} size={40} />
+            <LogoIcon color={"var(--primary-brand)"} size={40} />
             <span className={styles.footerName}>{t.footer.molchanovs}</span>
           </div>
           <div className={styles.footerMeta}>

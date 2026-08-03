@@ -63,7 +63,7 @@ const TrainingScheduleSection: React.FC = () => {
           <p className="note-text">{t.text.weekFooter}</p>
         </div>
 
-        <LogoIcon color={"var(--color-lightblue)"} size={40} />
+        <LogoIcon color={"var(--primary-brand)"} size={40} />
         <div className={`brand-section ${isVisible ? "visible" : ""}`}>
           <span className="brand-name">molchanovs</span>
         </div>

@@ -10,7 +10,7 @@ interface tgState {
 export const useTGStore = create<tgState>()(
   persist(
     (set, get) => ({
-      tgUserName: "Garaihachka",
+      tgUserName: "DahabFamilyFreediving",
       error: null,
 
       // Установить имя пользователя

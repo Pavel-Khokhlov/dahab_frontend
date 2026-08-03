@@ -14,6 +14,7 @@ $gray-cold: #b0c8d9;
 $text-dim: #7f9bb0;
 
 .header {
+  @include filter-blur;
   position: fixed;
   top: 0;
   left: 0;
@@ -29,11 +30,10 @@ $text-dim: #7f9bb0;
   z-index: 100;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(3px);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 
   // подсветка снизу — как отражение от воды
-  /* &::after {
+  &::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -47,7 +47,7 @@ $text-dim: #7f9bb0;
 
   &:hover::after {
     opacity: 0.4;
-  } */
+  }
 
   &__logo {
     border: none;
@@ -98,13 +98,12 @@ $text-dim: #7f9bb0;
 // DROPDOWN MENU — подводная глубина
 // =============================================
 .dropdown-menu {
+  @include filter-blur-saturate;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   background: rgba(8, 14, 20, 0.6);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
   transform: translateY(0);
   opacity: 0;
   visibility: hidden;

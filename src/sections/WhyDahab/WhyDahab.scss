@@ -1,7 +1,7 @@
 // WhyDahabSection.scss
 .why-dahab {
   position: relative;
-  padding: 3rem 1.5rem 6rem;
+  padding: $section-padding;
   min-height: 100dvh;
   display: flex;
   align-items: center;
@@ -33,7 +33,11 @@
       height: 500px;
       top: -200px;
       right: -100px;
-      background: radial-gradient(circle, #00d4ff, transparent 70%);
+      background: radial-gradient(
+        circle,
+        var(--primary-brand),
+        transparent 70%
+      );
       animation-duration: 25s;
     }
 
@@ -109,7 +113,7 @@
   }
 
   &__highlight {
-    background: linear-gradient(135deg, #00d4ff, #7b2ffc, #00ff87);
+    background: linear-gradient(135deg, var(--primary-brand), #7b2ffc, #00ff87);
     background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -140,7 +144,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      #00d4ff 45%,
+      var(--primary-brand) 45%,
       #7b2ffc 55%,
       transparent 100%
     );

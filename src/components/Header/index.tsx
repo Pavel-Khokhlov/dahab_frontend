@@ -111,7 +111,7 @@ const Header = () => {
           <LogoMolchanovsIcon
             colorIcon={
               isMenuOpen || scrollY > 280
-                ? "var(--color-lightblue)"
+                ? "var(--primary-brand)"
                 : "var(--primary-white)"
             }
             colorText={

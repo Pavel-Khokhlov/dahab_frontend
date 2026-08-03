@@ -67,7 +67,7 @@ const Header2 = () => {
           aria-label="На главную"
         >
           <LogoMolchanovsIcon
-            colorIcon={"var(--color-lightblue)"}
+            colorIcon={"var(--primary-brand)"}
             colorText={"var(--primary-black)"}
             size={120}
           />
@@ -102,20 +102,28 @@ const Header2 = () => {
           <ul className="dropdown-menu__list">
             <li className="dropdown-menu__item">
               <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
-                {t.title.main}
+                {t.menu.main}
               </a>
             </li>
             <li className="dropdown-menu__item">
               <a
-                href="#about"
-                onClick={(e) => handleMenuItemClick(e, "#about")}
+                href="#dahab"
+                onClick={(e) => handleMenuItemClick(e, "#dahab")}
               >
-                <span className="item-label">{t.title.about}</span>
+                <span className="item-label">{t.menu.dahab}</span>
+              </a>
+            </li>
+            <li className="dropdown-menu__item">
+              <a
+                href="#price"
+                onClick={(e) => handleMenuItemClick(e, "#price")}
+              >
+                <span className="item-label">{t.menu.prices}</span>
               </a>
             </li>
             <li className="dropdown-menu__item">
               <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
-                <span className="item-label">{t.title.team}</span>
+                <span className="item-label">{t.menu.team}</span>
               </a>
             </li>
             <li className="dropdown-menu__item">
@@ -123,7 +131,7 @@ const Header2 = () => {
                 href="#feedbacks"
                 onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
               >
-                <span className="item-label">{t.title.feedbacks}</span>
+                <span className="item-label">{t.menu.feedbacks}</span>
               </a>
             </li>
             <li className="dropdown-menu__item">
@@ -131,7 +139,7 @@ const Header2 = () => {
                 href="#contact"
                 onClick={(e) => handleMenuItemClick(e, "#contact")}
               >
-                <span className="item-label">{t.title.contacts}</span>
+                <span className="item-label">{t.menu.contacts}</span>
               </a>
             </li>
           </ul>

@@ -1,5 +1,14 @@
 export const translations = {
   en: {
+    menu: {
+      main: "Home",
+      dahab: "Dahab",
+      trial: "Introduction",
+      prices: "Prices",
+      team: "Team",
+      feedbacks: "Reviews",
+      contacts: "Contacts"
+    },
     title: {
       urlMain: "Dahab Freediving Molchanovs | Egypt",
       urlSchedule: "Dahab Freediving Molchanovs | Egypt | Schedule",
@@ -52,7 +61,7 @@ export const translations = {
       include: "What's included:",
       popular: "Popular",
       feedback:
-        "We sincerely thank everyone who chose the Molchanova team in Dahab to immerse themselves in the world of freediving. Your kind words, sincere recommendations to friends and detailed reviews are not just pleasant emotions, but real support that inspires us to become even better. We remember every story you tell about the first meters underwater, about overcoming yourself and about the amazing feeling of freedom that the Red Sea gives. It is thanks to you that beginners will learn that there is a place in Dahab where they teach safely and sincerely, and experienced athletes will find a professional team here for new records. Your trust and recommendations help us grow, and we promise to continue sharing with you only the best Molchanovs techniques, the warmth of the sea and the sincere attitude towards each guest. Thank you for being with us — you are making the Molchanovs community in Egypt truly alive and strong!",
+        "«We sincerely thank everyone who chose Molchanovs in Dahab. Your reviews and recommendations are our greatest support and inspiration. We remember your first meters, your breakthroughs, and that feeling of freedom in the Red Sea. Thanks to you, beginners find safe training, and pros find a team for records. Your trust helps us grow, and we promise the best methods, ocean warmth, and genuine care. Thank you — you make our Egyptian community alive and strong!»",
       clients: "clients",
       instructor: "instructor",
       safety: "safety",
@@ -103,6 +112,15 @@ export const translations = {
     },
   },
   ru: {
+    menu: {
+      main: "Главная",
+      dahab: "Дахаб",
+      trial: "Пробное",
+      prices: "Стоимость",
+      team: "Команда",
+      feedbacks: "Отзывы",
+      contacts: "Контакты"
+    },
     title: {
       urlMain: "Дахаб Фридайвинг Molchanovs | Египет",
       urlSchedule: "Дахаб Freediving Molchanovs | Египет | Тренировки",
@@ -149,11 +167,11 @@ export const translations = {
       relax: "день отдыха",
       lecture: "лекции и восстановление",
       weekFooter:
-        " Между тренировками предусмотрено достаточно времени для отдыха, экскурсий, семейных прогулок, снорклинга или знакомства атмосферой Дахаба",
+        "Между тренировками предусмотрено достаточно времени для отдыха, экскурсий, семейных прогулок, снорклинга или знакомства атмосферой Дахаба",
       include: "Что включено:",
       popular: "Популярно",
       feedback:
-        "От всего сердца благодарим каждого, кто выбрал команду Molchanovs в Дахебе для своего погружения в мир фридайвинга. Ваши тёплые слова, искренние рекомендации друзьям и подробные отзывы — это не просто приятные эмоции, а настоящая поддержка, которая вдохновляет нас становиться ещё лучше. Мы помним каждый ваш рассказ о первых метрах под водой, о преодолении себя и о том удивительном чувстве свободы, которое дарит Красное море. Именно благодаря вам новички узнают, что в Дахебе есть место, где учат безопасно и с душой, а опытные атлеты находят здесь профессиональную команду для новых рекордов. Ваше доверие и рекомендации помогают нам расти, и мы обещаем продолжать делиться с вами только лучшими методиками Molchanovs, теплом моря и искренним отношением к каждому гостю. Спасибо, что вы с нами — вы делаете сообщество Molchanovs в Египте по-настоящему живым и сильным!",
+        "«Сердечно благодарим каждого, кто выбрал Molchanovs в Дахабе. Ваши отзывы и рекомендации — наша главная поддержка и вдохновение. Мы помним ваши первые метры, преодоление и чувство свободы в Красном море. Благодаря вам новички находят безопасное обучение, а профи — команду для рекордов. Ваше доверие помогает нам расти, и мы обещаем лучшие методики, тепло моря и искренность. Спасибо — вы делаете наше сообщество в Египте живым и сильным!»",
       clients: "клиентов",
       instructor: "инструктор",
       safety: "безопасность",

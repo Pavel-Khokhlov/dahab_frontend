@@ -3,7 +3,7 @@
 
 .feedback-section {
   position: relative;
-  padding: 6rem 1.5rem;
+  padding: $section-padding;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -29,7 +29,11 @@
       height: 500px;
       top: -200px;
       right: -100px;
-      background: radial-gradient(circle, #00d4ff, transparent 70%);
+      background: radial-gradient(
+        circle,
+        var(--primary-brand),
+        transparent 70%
+      );
       animation-duration: 25s;
     }
 
@@ -166,7 +170,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      #00d4ff 45%,
+      var(--primary-brand) 45%,
       #7b2ffc 55%,
       transparent 100%
     );
@@ -254,6 +258,7 @@
   }
 
   &__nav {
+    @include filter-blur;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -269,7 +274,6 @@
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
     padding: 0;
 
     &:hover {
@@ -313,9 +317,9 @@
 
 // Карточка отзыва
 .feedback-card {
+  @include filter-blur;
   position: relative;
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 20px;
   padding: 40px 35px 35px;
@@ -622,7 +626,6 @@
 
 @media (max-width: 480px) {
   .feedback-section {
-    padding: 3rem 0.5rem;
 
     &__title {
       font-size: 2rem;

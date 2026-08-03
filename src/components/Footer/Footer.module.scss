@@ -1,4 +1,8 @@
-$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-primary:
+  "Inter",
+  -apple-system,
+  BlinkMacSystemFont,
+  sans-serif;
 $color-dark: #0a0e14;
 $color-deep: #0f1a24;
 $color-ocean: #1a2e3f;
@@ -34,7 +38,7 @@ $transition-smooth: 0.6s $ease-out-expo;
   &Logo {
     font-size: 1.6rem;
     font-weight: 200;
-    color: var(--color-lightblue);
+    color: var(--primary-brand);
     opacity: 0.7;
     line-height: 1;
   }
@@ -65,7 +69,6 @@ $transition-smooth: 0.6s $ease-out-expo;
 
 // Responsive fine-tune
 @media (max-width: 640px) {
-
   .footerInner {
     flex-direction: column;
     align-items: flex-start;

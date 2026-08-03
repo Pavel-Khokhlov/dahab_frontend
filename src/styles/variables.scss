@@ -1,14 +1,3 @@
-// Цвета
-$primary: #3498db;
-$secondary: #2ecc71;
-$danger: #e74c3c;
-$dark: #2c3e50;
-
-// Размеры
-$spacing-unit: 8px;
-$border-radius: 4px;
-$font-size-base: 16px;
-
 // Брейкпоинты
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
@@ -21,5 +10,8 @@ $border-radius: min(20px, 5vw);
 // TRANSITIONS
 $app-transition: all 0.3s ease;
 $ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+// PADDINGS
+$section-padding: min(100px, 15vw) 20px;
 
 

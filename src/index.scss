@@ -1,8 +1,10 @@
 :root {
-  --primary-black: rgba(27, 27, 27, 1);
-  --primary-light-black: rgba(42, 52, 57, 1);
-  --primary-white: rgba(254, 254, 250, 1);
-  --color-lightblue: #00d4ff;
+  /* Базовые цвета (только HEX) */
+  --primary-black: #1b1b1b;
+  --primary-light-black: #2a3439;
+  --primary-white: #fefefa;
+  --primary-brand: #00d4ff;
+
   --title: #ffffff;
   --subtitle: #ffffff;
   --text: #6b6375;
@@ -24,6 +26,17 @@
   --mono: ui-monospace, Consolas, monospace;
 
   --color-teal: #2c5f7a;
+  --color-ocean: #1a2e3f;
+  --color-accent: #6fa8c9;
+
+  /* RGB версии для rgba() */
+  --primary-black-rgb: 27, 27, 27;
+  --primary-white-rgb: 254, 254, 250;
+  --primary-brand-rgb: 0, 212, 255;
+
+  --color-teal-rgb: 44, 95, 122;
+  --color-ocean-rgb: 26, 46, 63;
+  --color-accent-rgb: 111, 168, 201;
 
   font: 18px/120% var(--sans);
   letter-spacing: 0.1px;
@@ -53,6 +66,9 @@
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
     color: var(--primary-white);
+    --color-teal: #2c5f7a;
+    --color-ocean: #1a2e3f;
+    --color-accent: #6fa8c9;
   }
 
   #social .button-icon {

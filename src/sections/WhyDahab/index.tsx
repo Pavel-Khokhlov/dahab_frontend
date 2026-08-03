@@ -105,7 +105,7 @@ const WhyDahabSection: React.FC = () => {
   });
 
   return (
-    <section className="why-dahab">
+    <section className="why-dahab" id="dahab">
       <div className="why-dahab__background">
         <div className="why-dahab__gradient-circle why-dahab__gradient-circle--1"></div>
         <div className="why-dahab__gradient-circle why-dahab__gradient-circle--2"></div>

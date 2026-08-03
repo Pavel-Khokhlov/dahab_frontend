@@ -3,7 +3,7 @@
 
 .trialSection {
   position: relative;
-  padding: 4rem 20px;
+  padding: $section-padding;
   background: $gd-section;
   color: #f0f7ff;
   font-family:
@@ -59,17 +59,15 @@
 }
 
 .includedBlock {
+  @include filter-blur;
+  @include matte-glass-active;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 5;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(8px);
   border-radius: $border-radius;
   padding: 1rem;
-  border: 1px solid;
-  border-color: $brand-blue;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -115,8 +113,8 @@
 }
 
 .card {
+  @include filter-blur;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(4px);
   border-radius: 2rem;
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 2rem 1.75rem 2.25rem;

@@ -1,47 +1,23 @@
 import { useEffect, useState } from "react";
-import { usePageScroll } from "@/store/globalUI";
 import BurgerMenu from "../BurgerMenu";
 
-import "./Header.scss";
-import { useTranslator } from "@/context/TranslationContext";
-import backBlack from "@/assets/images/icons/back-black.svg";
-import backWhite from "@/assets/images/icons/back-white.svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import LanguageSwitcher2 from "../Lang";
 import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
+import NavigationMenu from "../NavigationMenu";
+
+import "./Header.scss";
+import { useStore } from "@/store";
 
 const Header2 = () => {
-  const t = useTranslator();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { scrollY } = usePageScroll();
+  const { globalUIStore } = useStore();
+
+  console.log("globalUIStore", globalUIStore.deviceType);
+
+  const isMobile = globalUIStore.deviceType === "mobile";
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const handleClick = () => {
+  
+  const handleBurgerClick = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string,
-  ) => {
-    event.preventDefault();
-    setIsMenuOpen(false);
-
-    setTimeout(() => {
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const headerHeight = 0;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerHeight;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }, 300);
   };
 
   const handleClickOverlay = () => {
@@ -58,7 +34,7 @@ const Header2 = () => {
 
   return (
     <>
-      <div className="header">
+      <div className={`header ${isMobile ? "mobile" : ""}`}>
         <button
           className="header__logo"
           onClick={() => {
@@ -72,8 +48,7 @@ const Header2 = () => {
             size={120}
           />
         </button>
-        <h5 className="header__menu">menu</h5>
-        {location.pathname === "/schedule" && (
+        {/* {location.pathname === "/schedule" && (
           <button className="header__back" onClick={() => navigate(-1)}>
             <img
               src={isMenuOpen || scrollY > 280 ? backBlack : backWhite}
@@ -81,74 +56,25 @@ const Header2 = () => {
               width={30}
             />
           </button>
-        )}
-        {location.pathname === "/" && (
-          <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
+        )} */}
+        {isMobile ? (
+          <BurgerMenu isClicked={isMenuOpen} onClick={handleBurgerClick} />
+        ) : (
+          <NavigationMenu layout="head" isOpen={true} />
         )}
       </div>
 
       {/* Molchanovs — строгое подводное меню */}
-      <nav
+      <div
         className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}
         onClick={handleClickOverlay}
       >
-        {/* Декоративный элемент — сонар/волна */}
-        {/* <div className="dropdown-menu__sonar" /> */}
-
-        <div
-          className={`dropdown-menu__inner ${isMenuOpen ? "open" : ""}`}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <ul className="dropdown-menu__list">
-            <li className="dropdown-menu__item">
-              <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
-                {t.menu.main}
-              </a>
-            </li>
-            <li className="dropdown-menu__item">
-              <a
-                href="#dahab"
-                onClick={(e) => handleMenuItemClick(e, "#dahab")}
-              >
-                <span className="item-label">{t.menu.dahab}</span>
-              </a>
-            </li>
-            <li className="dropdown-menu__item">
-              <a
-                href="#price"
-                onClick={(e) => handleMenuItemClick(e, "#price")}
-              >
-                <span className="item-label">{t.menu.prices}</span>
-              </a>
-            </li>
-            <li className="dropdown-menu__item">
-              <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
-                <span className="item-label">{t.menu.team}</span>
-              </a>
-            </li>
-            <li className="dropdown-menu__item">
-              <a
-                href="#feedbacks"
-                onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
-              >
-                <span className="item-label">{t.menu.feedbacks}</span>
-              </a>
-            </li>
-            <li className="dropdown-menu__item">
-              <a
-                href="#contact"
-                onClick={(e) => handleMenuItemClick(e, "#contact")}
-              >
-                <span className="item-label">{t.menu.contacts}</span>
-              </a>
-            </li>
-          </ul>
-
-          <div className="dropdown-menu__bottom">
-            <LanguageSwitcher2 />
-          </div>
-        </div>
-      </nav>
+        <NavigationMenu
+          layout="burger"
+          isOpen={isMenuOpen}
+          onClose={handleClickOverlay}
+        />
+      </div>
     </>
   );
 };

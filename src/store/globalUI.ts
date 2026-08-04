@@ -188,13 +188,6 @@ export const useGlobalUIStore = create<GlobalUIState>()(
             const threshold = get().pageScrollThreshold;
             setPageScrolled(scrollY > threshold);
           }
-
-          console.log("[App Init] Scroll check:", {
-            hasScroll,
-            scrollY: window.scrollY,
-            threshold: get().pageScrollThreshold,
-            isPageScrolled: get().isPageScrolled,
-          });
           setScrollY(window.scrollY);
         };
 

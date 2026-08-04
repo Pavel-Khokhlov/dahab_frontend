@@ -5,6 +5,7 @@ export const translations = {
       dahab: "Dahab",
       trial: "Introduction",
       prices: "Prices",
+      tour: "Tour",
       team: "Team",
       feedbacks: "Reviews",
       contacts: "Contacts"
@@ -117,6 +118,7 @@ export const translations = {
       dahab: "Дахаб",
       trial: "Пробное",
       prices: "Стоимость",
+      tour: "Путешествия",
       team: "Команда",
       feedbacks: "Отзывы",
       contacts: "Контакты"

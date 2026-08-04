@@ -20,33 +20,21 @@ $text-dim: #7f9bb0;
   left: 0;
   right: 0;
   height: 60px;
-  border-radius: 30px;
-  border: 1px solid var(--primary-white);
+  border: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px;
+  margin: 0px;
   padding: 0 10px 0 20px;
-  z-index: 100;
   box-sizing: border-box;
   background: rgba(255, 255, 255, 0.8);
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-
-  // подсветка снизу — как отражение от воды
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 10%;
-    width: 80%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, $accent-cyan, transparent);
-    opacity: 0.15;
-    transition: opacity 0.4s;
-  }
-
-  &:hover::after {
-    opacity: 0.4;
+  z-index: 100;
+  &.mobile {
+    margin: 5px;
+    border-radius: 30px;
+    border: 1px solid var(--primary-white);
+    padding: 0 10px 0;
   }
 
   &__logo {
@@ -114,128 +102,10 @@ $text-dim: #7f9bb0;
   @include flex-center-column;
   justify-content: start;
 
-  &__inner {
-    @include flex-center-column;
-    margin-top: 55px;
-    background: rgba(255, 255, 255, 0.9);
-    width: calc(100vw - 10px);
-    border-radius: 30px;
-    padding: 0 0 30px 0;
-    // Начальное состояние - скрыт и наклонен
-    transform: translateY(0) rotateX(90deg) rotateZ(0);
-    opacity: 0;
-    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    transform-origin: top center;
-    pointer-events: none;
-    &.open {
-      transform: translateY(0) rotateX(0) rotateZ(0);
-      opacity: 1;
-      pointer-events: all;
-    }
-  }
-
-  // линия глубины — имитация термоклина
-  &__depth-line {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: repeating-linear-gradient(
-      90deg,
-      transparent,
-      rgba(59, 169, 217, 0.05) 20px,
-      rgba(59, 169, 217, 0.15) 40px,
-      transparent 60px
-    );
-    pointer-events: none;
-  }
-
   &.open {
     transform: translateY(0);
     top: 0;
     opacity: 1;
     visibility: visible;
-  }
-
-  &__list {
-    list-style: none;
-    padding: 1.5rem 2rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    width: 100%;
-    max-width: 640px;
-    position: relative;
-    z-index: 2;
-    box-sizing: border-box;
-  }
-
-  &__item {
-    padding: 0.6rem 0.8rem;
-    border-radius: 4px;
-    transition: all 0.25s ease;
-    position: relative;
-    gap: 10px;
-    cursor: pointer;
-
-    a {
-      text-decoration: none;
-      color: var(--primary-black);
-      font-size: 24px;
-      font-weight: 600;
-      transition: color 0.2s;
-      width: 100%;
-    }
-  }
-
-  &__footer {
-    margin-top: 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 0 2rem 1.5rem;
-    width: 100%;
-    max-width: 640px;
-    justify-content: space-between;
-    border-top: 1px solid rgba(59, 169, 217, 0.08);
-    padding-top: 1.8rem;
-    flex-wrap: wrap;
-    position: relative;
-    z-index: 2;
-  }
-}
-
-// Адаптив для мобильных
-@media (max-width: 640px) {
-  .dropdown-menu {
-    &__footer {
-      flex-direction: column;
-      gap: 1.2rem;
-      align-items: flex-start;
-      padding: 1.2rem 1.2rem 1.2rem;
-    }
-
-    .depth-indicator {
-      font-size: 0.6rem;
-    }
-  }
-}
-
-// Кастомный скролл в стиле "глубина"
-.dropdown-menu {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(59, 169, 217, 0.15) transparent;
-
-  &::-webkit-scrollbar {
-    width: 4px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: rgba(59, 169, 217, 0.25);
-    border-radius: 20px;
   }
 }

@@ -1,106 +1,40 @@
 import { useEffect, useState } from "react";
 import BurgerMenu from "../BurgerMenu";
 
-// import "./Header.scss";
-import { useTranslator } from "@/context/TranslationContext";
-import backBlack from "@/assets/images/icons/back-black.svg";
-import backWhite from "@/assets/images/icons/back-white.svg";
-import { useLocation, useNavigate } from "react-router-dom";
-import LanguageSwitcher2 from "../Lang";
-import { useStore } from "@/store";
 import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
+import NavigationMenu from "../NavigationMenu";
 
-const MAX_OPACITY = 0.95;
-const MAX_SHADOW = 0.15;
+import "./Header.scss";
+import { useStore } from "@/store";
 
-const Header = () => {
-  const t = useTranslator();
+const Header2 = () => {
   const { globalUIStore } = useStore();
-  const navigate = useNavigate();
-  const location = useLocation();
-  // const { scrollY } = usePageScroll();
-  const scrollY = globalUIStore.valueHeroScrolled || globalUIStore.scrollY;
-  const opacity = Math.min(scrollY / 280, MAX_OPACITY);
-  const shadow = Math.min(scrollY / 400, MAX_SHADOW);
+
+  console.log("globalUIStore", globalUIStore.deviceType);
+
+  const isMobile = globalUIStore.deviceType === "mobile";
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const handleClick = () => {
+  
+  const handleBurgerClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    targetId: string,
-  ) => {
-    event.preventDefault();
-
-    // Закрываем меню
+  const handleClickOverlay = () => {
     setIsMenuOpen(false);
-
-    // Небольшая задержка для плавного закрытия меню
-    setTimeout(() => {
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        // Учитываем высоту фиксированного хедера (если есть)
-        const headerHeight = 50; // Настройте под ваш хедер
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition =
-          elementPosition + window.pageYOffset - headerHeight;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: "smooth",
-        });
-      }
-    }, 300); // Задержка соответствует времени анимации закрытия меню
   };
-  // Block scroll when menu is open
+
   useEffect(() => {
     if (isMenuOpen) {
-      // Save current scroll position
-      const scrollY = window.scrollY;
-
-      // Add styles to prevent scrolling
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.width = "100%";
       document.body.style.overflow = "hidden";
-
-      // Optional: prevent scrolling on html as well for better compatibility
-      document.documentElement.style.overflow = "hidden";
     } else {
-      // Restore scrolling
-      const scrollY = document.body.style.top;
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-
-      // Restore scroll position
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || "0", 10) * -1);
-      }
+      document.body.style.overflow = "auto";
     }
-
-    // Cleanup function
-    return () => {
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.width = "";
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-    };
   }, [isMenuOpen]);
+
   return (
     <>
-      <div
-        className="header"
-        style={{
-          backgroundColor: `rgba(255, 255, 255, ${isMenuOpen ? MAX_OPACITY : opacity})`,
-          boxShadow: `4px 0 16px rgba(0, 0, 0, ${isMenuOpen ? MAX_SHADOW : shadow})`,
-        }}
-      >
+      <div className={`header ${isMobile ? "mobile" : ""}`}>
         <button
           className="header__logo"
           onClick={() => {
@@ -109,21 +43,12 @@ const Header = () => {
           aria-label="На главную"
         >
           <LogoMolchanovsIcon
-            colorIcon={
-              isMenuOpen || scrollY > 280
-                ? "var(--primary-brand)"
-                : "var(--primary-white)"
-            }
-            colorText={
-              isMenuOpen || scrollY > 280
-                ? "var(--primary-black)"
-                : "var(--primary-white)"
-            }
+            colorIcon={"var(--primary-brand)"}
+            colorText={"var(--primary-black)"}
             size={120}
           />
         </button>
-        <h5 className="header__menu">menu</h5>
-        {location.pathname === "/schedule" && (
+        {/* {location.pathname === "/schedule" && (
           <button className="header__back" onClick={() => navigate(-1)}>
             <img
               src={isMenuOpen || scrollY > 280 ? backBlack : backWhite}
@@ -131,51 +56,27 @@ const Header = () => {
               width={30}
             />
           </button>
-        )}
-        {location.pathname === "/" && (
-          <BurgerMenu isClicked={isMenuOpen} onClick={handleClick} />
+        )} */}
+        {isMobile ? (
+          <BurgerMenu isClicked={isMenuOpen} onClick={handleBurgerClick} />
+        ) : (
+          <NavigationMenu layout="head" isOpen={true} />
         )}
       </div>
-      {/* Dropdown Menu */}
-      <nav className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}>
-        <ul className="dropdown-menu__list">
-          <li className="dropdown-menu__item">
-            <a href="#main" onClick={(e) => handleMenuItemClick(e, "#main")}>
-              {t.title.main}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a href="#about" onClick={(e) => handleMenuItemClick(e, "#about")}>
-              <p className="">{t.title.about}</p>
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a href="#team" onClick={(e) => handleMenuItemClick(e, "#team")}>
-              {t.title.team}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a
-              href="#feedbacks"
-              onClick={(e) => handleMenuItemClick(e, "#feedbacks")}
-            >
-              {t.title.feedbacks}
-            </a>
-          </li>
-          <li className="dropdown-menu__item">
-            <a
-              href="#contact"
-              onClick={(e) => handleMenuItemClick(e, "#contact")}
-            >
-              {t.title.contacts}
-            </a>
-          </li>
-        </ul>
-        {/* <LanguageSwitcher /> */}
-        <LanguageSwitcher2 />
-      </nav>
+
+      {/* Molchanovs — строгое подводное меню */}
+      <div
+        className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}
+        onClick={handleClickOverlay}
+      >
+        <NavigationMenu
+          layout="burger"
+          isOpen={isMenuOpen}
+          onClose={handleClickOverlay}
+        />
+      </div>
     </>
   );
 };
 
-export default Header;
+export default Header2;

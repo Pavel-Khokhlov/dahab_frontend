@@ -30,8 +30,12 @@ const plans = [
       ru: "Пакет «Неделя»",
       en: "Bundle «One week»",
     },
-    price: "40 000 ₽",
+    price: "40 000* ₽",
     isPopular: true, // Mark the middle one as popular
+    mark: {
+      ru: "Стоимость одной тренировки 10 000 р",
+      en: "The cost of one training is 10,000 rub",
+    },
   },
   {
     id: "two-weeks",
@@ -47,8 +51,12 @@ const plans = [
       ru: "Пакет «Две недели»",
       en: "Bundle «Two weeks»",
     },
-    price: "72 000 ₽",
+    price: "72 000* ₽",
     isPopular: false,
+    mark: {
+      ru: "Стоимость одной тренировки 9 000 р",
+      en: "The cost of one training is 9,000 rub",
+    },
   },
 ];
 
@@ -100,6 +108,11 @@ const PricingSection = () => {
               >
                 {t.button.bookin}
               </button>
+              {plan.mark && (
+                <p className="pricing-card__mark">
+                  * {plan.mark[currentLang]}
+                </p>
+              )}
             </div>
           ))}
         </div>

@@ -46,6 +46,7 @@ $transition: all 0.3s ease;
 }
 
 .pricing-card {
+  position: relative;
   background: $card-bg;
   border-radius: $border-radius;
   padding: 2.5rem 2rem;
@@ -135,6 +136,15 @@ $transition: all 0.3s ease;
       background: $primary-hover;
       transform: scale(1.02);
     }
+  }
+  &__mark {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: var(--primary-black);
   }
 }
 

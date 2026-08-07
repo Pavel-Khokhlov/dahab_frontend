@@ -261,6 +261,7 @@
   }
 
   &__footnote {
+    @include filter-blur;
     font-size: 1.05rem;
     font-weight: 350;
     color: rgba(255, 255, 255, 0.85);
@@ -273,12 +274,10 @@
     );
     border-radius: 1.5rem;
     border: 1px solid rgba(255, 255, 255, 0.06);
-    border-left: 4px solid #5ac8fa;
-    border-right: 4px solid rgba(90, 200, 250, 0.2);
+    border-left: 2px solid var(--primary-brand);
+    border-right: 2px solid rgba(90, 200, 250, 0.2);
     letter-spacing: 0.01em;
     line-height: 1.6;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 
     em {
@@ -290,8 +289,6 @@
     @media (max-width: 480px) {
       font-size: 0.95rem;
       padding: 1rem 1.2rem;
-      border-left-width: 3px;
-      border-right-width: 3px;
     }
   }
 }

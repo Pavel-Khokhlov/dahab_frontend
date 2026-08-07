@@ -16,7 +16,7 @@ const plans = [
       ru: "Тренировочный день",
       en: "One training day",
     },
-    price: "12 000 ₽",
+    price: { ru: "12 000 ₽", en: "140 €" },
     isPopular: false, // We can add a "popular" tag later
   },
   {
@@ -30,11 +30,11 @@ const plans = [
       ru: "Пакет «Неделя»",
       en: "Bundle «One week»",
     },
-    price: "40 000* ₽",
+    price: { ru: "40 000* ₽", en: "450 €" },
     isPopular: true, // Mark the middle one as popular
     mark: {
       ru: "Стоимость одной тренировки 10 000 р",
-      en: "The cost of one training is 10,000 rub",
+      en: "The cost of one training is about 112.5 euro",
     },
   },
   {
@@ -51,11 +51,11 @@ const plans = [
       ru: "Пакет «Две недели»",
       en: "Bundle «Two weeks»",
     },
-    price: "72 000* ₽",
+    price: { ru: "72 000* ₽", en: "800 €" },
     isPopular: false,
     mark: {
       ru: "Стоимость одной тренировки 9 000 р",
-      en: "The cost of one training is 9,000 rub",
+      en: "The cost of one training is 100 euro",
     },
   },
 ];
@@ -101,7 +101,7 @@ const PricingSection = () => {
               <p className="pricing-card__description">
                 {plan.description[currentLang]}
               </p>
-              <p className="pricing-card__price">{plan.price}</p>
+              <p className="pricing-card__price">{plan.price[currentLang]}</p>
               <button
                 className="pricing-card__button"
                 onClick={() => handleBook(plan.message[currentLang])}
@@ -109,9 +109,7 @@ const PricingSection = () => {
                 {t.button.bookin}
               </button>
               {plan.mark && (
-                <p className="pricing-card__mark">
-                  * {plan.mark[currentLang]}
-                </p>
+                <p className="pricing-card__mark">* {plan.mark[currentLang]}</p>
               )}
             </div>
           ))}

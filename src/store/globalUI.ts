@@ -67,6 +67,12 @@ interface GlobalUIState {
   setLanguage: (locale: LocaleType) => void;
   toggleLanguage: () => void;
 
+  countryCode: string | null;
+  setCountryCode: (value: string) => void;
+
+  isGeoLoading: boolean;
+  setGeoLoading: (loading: boolean) => void;
+
   // Новые поля для определения устройства
   deviceType: DeviceType;
   isMobile: boolean;
@@ -97,6 +103,7 @@ interface GlobalUIState {
   // Функция инициализации приложения
   initializeApp: () => void;
   checkScrollOnLoad: () => void;
+  fetchUserLocation: () => Promise<void>;
 }
 
 export const useGlobalUIStore = create<GlobalUIState>()(
@@ -110,6 +117,16 @@ export const useGlobalUIStore = create<GlobalUIState>()(
       isTablet: getDeviceType(window.innerWidth) === "tablet",
       isDesktop: getDeviceType(window.innerWidth) === "desktop",
       windowWidth: window.innerWidth,
+
+      countryCode: null,
+      setCountryCode: (value: string) => {
+        set({ countryCode: value });
+      },
+
+      isGeoLoading: true,
+      setGeoLoading: (loading: boolean) => {
+        set({ isGeoLoading: loading });
+      },
 
       isPageScrolled: false,
       pageScrollThreshold: 100,
@@ -236,6 +253,51 @@ export const useGlobalUIStore = create<GlobalUIState>()(
       },
       initializeApp: () => {
         get().checkScrollOnLoad();
+        get().fetchUserLocation();
+      },
+      // 🔥 Основной метод для получения геолокации
+      fetchUserLocation: async () => {
+        const { setCountryCode, setGeoLoading } = get();
+
+        // Пробуем несколько сервисов по очереди
+        const services = [
+          {
+            url: "https://ipwho.is/",
+            parse: (data: any) => data.country_code,
+          },
+          {
+            url: "https://ipapi.co/json/",
+            parse: (data: any) => data.country_code,
+          },
+        ];
+
+        for (const service of services) {
+          try {
+            const response = await fetch(service.url, {
+              // Таймаут, чтобы не ждать слишком долго
+              signal: AbortSignal.timeout(5000),
+            });
+
+            if (!response.ok) continue;
+
+            const data = await response.json();
+            const countryCode = service.parse(data);
+
+            if (countryCode) {
+              setCountryCode(countryCode);
+              setGeoLoading(false);
+              console.log("🌍 Страна определена:", countryCode);
+              return; // Выходим, если успешно определили
+            }
+          } catch (error) {
+            console.warn(`⚠️ Ошибка при запросе к ${service.url}:`, error);
+            continue; // Пробуем следующий сервис
+          }
+        }
+
+        // Если ни один сервис не сработал
+        setGeoLoading(false);
+        console.warn("❌ Не удалось определить страну пользователя");
       },
     }),
     {

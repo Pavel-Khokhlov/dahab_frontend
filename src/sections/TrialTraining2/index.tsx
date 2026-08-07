@@ -3,7 +3,8 @@ import React from "react";
 import styles from "./Trial.module.scss";
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
-import trialImg from "@/assets/images/background/trial.webp";
+import trialImgV from "@/assets/images/background/trialV.webp";
+import trialImgH from "@/assets/images/background/trialH.webp";
 
 interface TrialCard {
   id: string;
@@ -19,6 +20,7 @@ const TrialSection2: React.FC = () => {
   const { globalUIStore, tgStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
 
+  const currentImage = globalUIStore.isMobile ? trialImgV : trialImgH;
   const trialData: TrialCard[] = [
     {
       id: "individual",
@@ -131,7 +133,7 @@ const TrialSection2: React.FC = () => {
         </div>
         <div className={styles.includedWrapper}>
           <img
-            src={trialImg}
+            src={currentImage}
             alt="picture trial training"
             className={styles.includedImage}
           />

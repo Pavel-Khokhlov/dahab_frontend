@@ -8,6 +8,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  optimizeDeps: {
+    include: ["use-visitor-location"], // Принудительно включить пакет в предварительную сборку
+  },
   base: "/",
   css: {
     preprocessorOptions: {
@@ -29,18 +32,18 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      "@": path.resolve(__dirname, "./src"),
     },
     extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
   },
   server: {
     host: "0.0.0.0", // Важно для доступа из контейнера
-    port: 5173,
+    port: 5555,
     watch: {
       usePolling: true, // Для Docker на Windows/Mac
     },
     hmr: {
-      clientPort: 5173, // Для правильного WebSocket
+      clientPort: 5555, // Для правильного WebSocket
     },
   },
 });

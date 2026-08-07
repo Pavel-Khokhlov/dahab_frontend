@@ -11,7 +11,7 @@ RUN npm install
 COPY . .
 
 # Открываем порт Vite (обычно 5173)
-EXPOSE 5173
+EXPOSE 5555
 
 # Запускаем dev сервер с hot-reload
 CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]

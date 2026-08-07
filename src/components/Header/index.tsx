@@ -7,10 +7,8 @@ import NavigationMenu from "../NavigationMenu";
 import "./Header.scss";
 import { useStore } from "@/store";
 
-const Header2 = () => {
+const Header = () => {
   const { globalUIStore } = useStore();
-
-  console.log("globalUIStore", globalUIStore.deviceType);
 
   const isMobile = globalUIStore.deviceType === "mobile";
 
@@ -79,4 +77,4 @@ const Header2 = () => {
   );
 };
 
-export default Header2;
+export default Header;

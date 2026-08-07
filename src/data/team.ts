@@ -21,6 +21,7 @@ export const team = [
       "A lifelong water enthusiast, Roman discovered his passion for swimming and diving at an early age. As a competitive swimmer, he represented his city team before transitioning to freediving.",
       "Today, Roman is an active competitive freediver who continues to challenge himself through regular competitions and ongoing training.",
     ],
+    linkTg: "Garaihachka",
   },
   {
     id: "002",
@@ -45,5 +46,6 @@ export const team = [
       "Daria regularly trains in cold-water environments, including the Barents Sea and under-ice diving, embracing a wide range of freediving conditions.",
       "Beyond teaching, she has a passion for underwater videography, capturing the beauty of the underwater world and sharing the unique experiences freediving has to offer.",
     ],
+    linkTg: "dsh_dshh",
   },
 ];

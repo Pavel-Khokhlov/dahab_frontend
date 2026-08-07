@@ -7,14 +7,20 @@ import { useStore } from "./store";
 import SchedulePage from "./pages/public/Schedule";
 import { useEffect } from "react";
 
+
 function App() {
   const { globalUIStore } = useStore();
   const currentTranslations =
-    translations[globalUIStore.currentLocale as keyof typeof translations];
+  translations[globalUIStore.currentLocale as keyof typeof translations];
 
-  useEffect(()=> {
+  useEffect(() => {
     globalUIStore.initializeApp();
-  }, [])
+  }, []);
+
+  if (globalUIStore.isGeoLoading) {
+    return <div>Определение местоположения...</div>;
+  }
+
   return (
     <HelmetProvider>
       <TranslationContext.Provider value={currentTranslations}>

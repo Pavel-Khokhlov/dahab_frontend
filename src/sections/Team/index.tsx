@@ -5,6 +5,9 @@ import { motion, Variants } from "framer-motion";
 
 import SectionWrapper from "@/components/SectionWrapper";
 import Divider from "@/elements/Divider";
+import InstaIcon from "@/assets/images/icons/insta.png";
+import TgIcon from "@/assets/images/icons/tg.png";
+
 import "./Team.scss";
 
 const teamData = {
@@ -112,24 +115,32 @@ const TeamSection = () => {
                 )}
               </div>
 
-              {/* <div className="team__card-footer">
-                <button className="team__card-button">
-                  <span>Подробнее</span>
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="M12 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div> */}
+              <div className="team__card-footer">
+                <p>Подробнее</p>
+                {globalUIStore.countryCode !== null &&
+                  globalUIStore.countryCode !== "RU" && (
+                    <a
+                      className="team__card-link"
+                      href={`tg://resolve?domain=${member.linkTg}`}
+                    >
+                      <img
+                        src={InstaIcon}
+                        alt="instagram icon"
+                        className="team__card-icon"
+                      />
+                    </a>
+                  )}
+                <a
+                  className="team__card-link"
+                  href={`tg://resolve?domain=${member.linkTg}`}
+                >
+                  <img
+                    src={TgIcon}
+                    alt="telegram icon"
+                    className="team__card-icon"
+                  />
+                </a>
+              </div>
             </div>
           </motion.div>
         ))}

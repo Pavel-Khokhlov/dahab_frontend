@@ -1,47 +1,122 @@
+// PricingSection.jsx
+import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
+import "./PricingSection.scss"; // Import the SCSS styles
+import { useInView } from "react-intersection-observer";
 
-import SectionWrapper from "@/components/SectionWrapper";
-import PriceItem from "@/components/PriceItem";
-
-const data = [
+const plans = [
   {
-    title_ru: "Тренировочный день",
-    title_en: "Один тренировочный день",
-    text_ru: `
-Одна полноценная глубинная тренировка.`,
-    text_en: `12 000 ₽ (или евро по текущему курсу)
-Включает одну полноценную глубинную тренировку.`,
-    price: "12 000 ₽",
+    id: "day",
+    title: { ru: "Тренировочный день", en: "One training day" },
+    description: {
+      ru: "Одна полноценная глубинная тренировка.",
+      en: "One dive deep training session.",
+    },
+    message: {
+      ru: "Тренировочный день",
+      en: "One training day",
+    },
+    price: { ru: "12 000 ₽", en: "140 €" },
+    isPopular: false, // We can add a "popular" tag later
   },
   {
-    title_ru: "Пакет «Неделя»",
-    title_en: "Пакет «Неделя»",
-    text_ru: `Четыре тренировочных дня.`,
-    text_en: `40 000 ₽ (или евро по текущему курсу)
-4 тренировочных дня.`,
-    price: "40 000 ₽",
+    id: "week",
+    title: { ru: "Пакет «Неделя»", en: "Bundle «One week»" },
+    description: {
+      ru: "Четыре тренировочных дня.",
+      en: "Four training days",
+    },
+    message: {
+      ru: "Пакет «Неделя»",
+      en: "Bundle «One week»",
+    },
+    price: { ru: "40 000* ₽", en: "450 €" },
+    isPopular: true, // Mark the middle one as popular
+    mark: {
+      ru: "Стоимость одной тренировки 10 000 р",
+      en: "The cost of one training is about 112.5 euro",
+    },
   },
   {
-    title_ru: "Пакет «Две недели»",
-    title_en: "Пакет «Две недели»",
-    text_ru: `Восемь тренировочных дней.`,
-    text_en: `72 000 ₽ (или евро по текущему курсу)
-8 тренировочных дней.`,
-    price: "72 000 ₽",
+    id: "two-weeks",
+    title: {
+      ru: "Пакет «Две недели»",
+      en: "Bundle «Two weeks»",
+    },
+    description: {
+      ru: "Восемь тренировочных дней.",
+      en: "Eight training days",
+    },
+    message: {
+      ru: "Пакет «Две недели»",
+      en: "Bundle «Two weeks»",
+    },
+    price: { ru: "72 000* ₽", en: "800 €" },
+    isPopular: false,
+    mark: {
+      ru: "Стоимость одной тренировки 9 000 р",
+      en: "The cost of one training is 100 euro",
+    },
   },
 ];
 
-const PriceSection = () => {
+const PricingSection = () => {
   const t = useTranslator();
+  const { globalUIStore, tgStore } = useStore();
+  const currentLang = globalUIStore.currentLocale;
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  const handleBook = (message: string) => {
+    tgStore.openTelegramChat(message);
+  };
+
   return (
-    <SectionWrapper id="price" title={t.title.prices}>
-      <div className="trial__grid">
-        {data.map((p) => {
-          return <PriceItem key={p.price} item={p} />;
-        })}
+    <section className="pricing-section" id="price">
+      <div className="pricing-section__container">
+        <h2
+          ref={ref}
+          className="section__title _dark"
+          style={{
+            opacity: inView ? 1 : 0,
+            transform: inView ? "translateY(0)" : "translateY(50px)",
+            transition: "all 0.6s ease",
+          }}
+        >
+          {t.title.prices}
+        </h2>
+        <div className="pricing-section__grid">
+          {plans.map((plan) => (
+            <div
+              key={plan.id}
+              className={`pricing-card ${plan.isPopular ? "pricing-card--popular" : ""}`}
+            >
+              {plan.isPopular && (
+                <span className="pricing-card__badge">{t.text.popular}</span>
+              )}
+              <h3 className="pricing-card__title">{plan.title[currentLang]}</h3>
+              <p className="pricing-card__description">
+                {plan.description[currentLang]}
+              </p>
+              <p className="pricing-card__price">{plan.price[currentLang]}</p>
+              <button
+                className="pricing-card__button"
+                onClick={() => handleBook(plan.message[currentLang])}
+              >
+                {t.button.bookin}
+              </button>
+              {plan.mark && (
+                <p className="pricing-card__mark">* {plan.mark[currentLang]}</p>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-    </SectionWrapper>
+    </section>
   );
 };
 
-export default PriceSection;
+export default PricingSection;

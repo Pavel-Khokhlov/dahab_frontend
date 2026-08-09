@@ -27,7 +27,7 @@ $font-size-main-subtitle: 40px;
 $font-size-section-title: 48px;
 $font-size-section-subtitle: 30px;
 $font-size-text-main: 18px;
-$font-size-text-second: 14px;
+$font-size-text-second: 20px;
 $font-size-text-link: 16px;
 $font-size-text-button: 15px;
 $font-size-text-description: 14px;
@@ -159,7 +159,7 @@ $font-weight-text-description: 400;
   color: var(--text-second);
 
   @media (max-width: 480px) {
-    font-size: $font-size-text-second * 0.95; // 14.4px
+    font-size: $font-size-text-second * 0.7; // 14.4px
   }
 }
 

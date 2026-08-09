@@ -286,7 +286,7 @@ export const useGlobalUIStore = create<GlobalUIState>()(
             if (countryCode) {
               setCountryCode(countryCode);
               setGeoLoading(false);
-              console.log("🌍 Страна определена:", countryCode);
+              // console.log("🌍 Страна определена:", countryCode);
               return; // Выходим, если успешно определили
             }
           } catch (error) {

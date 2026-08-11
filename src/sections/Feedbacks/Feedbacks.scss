@@ -385,6 +385,8 @@
     flex: 1;
     position: relative;
     z-index: 1;
+    max-height: 300px;
+    overflow: scroll;
   }
 
   &__text {
@@ -393,11 +395,12 @@
     color: rgba(255, 255, 255, 0.85);
     font-weight: 300;
     letter-spacing: 0.2px;
-    margin: 0;
-    display: -webkit-box;
+    margin: 0 0 10px;
+    /* display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow: hidden; */
+    text-align: left ;
 
     @media (max-width: 768px) {
       font-size: 0.9rem;

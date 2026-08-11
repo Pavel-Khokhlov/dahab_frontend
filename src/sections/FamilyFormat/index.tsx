@@ -32,7 +32,7 @@ const dataPage = {
     ],
   },
   important: {
-    ru: "Дети и родители занимаются в раздельных группах, с двумя разными тренерами. Это позволяет сделать занятия наиболее эффективными и максимально раскрыть потенциал – Ваш и Вашего ребенка.",
+    ru: "Дети и родители занимаются в раздельных группах, с двумя разными тренерами. Это позволяет сделать тренировку наиболее эффективной и максимально раскрыть потенциал – Ваш и Вашего ребенка.",
     en: "Parents and children train in separate groups with two different instructors. This approach allows every participant to receive the attention they need, making each session more effective while helping both you and your child reach your full potential.",
   },
 };

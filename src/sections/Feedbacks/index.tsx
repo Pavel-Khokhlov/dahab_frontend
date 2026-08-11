@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Feedbacks.scss";
 import { useInView } from "react-intersection-observer";
+import images from "@/assets/images/avatars";
 
 // Иконка цитаты
 const QuoteIcon = () => (
@@ -144,9 +145,10 @@ const FeedbacksSection: React.FC = () => {
                   </div>
 
                   <div className="feedback-card__content">
-                    <p className="feedback-card__text">{review.text}</p>
+                    {review.text.map((rev, index) => {
+                      return <p key={index} className="feedback-card__text">{rev}</p>;
+                    })}
                   </div>
-
                   {/* Рейтинг */}
                   <div className="feedback-card__rating">
                     {Array.from({ length: 5 }).map((_, i) => (
@@ -158,7 +160,7 @@ const FeedbacksSection: React.FC = () => {
                   <div className="feedback-card__footer">
                     <div className="feedback-card__avatar-wrapper">
                       <img
-                        src={review.avatar}
+                        src={images[review.avatar]}
                         alt={review.name}
                         className="feedback-card__avatar"
                       />

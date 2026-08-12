@@ -1,72 +1,50 @@
-import SectionWrapper from "@/components/SectionWrapper";
+import React, { useEffect, useRef } from "react";
+import styles from "./About.module.scss";
 import { useTranslator } from "@/context/TranslationContext";
+import FeatureSection from "../Feature";
 import { useStore } from "@/store";
 
-import "./About.scss";
-
-const data = [
-  {
-    id: "001",
-    title_ru: "Особенное место",
-    title_en: "Особенное место",
-    text_ru: `Прозрачное Красное море, теплое солнце, размеренный ритм
-жизни и невероятная атмосфера Дахаба - пространство для
-настоящего отдыха. И взрослые, и дети смогут прочувствовать
-истинную магию этого места.`,
-    text_en: `Прозрачное Красное море, теплое солнце, размеренный ритм
-жизни и невероятная атмосфера Дахаба - пространство для
-настоящего отдыха. И взрослые, и дети смогут прочувствовать
-истинную магию этого места.`,
-  },
-  {
-    id: "002",
-    title_ru: "Погружение в себя",
-    title_en: "Погружение в себя",
-    text_ru: `Наш выезд - это не просто обучение фридайвингу. Это
-возможность научиться управлять своим дыханием,
-познакомиться с подводным миром Красного моря и получить
-новый опыт, который останется с вами на всю жизнь.`,
-    text_en: `Наш выезд - это не просто обучение фридайвингу. Это
-возможность научиться управлять своим дыханием,
-познакомиться с подводным миром Красного моря и получить
-новый опыт, который останется с вами на всю жизнь.`,
-  },
-  {
-    id: "003",
-    title_ru: "Поддержка профессионалов",
-    title_en: "Поддержка профессионалов",
-    text_ru: `Программа подойдет как тем, кто делает первые шаги во
-фридайвинге, так и тем, кто уже имеет опыт и хочет
-совершенствовать свои навыки под руководством
-профессиональных инструкторов.`,
-    text_en: `Программа подойдет как тем, кто делает первые шаги во
-фридайвинге, так и тем, кто уже имеет опыт и хочет
-совершенствовать свои навыки под руководством
-профессиональных инструкторов.`,
-  },
-];
-
-const AboutSection = () => {
+const AboutSection3: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
+  const blockRef = useRef<HTMLOptionElement>(null);
+
+  useEffect(() => {
+    const block = blockRef.current;
+
+    if (!block) return; // Защита от null
+
+    const handleScroll = () => {
+      globalUIStore.setValueHeroScrolled(block.scrollTop);
+    };
+
+    // Подписываемся на событие
+    block.addEventListener("scroll", handleScroll);
+
+    // ОЧИСТКА: убираем слушатель при размонтировании
+    return () => {
+      block.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <SectionWrapper id="about" title={t.title.aboutSection} isWhite={true}>
-      {data.map((p) => {
-        return (
-          <div key={p.id} className="about__item">
-            <div className="about__body">
-              <h3 className="about__title">
-                {p[`title_${globalUIStore.currentLocale}`]}
-              </h3>
-              <p className="about__text">
-                {p[`text_${globalUIStore.currentLocale}`]}
-              </p>
-            </div>
-          </div>
-        );
-      })}
-    </SectionWrapper>
+    <section ref={blockRef} className={styles.hero} id="main">
+      {/* <div className={styles.heroBackground} /> */}
+      {/* <div className={styles.heroOverlay} /> */}
+      <div className={styles.heroContent}>
+        <h1 className={styles.heroTitle}>
+          <span className={styles.titleLine}>{t.title.mainFirst}</span>
+          <span className={styles.titleLine}>{t.title.mainSecond}</span>
+        </h1>
+        <div className={styles.heroDivider} />
+        <p className={styles.heroSub}>{t.subtitle.main}</p>
+        <div className={styles.scrollIndicator}>
+          <span>{t.text.main}</span>
+          <div className={styles.scrollLine} />
+        </div>
+        <FeatureSection />
+      </div>
+    </section>
   );
 };
 
-export default AboutSection;
+export default AboutSection3;

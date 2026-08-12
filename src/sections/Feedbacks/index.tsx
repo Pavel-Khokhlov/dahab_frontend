@@ -56,6 +56,10 @@ const getSrc = (url: string) => {
   return TelegramIcon; // Иконка по умолчанию
 };
 
+const isTg = (url: string | undefined) => {
+  return url?.includes("tg://resolve");
+};
+
 const FeedbacksSection: React.FC = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
@@ -179,16 +183,28 @@ const FeedbacksSection: React.FC = () => {
                       />
                       <div className="feedback-card__avatar-ring" />
                     </div>
-                    <a className="feedback-card__info" href={review.link}>
-                      <h4 className="feedback-card__name">{review.name}</h4>
-                      {review.link && (
-                        <img
-                          src={getSrc(review.link)}
-                          alt="telegram icon"
-                          className="feedback-card__social"
-                        />
-                      )}
-                    </a>
+                    {isTg(review.link) ||
+                    (globalUIStore.countryCode !== null &&
+                      globalUIStore.countryCode !== "RU") ? (
+                      <a
+                        className="feedback-card__info"
+                        href={review.link}
+                        target="_blank"
+                      >
+                        <h4 className="feedback-card__name">{review.name}</h4>
+                        {review.link && (
+                          <img
+                            src={getSrc(review.link)}
+                            alt="telegram icon"
+                            className="feedback-card__social"
+                          />
+                        )}
+                      </a>
+                    ) : (
+                      <div className="feedback-card__info">
+                        <h4 className="feedback-card__name">{review.name}</h4>
+                      </div>
+                    )}
                   </div>
                 </div>
               </SwiperSlide>

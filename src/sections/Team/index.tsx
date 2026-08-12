@@ -116,12 +116,13 @@ const TeamSection = () => {
               </div>
 
               <div className="team__card-footer">
-                <p>Подробнее</p>
+                <p>{t.text.detail}</p>
                 {globalUIStore.countryCode !== null &&
                   globalUIStore.countryCode !== "RU" && (
                     <a
                       className="team__card-link"
-                      href={`tg://resolve?domain=${member.linkTg}`}
+                      href={`https://www.instagram.com/${member.linkInsta}`}
+                      target="_blank"
                     >
                       <img
                         src={InstaIcon}
@@ -132,7 +133,8 @@ const TeamSection = () => {
                   )}
                 <a
                   className="team__card-link"
-                  href={`tg://resolve?domain=${member.linkTg}`}
+                  href={`tg://resolve?domain=${member.linkTg}&profile`}
+                  target="_blank"
                 >
                   <img
                     src={TgIcon}

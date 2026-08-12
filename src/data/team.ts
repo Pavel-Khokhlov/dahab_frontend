@@ -22,6 +22,7 @@ export const team = [
       "Today, Roman is an active competitive freediver who continues to challenge himself through regular competitions and ongoing training.",
     ],
     linkTg: "Garaihachka",
+    linkInsta: "roman_gara",
   },
   {
     id: "002",
@@ -47,5 +48,6 @@ export const team = [
       "Beyond teaching, she has a passion for underwater videography, capturing the beauty of the underwater world and sharing the unique experiences freediving has to offer.",
     ],
     linkTg: "dsh_dshh",
+    linkInsta: "dsh_dshh",
   },
 ];

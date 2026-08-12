@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/public/Main";
 import { translations } from "./locales/translations";
 import { useStore } from "./store";
-import SchedulePage from "./pages/public/Schedule";
+// import SchedulePage from "./pages/public/Schedule";
 import { useEffect } from "react";
 import OverlayLoader from "./components/OverleyLoader";
 
@@ -27,7 +27,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<MainPage />} />
-            <Route path="/schedule" element={<SchedulePage />} />
+            {/* <Route path="/schedule" element={<SchedulePage />} /> */}
           </Routes>
         </BrowserRouter>
       </TranslationContext.Provider>

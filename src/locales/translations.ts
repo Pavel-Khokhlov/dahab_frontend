@@ -8,7 +8,7 @@ export const translations = {
       tour: "Tour",
       team: "Team",
       feedbacks: "Reviews",
-      contacts: "Contacts"
+      contacts: "Contacts",
     },
     title: {
       urlMain: "Dahab Freediving Molchanovs | Egypt",
@@ -69,6 +69,7 @@ export const translations = {
       maxDepth: "max.depth",
       dayFooter:
         "Every dive is a step towards harmony with yourself and the ocean",
+      detail: "Detail",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -121,7 +122,7 @@ export const translations = {
       tour: "Путешествия",
       team: "Команда",
       feedbacks: "Отзывы",
-      contacts: "Контакты"
+      contacts: "Контакты",
     },
     title: {
       urlMain: "Дахаб Фридайвинг Molchanovs | Египет",
@@ -179,6 +180,7 @@ export const translations = {
       safety: "безопасность",
       maxDepth: "макс.глубина",
       dayFooter: "Каждое погружение — шаг к гармонии с собой и океаном",
+      detail: "Подробнее",
     },
     placeholder: {
       email: "example@mail.ru",

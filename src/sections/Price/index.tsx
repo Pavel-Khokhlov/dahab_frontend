@@ -3,6 +3,7 @@ import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
 import "./PricingSection.scss"; // Import the SCSS styles
 import { useInView } from "react-intersection-observer";
+import TgIcon from "@/assets/images/icons/telegram_white.svg";
 
 const plans = [
   {
@@ -107,6 +108,7 @@ const PricingSection = () => {
                 onClick={() => handleBook(plan.message[currentLang])}
               >
                 {t.button.bookin}
+                <img src={TgIcon} className="pricing-card__icon" />
               </button>
               {plan.mark && (
                 <p className="pricing-card__mark">* {plan.mark[currentLang]}</p>

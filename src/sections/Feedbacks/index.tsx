@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 import "./Feedbacks.scss";
 import { useInView } from "react-intersection-observer";
 import images from "@/assets/images/avatars";
+import InstagramIcon from "@/assets/images/icons/insta.png";
+import TelegramIcon from "@/assets/images/icons/tg.png";
 
 // Иконка цитаты
 const QuoteIcon = () => (
@@ -46,6 +48,39 @@ const NavArrow = ({ direction }: { direction: "left" | "right" }) => (
     <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
   </svg>
 );
+
+// Функция для получения иконки
+const getSocialIcon = (url: string) => {
+  if (url?.includes("instagram.com") || url?.includes("instagram")) {
+    return <InstagramIcon className="feedback-card__icon" />;
+  }
+  /* if (url?.includes("t.me") || url?.includes("telegram")) {
+    return <TelegramIcon className="feedback-card__icon" />;
+  } */
+  /* if (url?.includes("facebook.com") || url?.includes("fb.com")) {
+    return <FacebookIcon className="feedback-card__icon" />;
+  } */
+  /* if (url?.includes("vk.com") || url?.includes("vkontakte")) {
+    return <VKIcon className="feedback-card__icon" />;
+  } */
+  return <TelegramIcon className="feedback-card__icon" />; // Иконка по умолчанию
+};
+
+const getSrc = (url: string) => {
+  if (url?.includes("instagram.com") || url?.includes("instagram")) {
+    return InstagramIcon;
+  }
+  /* if (url?.includes("t.me") || url?.includes("telegram")) {
+    return <TelegramIcon className="feedback-card__icon" />;
+  } */
+  /* if (url?.includes("facebook.com") || url?.includes("fb.com")) {
+    return <FacebookIcon className="feedback-card__icon" />;
+  } */
+  /* if (url?.includes("vk.com") || url?.includes("vkontakte")) {
+    return <VKIcon className="feedback-card__icon" />;
+  } */
+  return TelegramIcon; // Иконка по умолчанию
+};
 
 const FeedbacksSection: React.FC = () => {
   const t = useTranslator();
@@ -146,7 +181,11 @@ const FeedbacksSection: React.FC = () => {
 
                   <div className="feedback-card__content">
                     {review.text.map((rev, index) => {
-                      return <p key={index} className="feedback-card__text">{rev}</p>;
+                      return (
+                        <p key={index} className="feedback-card__text">
+                          {rev}
+                        </p>
+                      );
                     })}
                   </div>
                   {/* Рейтинг */}
@@ -166,10 +205,16 @@ const FeedbacksSection: React.FC = () => {
                       />
                       <div className="feedback-card__avatar-ring" />
                     </div>
-                    <div className="feedback-card__info">
+                    <a className="feedback-card__info" href={review.link}>
                       <h4 className="feedback-card__name">{review.name}</h4>
-                      <p className="feedback-card__role">{review.role}</p>
-                    </div>
+                      {review.link && (
+                        <img
+                          src={getSrc(review.link)}
+                          alt="telegram icon"
+                          className="feedback-card__social"
+                        />
+                      )}
+                    </a>
                   </div>
                 </div>
               </SwiperSlide>

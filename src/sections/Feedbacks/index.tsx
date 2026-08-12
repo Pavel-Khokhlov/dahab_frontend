@@ -49,36 +49,10 @@ const NavArrow = ({ direction }: { direction: "left" | "right" }) => (
   </svg>
 );
 
-// Функция для получения иконки
-const getSocialIcon = (url: string) => {
-  if (url?.includes("instagram.com") || url?.includes("instagram")) {
-    return <InstagramIcon className="feedback-card__icon" />;
-  }
-  /* if (url?.includes("t.me") || url?.includes("telegram")) {
-    return <TelegramIcon className="feedback-card__icon" />;
-  } */
-  /* if (url?.includes("facebook.com") || url?.includes("fb.com")) {
-    return <FacebookIcon className="feedback-card__icon" />;
-  } */
-  /* if (url?.includes("vk.com") || url?.includes("vkontakte")) {
-    return <VKIcon className="feedback-card__icon" />;
-  } */
-  return <TelegramIcon className="feedback-card__icon" />; // Иконка по умолчанию
-};
-
 const getSrc = (url: string) => {
   if (url?.includes("instagram.com") || url?.includes("instagram")) {
     return InstagramIcon;
   }
-  /* if (url?.includes("t.me") || url?.includes("telegram")) {
-    return <TelegramIcon className="feedback-card__icon" />;
-  } */
-  /* if (url?.includes("facebook.com") || url?.includes("fb.com")) {
-    return <FacebookIcon className="feedback-card__icon" />;
-  } */
-  /* if (url?.includes("vk.com") || url?.includes("vkontakte")) {
-    return <VKIcon className="feedback-card__icon" />;
-  } */
   return TelegramIcon; // Иконка по умолчанию
 };
 

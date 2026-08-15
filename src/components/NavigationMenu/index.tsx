@@ -4,6 +4,7 @@ import { useTranslator } from "@/context/TranslationContext";
 import Lang from "../Lang";
 
 import "./NavigationMenu.scss";
+import SocialLinks from "../SocialLinks";
 
 interface NavigationMenuProps {
   layout: "burger" | "head" | "foot";
@@ -84,6 +85,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
       <div className="menu__bottom">
         <Lang isMobile={layout === "burger"} />
       </div>
+      {layout === "burger" && <SocialLinks position="menu" />}
     </nav>
   );
 };

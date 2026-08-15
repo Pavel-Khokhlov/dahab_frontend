@@ -1,0 +1,40 @@
+.social {
+  &__wrapper {
+    @include flex-center-column;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 0.5px solid rgba(var(--color-grey-rgb), 0.2);
+    &.menu {
+      margin: 20px 0 0;
+      padding-bottom: 0;
+      border: none;
+    }
+  }
+  &__title {
+    @include section-subtitle-small;
+    color: var(--color-grey);
+  }
+  &__list {
+    @include flex-center-row;
+    gap: min(20px, 3vw);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  &__item {
+    @include flex-center-row;
+    opacity: 0.3;
+    transition: $app-transition;
+    &.menu {
+      opacity: 0.9;
+    }
+    &:hover {
+      opacity: 1;
+      transition: $app-transition;
+    }
+  }
+  &__icon {
+    width: min(35px, 7vw);
+    height: min(35px, 7vw);
+  }
+}

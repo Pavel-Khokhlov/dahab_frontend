@@ -183,7 +183,7 @@
       font-weight: 700;
       color: var(--primary-black);
       text-align: center;
-      margin: 0 0 8px;
+      margin: 0 0 min(24px, 4vw);
       letter-spacing: -0.3px;
 
       @media (max-width: 600px) {
@@ -260,7 +260,7 @@
       gap: 8px;
       padding: 10px 24px;
       background: linear-gradient(135deg, #4a6cf7 0%, #6c63ff 100%);
-      color: white;
+      color: var(--primary-white);
       border: none;
       border-radius: 30px;
       font-size: 14px;

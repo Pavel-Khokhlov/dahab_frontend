@@ -1,8 +1,9 @@
-// TrainingSchedule.tsx
 import React, { useEffect, useRef, useState } from "react";
-import "./TrainingSchedule.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import LogoIcon from "@/components/LogoIcon";
+import icons from "@/assets/images/icons_schedule";
+
+import "./TrainingSchedule.scss";
 
 const TrainingScheduleSection: React.FC = () => {
   const t = useTranslator();
@@ -31,36 +32,39 @@ const TrainingScheduleSection: React.FC = () => {
   }, []);
 
   const schedule = [
-    { day: "monday", type: "training", icon: "🏊" },
-    { day: "tuesday", type: "training", icon: "🏊" },
-    { day: "wednesday", type: "lecture", icon: "📚" },
-    { day: "thursday", type: "relax", icon: "🧘" },
-    { day: "friday", type: "training", icon: "🏊" },
-    { day: "saturday", type: "training", icon: "🏊" },
-    { day: "sunday", type: "relax", icon: "🌅" },
+    { day: "monday", type: "training" },
+    { day: "tuesday", type: "training" },
+    { day: "wednesday", type: "lecture" },
+    { day: "thursday", type: "relax" },
+    { day: "friday", type: "training" },
+    { day: "saturday", type: "training" },
+    { day: "sunday", type: "relax" },
   ] as const;
 
   return (
-    <section className="training-schedule" ref={sectionRef}>
-      <div className={`schedule-container ${isVisible ? "visible" : ""}`}>
-        <h2 className="section__title">{t.title.weekSchedule}</h2>
+    <section className="schedule__wrapper" ref={sectionRef}>
+      <div className={`schedule__body ${isVisible ? "visible" : ""}`}>
+        <h2 className="schedule__title">{t.title.weekSchedule}</h2>
 
-        <div className="schedule-grid">
-          {schedule.map((item, index) => (
-            <div
-              key={item.day}
-              className={`schedule-item ${isVisible ? "visible" : ""}`}
-              style={{ transitionDelay: `${index * 0.1}s` }}
-            >
-              <div className="day-icon">{item.icon}</div>
-              <div className="day-name">{t.week[item.day]}</div>
-              <div className="day-type">{t.text[item.type]}</div>
-            </div>
-          ))}
+        <div className="schedule__grid">
+          {schedule.map((item, index) => {
+            const iconUrl = icons[item.type];
+            return (
+              <div
+                key={item.day}
+                className={`schedule__item ${isVisible ? "visible" : ""}`}
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                <img src={iconUrl} className="day-icon" />
+                <div className="day-name">{t.week[item.day]}</div>
+                <div className="day-type">{t.text[item.type]}</div>
+              </div>
+            );
+          })}
         </div>
 
-        <div className={`schedule-note ${isVisible ? "visible" : ""}`}>
-          <p className="note-text">{t.text.weekFooter}</p>
+        <div className={`schedule__note ${isVisible ? "visible" : ""}`}>
+          <p className="schedule__note-text">{t.text.weekFooter}</p>
         </div>
 
         <LogoIcon color={"var(--primary-brand)"} size={40} />

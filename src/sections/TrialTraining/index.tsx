@@ -4,6 +4,7 @@ import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
 import trialImgV from "@/assets/images/background/trialV.webp";
 import trialImgH from "@/assets/images/background/trialH.webp";
+import TgIcon from "@/assets/images/icons/telegram_black.svg";
 
 import styles from "./Trial.module.scss";
 
@@ -182,6 +183,7 @@ const TrialSection2: React.FC = () => {
                   onClick={() => handleBook(card.title[currentLang])}
                 >
                   {t.button.bookin}
+                  <img src={TgIcon} className={styles.bookButtonIcon} />
                 </button>
               </div>
             </article>

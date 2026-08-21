@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import BurgerMenu from "../BurgerMenu";
+import { useStore } from "@/store";
 
+import BurgerMenu from "../BurgerMenu";
 import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
-import NavigationMenu from "../NavigationMenu";
+import Menu from "../Menu";
 
 import "./Header.scss";
-import { useStore } from "@/store";
 
 const Header = () => {
   const { globalUIStore } = useStore();
@@ -13,7 +13,7 @@ const Header = () => {
   const isMobile = globalUIStore.deviceType === "mobile";
 
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  
+
   const handleBurgerClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -58,7 +58,7 @@ const Header = () => {
         {isMobile ? (
           <BurgerMenu isClicked={isMenuOpen} onClick={handleBurgerClick} />
         ) : (
-          <NavigationMenu layout="head" isOpen={true} />
+          <Menu layout="head" />
         )}
       </div>
 
@@ -67,11 +67,12 @@ const Header = () => {
         className={`dropdown-menu ${isMenuOpen ? "open" : ""}`}
         onClick={handleClickOverlay}
       >
-        <NavigationMenu
-          layout="burger"
-          isOpen={isMenuOpen}
-          onClose={handleClickOverlay}
-        />
+        <div
+          className={`dropdown-menu__body ${isMenuOpen ? "open" : ""}`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Menu layout="burg" onClose={handleClickOverlay} />
+        </div>
       </div>
     </>
   );

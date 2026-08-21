@@ -5,8 +5,9 @@ import anna from "./anna.webp";
 import alina_yunaeva from "./alina_yunaeva.webp";
 import evgeniya_belozertseva from "./evgeniya_belozertseva.webp";
 import evgeniya_danilova from "./evgeniya_danilova.webp";
+import arina_minisugar from "./arina_minisugar.webp";
 
-const images: Record<string, string> = {
+const avatars: Record<string, string> = {
   alexander_yakovlev,
   nathalie_ocean,
   va_dim,
@@ -14,6 +15,7 @@ const images: Record<string, string> = {
   alina_yunaeva,
   evgeniya_belozertseva,
   evgeniya_danilova,
+  arina_minisugar,
 };
 
-export default images;
+export default avatars;

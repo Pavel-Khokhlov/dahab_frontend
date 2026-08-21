@@ -2,13 +2,15 @@ import { useTranslator } from "@/context/TranslationContext";
 import LogoIcon from "../LogoIcon";
 import styles from "./Footer.module.scss";
 import SocialLinks from "../SocialLinks";
+import Menu from "../Menu";
 
 const FooterSection = () => {
   const t = useTranslator();
   const currentYear = new Date().getFullYear();
   return (
     <footer className={styles.footer}>
-      <div>
+      <div className={styles.footerInfo}>
+        <Menu layout="foot" />
         <SocialLinks position="footer" />
       </div>
       <div className={styles.container}>

@@ -1,25 +1,20 @@
-$font-primary:
-  "Inter",
-  -apple-system,
-  BlinkMacSystemFont,
-  sans-serif;
-$color-dark: #0a0e14;
-$color-deep: #0f1a24;
-$color-ocean: #1a2e3f;
-$color-teal: #2c5f7a;
-$color-accent: #6fa8c9;
-$color-light: #e8edf2;
-$color-slate: #b0c4d9;
-$color-white: #f7fafc;
-
-$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-$transition-smooth: 0.6s $ease-out-expo;
-
 .footer {
   position: relative;
   background: $color-dark;
   padding: 2rem min(100px, 6vw);
-  border-top: 1px solid rgba($color-teal, 0.08);
+  border-top: 1px solid rgba(var(--primary-white-rgb), 0.1);
+
+  &Info {
+    @include flex-center-row;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 0.5px solid rgba(var(--color-grey-rgb), 0.2);
+    @media (max-width: 640px) {
+      @include flex-center-column;
+      gap: 20px,
+    }
+  }
 
   &Inner {
     display: flex;
@@ -35,28 +30,19 @@ $transition-smooth: 0.6s $ease-out-expo;
     gap: 0.75rem;
   }
 
-  &Logo {
-    font-size: 1.6rem;
-    font-weight: 200;
-    color: var(--primary-brand);
-    opacity: 0.7;
-    line-height: 1;
-  }
-
   &Name {
     font-size: 0.85rem;
     font-weight: 400;
     letter-spacing: 0.05em;
-    color: $color-slate;
-    opacity: 0.6;
+    color: var(--color-grey);
   }
 
   &Meta {
     font-size: 0.75rem;
     font-weight: 300;
     letter-spacing: 0.05em;
-    color: $color-slate;
-    opacity: 0.4;
+    color: var(--color-grey);
+    opacity: 1;
     display: flex;
     align-items: center;
     gap: 0.5rem;

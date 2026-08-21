@@ -91,7 +91,7 @@ $text-dim: #7f9bb0;
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(8, 14, 20, 0.6);
+  background: var(--color-overlay);
   transform: translateY(0);
   opacity: 0;
   visibility: hidden;
@@ -107,5 +107,29 @@ $text-dim: #7f9bb0;
     top: 0;
     opacity: 1;
     visibility: visible;
+  }
+  &__body {
+    @include flex-center-column;
+    display: none;
+    margin-top: 55px;
+    background: none;
+    width: calc(100vw - 10px);
+    border-radius: 30px;
+    overflow: hidden;
+    // Начальное состояние - скрыт и наклонен
+    transform: translateY(0) rotateX(90deg) rotateZ(0);
+    opacity: 0;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: top center;
+    pointer-events: none;
+
+    &.open {
+      display: flex;
+      transform: translateY(0) rotateX(0) rotateZ(0);
+      opacity: 1;
+      pointer-events: all;
+      background: rgba(var(--primary-white-rgb), 0.9);
+      box-sizing: border-box;
+    }
   }
 }

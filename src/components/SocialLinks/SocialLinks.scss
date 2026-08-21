@@ -1,9 +1,6 @@
 .social {
   &__wrapper {
     @include flex-center-column;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 0.5px solid rgba(var(--color-grey-rgb), 0.2);
     &.menu {
       margin: 20px 0 0;
       padding-bottom: 0;
@@ -12,19 +9,36 @@
   }
   &__title {
     @include section-subtitle-small;
-    color: var(--color-grey);
+    color: var(--primary-white);
+    font-weight: 500;
+    text-align: start;
+    width: 100%;
+    @media (max-width: 640px) {
+      text-align: center;
+    }
   }
   &__list {
     @include flex-center-row;
-    gap: min(20px, 3vw);
+    gap: min(10px, 2vw);
     list-style: none;
     padding: 0;
     margin: 0;
+    &.menu {
+      gap: 20px;
+    }
+    &.footer {
+      @include flex-center-column;
+      align-items: flex-start;
+      @media (max-width: 640px) {
+        flex-direction: row;
+      }
+    }
   }
   &__item {
     @include flex-center-row;
-    opacity: 0.3;
+    opacity: 0.8;
     transition: $app-transition;
+    text-decoration: none;
     &.menu {
       opacity: 0.9;
     }
@@ -36,5 +50,14 @@
   &__icon {
     width: min(35px, 7vw);
     height: min(35px, 7vw);
+  }
+  &__label {
+    display: block;
+    margin-left: 10px;
+    color: var(--color-grey);
+    font-size: 14px;
+    @media (max-width: 640px) {
+      display: none;
+    }
   }
 }

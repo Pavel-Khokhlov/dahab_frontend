@@ -1,20 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslator } from "@/context/TranslationContext";
+import SocialLinks from "../SocialLinks";
 import Lang from "../Lang";
 
-import "./NavigationMenu.scss";
-import SocialLinks from "../SocialLinks";
+import "./Menu.scss";
 
-interface NavigationMenuProps {
-  layout: "burger" | "head" | "foot";
-  isOpen: boolean;
+interface MenuProps {
+  layout: "burg" | "head" | "foot";
   onClose?: () => void;
 }
 
-const NavigationMenu: React.FC<NavigationMenuProps> = ({
+const Menu: React.FC<MenuProps> = ({
   layout,
-  isOpen,
   onClose,
 }) => {
   const t = useTranslator();
@@ -54,40 +52,38 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({
     }, 300);
   };
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  }, [isOpen]);
-
   if (location.pathname !== "/") return null;
 
   return (
     <nav
-      className={`menu__body ${isOpen ? "open" : ""} ${layout}`}
+      className={`menu__wrapper ${layout}`}
       onClick={(e) => e.stopPropagation()}
     >
+      {layout === "foot" && (
+        <h4 className="social__title">{t.menu.navigation}:</h4>
+      )}
       <ul className={`menu__list ${layout}`}>
         {menuArr.map((item) => (
           <li key={item.id} className={`menu__item ${layout}`}>
             <a
               href={`#${item.id}`}
+              className={`menu__link ${layout}`}
               onClick={(e) => handleMenuItemClick(e, `#${item.id}`)}
             >
-              <span className="menu__label">{item.label}</span>
+              {item.label}
             </a>
           </li>
         ))}
       </ul>
 
-      <div className="menu__bottom">
-        <Lang isMobile={layout === "burger"} />
-      </div>
-      {layout === "burger" && <SocialLinks position="menu" />}
+      {layout !== "foot" && (
+        <div className="menu__bottom">
+          <Lang isMobile={layout === "burg"} />
+        </div>
+      )}
+      {layout === "burg" && <SocialLinks position="menu" />}
     </nav>
   );
 };
 
-export default NavigationMenu;
+export default Menu;

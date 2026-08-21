@@ -1,4 +1,3 @@
-import React from "react";
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 import { LOCALES, type LocaleType } from "@/locales/locales";
@@ -14,6 +13,22 @@ const SLIDER_PREVIEW = {
   TABLET: 2.1,
   DESKTOP: 3.2,
 } as const;
+
+declare global {
+  interface Window {
+    __scrollObserver?: MutationObserver;
+  }
+}
+
+interface IpWhoIsResponse {
+  country_code: string;
+  // другие поля, если нужны
+}
+
+interface IpApiResponse {
+  country_code: string;
+  // другие поля, если нужны
+}
 
 // Типы устройств
 export type DeviceType = "mobile" | "tablet" | "desktop";
@@ -248,7 +263,7 @@ export const useGlobalUIStore = create<GlobalUIState>()(
           });
 
           // Сохраняем observer для очистки
-          (window as any).__scrollObserver = observer;
+          window.__scrollObserver = observer;
         }
       },
       initializeApp: () => {
@@ -263,11 +278,11 @@ export const useGlobalUIStore = create<GlobalUIState>()(
         const services = [
           {
             url: "https://ipwho.is/",
-            parse: (data: any) => data.country_code,
+            parse: (data: IpWhoIsResponse) => data.country_code,
           },
           {
             url: "https://ipapi.co/json/",
-            parse: (data: any) => data.country_code,
+            parse: (data: IpApiResponse) => data.country_code,
           },
         ];
 
@@ -286,18 +301,27 @@ export const useGlobalUIStore = create<GlobalUIState>()(
             if (countryCode) {
               setCountryCode(countryCode);
               setGeoLoading(false);
-              // console.log("🌍 Страна определена:", countryCode);
+              // ✅ Логируем ТОЛЬКО если VITE_SHOW_GEO_LOGS = "true"
+              if (import.meta.env.VITE_SHOW_GEO_LOGS === "true") {
+                console.log("🌍 Страна определена:", countryCode);
+              }
               return; // Выходим, если успешно определили
             }
           } catch (error) {
-            console.warn(`⚠️ Ошибка при запросе к ${service.url}:`, error);
+            // ✅ Логируем ТОЛЬКО если VITE_SHOW_GEO_LOGS = "true"
+            if (import.meta.env.VITE_SHOW_GEO_LOGS === "true") {
+              console.warn(`⚠️ Ошибка при запросе к ${service.url}:`, error);
+            }
             continue; // Пробуем следующий сервис
           }
         }
 
         // Если ни один сервис не сработал
         setGeoLoading(false);
-        console.warn("❌ Не удалось определить страну пользователя");
+        // ✅ Логируем ТОЛЬКО если VITE_SHOW_GEO_LOGS = "true"
+        if (import.meta.env.VITE_SHOW_GEO_LOGS === "true") {
+          console.warn("❌ Не удалось определить страну пользователя");
+        }
       },
     }),
     {
@@ -310,43 +334,3 @@ export const useGlobalUIStore = create<GlobalUIState>()(
     },
   ),
 );
-
-// Хук для отслеживания скролла страницы
-export const usePageScroll = () => {
-  const {
-    isPageScrolled,
-    setPageScrolled,
-    pageScrollThreshold,
-    scrollY,
-    setScrollY,
-  } = useGlobalUIStore();
-
-  // Эффект для подписки на событие скролла страницы
-  React.useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-
-      // Обновляем состояние хедера на основе порога
-      const scrolled = currentScrollY > pageScrollThreshold;
-      if (scrolled !== isPageScrolled) {
-        setPageScrolled(scrolled);
-      }
-    };
-
-    // Проверяем текущую позицию при монтировании
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [pageScrollThreshold, isPageScrolled, setPageScrolled, setScrollY]);
-
-  return {
-    isPageScrolled,
-    scrollY,
-    pageScrollThreshold,
-  };
-};

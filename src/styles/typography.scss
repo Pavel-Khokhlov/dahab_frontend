@@ -48,7 +48,7 @@ $line-height-text-description: 1.5;
 // ---------- Веса шрифтов ----------
 $font-weight-main-title: 700;
 $font-weight-main-subtitle: 500;
-$font-weight-section-title: 600;
+$font-weight-section-title: 700;
 $font-weight-section-subtitle: 500;
 $font-weight-section-subtitle-small: 400;
 $font-weight-text-main: 400;
@@ -107,7 +107,7 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-section-title;
   line-height: $line-height-section-title;
   letter-spacing: -0.015em;
-  color: var(--title);
+  // color: var(--title);
   margin: 0 auto min(80px, 12vw);
 
   @media (max-width: 768px) {
@@ -266,6 +266,10 @@ $font-weight-text-description: 400;
     width: 90%;
     margin: 0 auto;
     text-align: start;
+    &.card {
+      width: 100%;
+      margin: 0;
+    }
     &.black {
       color: var(--primary-black);
     }

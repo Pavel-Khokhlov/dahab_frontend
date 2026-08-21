@@ -1,6 +1,7 @@
 export const translations = {
   en: {
     menu: {
+      navigation: "Navigations",
       main: "Home",
       dahab: "Dahab",
       trial: "Introduction",
@@ -69,7 +70,7 @@ export const translations = {
       maxDepth: "max.depth",
       dayFooter:
         "Every dive is a step towards harmony with yourself and the ocean",
-      detail: "Detail",
+      detail: "Detail...",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -115,6 +116,7 @@ export const translations = {
   },
   ru: {
     menu: {
+      navigation: "Навигация",
       main: "Главная",
       dahab: "Дахаб",
       trial: "Пробное",
@@ -180,7 +182,7 @@ export const translations = {
       safety: "безопасность",
       maxDepth: "макс.глубина",
       dayFooter: "Каждое погружение — шаг к гармонии с собой и океаном",
-      detail: "Подробнее",
+      detail: "Подробнее...",
     },
     placeholder: {
       email: "example@mail.ru",

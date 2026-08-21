@@ -1,14 +1,16 @@
 // WhyDahabSection.tsx
 import React from "react";
 import dahabImg from "@/assets/images/background/bluehole.webp";
-import "./WhyDahab.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
 import { useInView } from "react-intersection-observer";
+import icons from "@/assets/images/icons_dahab";
+
+import "./WhyDahab.scss";
 
 interface WhyDahabItem {
   id: string;
-  icon: string;
+  type: string;
   title: Record<"ru" | "en", string>;
   text: Record<"ru" | "en", string>;
   featured?: boolean;
@@ -18,7 +20,7 @@ interface WhyDahabItem {
 const whyDahabData: WhyDahabItem[] = [
   {
     id: "warm-water",
-    icon: "🌡️",
+    type: "temp",
     title: {
       ru: "Тёплая вода",
       en: "Warm water",
@@ -30,7 +32,7 @@ const whyDahabData: WhyDahabItem[] = [
   },
   {
     id: "visibility",
-    icon: "👁️",
+    type: "eye",
     title: {
       ru: "Отличная видимость",
       en: "Great visibility",
@@ -42,7 +44,7 @@ const whyDahabData: WhyDahabItem[] = [
   },
   {
     id: "no-waves",
-    icon: "🌊",
+    type: "wave",
     title: { ru: "Отсутствие сильных волн", en: "No strong waves" },
     text: {
       ru: "Защищённая бухта для спокойных тренировок",
@@ -51,7 +53,7 @@ const whyDahabData: WhyDahabItem[] = [
   },
   {
     id: "accessibility",
-    icon: "📍",
+    type: "location",
     title: { ru: "Доступность локаций", en: "Accessible locations" },
     text: {
       ru: "Лучшие места для погружения рядом",
@@ -60,7 +62,7 @@ const whyDahabData: WhyDahabItem[] = [
   },
   {
     id: "atmosphere",
-    icon: "✨",
+    type: "happy",
     title: { ru: "Уникальная атмосфера", en: "Unique atmosphere" },
     text: {
       ru: "Спокойствие и свобода в каждом вдохе",
@@ -80,6 +82,8 @@ const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
     triggerOnce: true, // Сработает только один раз
     threshold: 0.2, // 20% элемента видно
   });
+
+  const iconUrl = icons[item.type];
   return (
     <div
       ref={ref}
@@ -90,7 +94,7 @@ const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
       `}
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
-      <div className="why-dahab__card-icon">{item.icon}</div>
+      <img src={iconUrl} className="why-dahab__card-icon" />
       <h3 className="why-dahab__card-title">{item.title[currentLang]}</h3>
       <p className="why-dahab__card-text">{item.text[currentLang]}</p>
     </div>
@@ -150,7 +154,7 @@ const WhyDahabSection: React.FC = () => {
         </div>
 
         <div className="why-dahab__footnote">
-          <span className="why-dahab__footnote-icon">⭐</span>
+          <img src={icons.star} className="why-dahab__card-icon" />
           <em>{t.text.dahabFooter}</em>
         </div>
       </div>

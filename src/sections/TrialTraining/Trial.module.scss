@@ -24,15 +24,7 @@
 }
 
 .heading {
-  font-size: 2.8rem;
-  line-height: 1.5;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #b3e5fc, #81d4fa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 0.75rem;
+  @include title-gd-text;
 }
 
 .subheading {
@@ -226,6 +218,8 @@
 }
 
 .bookButton {
+  @include flex-center-row;
+  gap: 10px;
   background: linear-gradient(135deg, #4fc3f7, #0288d1);
   border: none;
   border-radius: 60px;
@@ -241,6 +235,11 @@
   width: 100%;
   margin-top: 0.5rem;
   letter-spacing: 0.02em;
+
+  &Icon {
+    width: 30px;
+    height: 30px;
+  }
 
   &:hover {
     transform: scale(1.02);

@@ -1,9 +1,9 @@
-// PricingSection.jsx
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
-import "./PricingSection.scss"; // Import the SCSS styles
 import { useInView } from "react-intersection-observer";
 import TgIcon from "@/assets/images/icons/telegram_white.svg";
+
+import "./PricingSection.scss";
 
 const plans = [
   {
@@ -31,10 +31,10 @@ const plans = [
       ru: "Пакет «Неделя»",
       en: "Bundle «One week»",
     },
-    price: { ru: "40 000* ₽", en: "450 €" },
+    price: { ru: "36 000* ₽", en: "450 €" },
     isPopular: true, // Mark the middle one as popular
     mark: {
-      ru: "Стоимость одной тренировки 10 000 р",
+      ru: "Стоимость одной тренировки 9 000 р",
       en: "The cost of one training is about 112.5 euro",
     },
   },
@@ -52,10 +52,10 @@ const plans = [
       ru: "Пакет «Две недели»",
       en: "Bundle «Two weeks»",
     },
-    price: { ru: "72 000* ₽", en: "800 €" },
+    price: { ru: "64 000* ₽", en: "800 €" },
     isPopular: false,
     mark: {
-      ru: "Стоимость одной тренировки 9 000 р",
+      ru: "Стоимость одной тренировки 8 000 р",
       en: "The cost of one training is 100 euro",
     },
   },

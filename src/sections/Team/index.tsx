@@ -107,7 +107,7 @@ const TeamSection = () => {
                   (d, idx) => (
                     <p
                       key={idx}
-                      className="team__card-description text-inside black"
+                      className="team__card-description text-inside card black"
                     >
                       {d}
                     </p>

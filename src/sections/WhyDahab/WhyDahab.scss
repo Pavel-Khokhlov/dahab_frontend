@@ -73,12 +73,12 @@
   }
 
   &__badge {
+    @include filter-blur;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1.2rem;
     background: rgba(255, 255, 255, 0.06);
-    backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 100px;
     font-size: 0.85rem;
@@ -231,15 +231,15 @@
     } */
 
     &-icon {
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
+      width: 30px;
       display: block;
+      margin: 0 auto;
     }
 
     &-title {
       font-size: 1rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--primary-white);
       margin-bottom: 0.25rem;
     }
 

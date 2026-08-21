@@ -10,7 +10,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Feedbacks.scss";
 import { useInView } from "react-intersection-observer";
-import images from "@/assets/images/avatars";
+import avatars from "@/assets/images/avatars";
 import InstagramIcon from "@/assets/images/icons/insta.png";
 import TelegramIcon from "@/assets/images/icons/tg.png";
 
@@ -177,7 +177,7 @@ const FeedbacksSection: React.FC = () => {
                   <div className="feedback-card__footer">
                     <div className="feedback-card__avatar-wrapper">
                       <img
-                        src={images[review.avatar]}
+                        src={avatars[review.avatar]}
                         alt={review.name}
                         className="feedback-card__avatar"
                       />

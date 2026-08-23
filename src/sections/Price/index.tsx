@@ -72,7 +72,8 @@ const PricingSection = () => {
   });
 
   const handleBook = (message: string) => {
-    tgStore.openTelegramChat(message);
+    const formatMessage = t.tgMessage.replace("{value}", message);
+    tgStore.openTelegramChat(formatMessage);
   };
 
   return (

@@ -113,6 +113,7 @@ export const translations = {
       molchanovs: "Molchanovs · Dahab · Egypt",
       text: "The depth begins inside",
     },
+    tgMessage: `Hello! I would like to book the service {value}%0AFirst name:%0ALast name:%0APhone.:%0AEmail:%0ADate:`,
   },
   ru: {
     menu: {
@@ -225,5 +226,6 @@ export const translations = {
       molchanovs: "Molchanovs · Дахаб · Египет",
       text: "Глубина начинается внутри",
     },
+    tgMessage: `Здравствуйте! Хочу забронировать услугу {value}%0AИмя:%0AФамилия:%0AТел.:%0AПочта:%0AДата:`,
   },
 };

@@ -43,11 +43,15 @@ const TeamSection = () => {
         </p>
         <div className="team__stats">
           <div className="team__stat-item">
-            <span className="team__stat-number">500+</span>
-            <span className="team__stat-label">{t.text.clients}</span>
+            <span className="team__stat-number">338</span>
+            <span className="team__stat-label">{t.text.certificates}</span>
           </div>
           <div className="team__stat-item">
-            <span className="team__stat-number">40+</span>
+            <span className="team__stat-number">1k+</span>
+            <span className="team__stat-label">{t.text.students}</span>
+          </div>
+          <div className="team__stat-item">
+            <span className="team__stat-number">74</span>
             <span className="team__stat-label">{t.text.maxDepth}</span>
           </div>
           <div className="team__stat-item">

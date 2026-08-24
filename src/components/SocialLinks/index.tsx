@@ -13,16 +13,16 @@ const contacts = [
     url: "tg://resolve?domain=DahabFamilyFreediving",
     label: "@DahabFamilyFreediving",
   },
-  {
+  /* {
     platform: "whatsapp",
     url: "https://wa.me/1234567890",
     label: "+1234567890",
-  },
-  {
+  }, */
+  /* {
     platform: "instagram",
     url: "https://instagram.com/DahabFamilyFreediving",
     label: "@DahabFamilyFreediving",
-  },
+  }, */
   {
     platform: "gmail",
     url: "mailto:dahabfamilyfreediving@gmail.com",

@@ -71,6 +71,8 @@ export const translations = {
       dayFooter:
         "Every dive is a step towards harmony with yourself and the ocean",
       detail: "Detail...",
+      certificates: "issued certificates",
+      students: "сompleted training"
     },
     placeholder: {
       email: "example@mail.ru",
@@ -184,6 +186,8 @@ export const translations = {
       maxDepth: "макс.глубина",
       dayFooter: "Каждое погружение — шаг к гармонии с собой и океаном",
       detail: "Подробнее...",
+      certificates: "выдано сертификатов",
+      students: "прошли обучение"
     },
     placeholder: {
       email: "example@mail.ru",

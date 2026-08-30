@@ -13,7 +13,7 @@ export const translations = {
     },
     title: {
       urlMain: "Dahab Freediving Molchanovs | Egypt",
-      urlSchedule: "Dahab Freediving Molchanovs | Egypt | Schedule",
+      urlDolphin: "Dahab Freediving Molchanovs | Egypt | Tour Dolphins Tour",
       urlLogin: "Private message app",
       urlVerify: "Approve your E-mail",
       main: "Home",
@@ -21,6 +21,8 @@ export const translations = {
       aboutSection: "Discover the depths - in the sea and in yourself",
       mainFirst: "Discover the depths",
       mainSecond: "in\u00A0the\u00A0sea\u00A0and\u00A0in yourself",
+      dolphinFirst: "Family Dolphin",
+      dolphinSecond: "Adventure",
       team: "Our team",
       feedbacks: "Reviews",
       prices: "The prices of training",
@@ -46,6 +48,7 @@ export const translations = {
       dayOne: "From your very first breath",
       dayTwo:
         "to your deepest dive, every part of the day is designed for your comfort, safety, and progress.",
+      dolphin: "Egypt · Airport · Hurghada or Marsa Alam",
     },
     text: {
       main: "Diving",
@@ -131,7 +134,7 @@ export const translations = {
     },
     title: {
       urlMain: "Дахаб Фридайвинг Molchanovs | Египет",
-      urlSchedule: "Дахаб Freediving Molchanovs | Египет | Тренировки",
+      urlDolphin: "Дахаб Freediving Molchanovs | Египет | Тур Дельфины",
       urlLogin: "Приложение для личных сообщений",
       urlVerify: "Подтвержение вашей почты",
       main: "Главная",
@@ -139,6 +142,8 @@ export const translations = {
       aboutSection: "Откройте глубину",
       mainFirst: "Откройте глубину",
       mainSecond: "в\u00A0море\u00A0и\u00A0в себе",
+      dolphinFirst: "Тур к дельфинам",
+      dolphinSecond: "для всей семьи",
       team: "Наша команда",
       feedbacks: "Отзывы",
       contacts: "Контакты",
@@ -163,6 +168,7 @@ export const translations = {
       feedbacks: "Отзывы наших гостей",
       dayOne: "От дыхания до глубины",
       dayTwo: "каждый этап выстроен для максимального комфорта и прогресса",
+      dolphin: "Египет · Аэропорт · Харгада или Марса Алам",
     },
     text: {
       main: "Погружение",

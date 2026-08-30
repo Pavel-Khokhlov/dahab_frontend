@@ -7,6 +7,8 @@ import { useStore } from "./store";
 // import SchedulePage from "./pages/public/Schedule";
 import { useEffect } from "react";
 import OverlayLoader from "./components/OverleyLoader";
+import DolphinPage from "./pages/public/Dolphin";
+import PageBackground from "./components/PageBackground";
 
 function App() {
   const { globalUIStore } = useStore();
@@ -25,10 +27,12 @@ function App() {
     <HelmetProvider>
       <TranslationContext.Provider value={currentTranslations}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            {/* <Route path="/schedule" element={<SchedulePage />} /> */}
-          </Routes>
+          <PageBackground>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/dolphin" element={<DolphinPage />} />
+            </Routes>
+          </PageBackground>
         </BrowserRouter>
       </TranslationContext.Provider>
     </HelmetProvider>

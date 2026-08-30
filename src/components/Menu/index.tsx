@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslator } from "@/context/TranslationContext";
 import SocialLinks from "../SocialLinks";
 import Lang from "../Lang";
@@ -11,18 +11,15 @@ interface MenuProps {
   onClose?: () => void;
 }
 
-const Menu: React.FC<MenuProps> = ({
-  layout,
-  onClose,
-}) => {
+const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
   const t = useTranslator();
-  const location = useLocation();
+  const navigate = useNavigate();
 
   const menuArr = [
     { id: "main", label: t.menu.main },
     { id: "dahab", label: t.menu.dahab },
     { id: "price", label: t.menu.prices },
-    { id: "tour", label: t.menu.tour },
+    { id: "dolphin", label: t.menu.tour },
     { id: "team", label: t.menu.team },
     { id: "feedbacks", label: t.menu.feedbacks },
   ];
@@ -37,6 +34,10 @@ const Menu: React.FC<MenuProps> = ({
     }
 
     setTimeout(() => {
+      if (targetId.includes("dolphin")) {
+        console.log("targetId", targetId);
+        navigate("/dolphin");
+      }
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         const headerHeight = 0;

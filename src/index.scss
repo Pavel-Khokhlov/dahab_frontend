@@ -98,28 +98,6 @@ body {
   padding: 0;
   background: transparent;
   z-index: 0;
-  &::before {
-    content: "";
-    position: fixed; // фиксируем фон
-    top: 0;
-    left: 0;
-    right: 0;
-    min-height: 100lvh;
-    background-image: url("@/assets/images/background/mainV.webp");
-    background-size: cover;
-    background-position: center;
-    z-index: -2;
-  }
-  &::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    min-height: 100lvh;
-    background-color: rgba(0, 0, 0, 0.3); // полупрозрачный чёрный
-    z-index: -1; // должен быть выше фона (::before), но ниже контента
-  }
 }
 
 p {

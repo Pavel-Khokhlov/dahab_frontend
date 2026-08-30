@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { useStore } from "@/store";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import BurgerMenu from "../BurgerMenu";
 import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
 import Menu from "../Menu";
+import backBlack from "@/assets/images/icons/back-black.svg";
 
 import "./Header.scss";
 
 const Header = () => {
-  const { globalUIStore } = useStore();
-
-  const isMobile = globalUIStore.deviceType === "mobile";
-
+  const location = useLocation();
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const handleBurgerClick = () => {
@@ -20,6 +19,13 @@ const Header = () => {
 
   const handleClickOverlay = () => {
     setIsMenuOpen(false);
+  };
+
+  const handleLogoClick = () => {
+    if (location.pathname === "/dolphin") {
+      navigate("/");
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -32,12 +38,10 @@ const Header = () => {
 
   return (
     <>
-      <div className={`header ${isMobile ? "mobile" : ""}`}>
+      <div className="header">
         <button
           className="header__logo"
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
+          onClick={() => handleLogoClick()}
           aria-label="На главную"
         >
           <LogoMolchanovsIcon
@@ -46,20 +50,15 @@ const Header = () => {
             size={120}
           />
         </button>
-        {/* {location.pathname === "/schedule" && (
+        {location.pathname === "/dolphin" && (
           <button className="header__back" onClick={() => navigate(-1)}>
-            <img
-              src={isMenuOpen || scrollY > 280 ? backBlack : backWhite}
-              alt="button back"
-              width={30}
-            />
+            <img src={backBlack} alt="button back" width={30} />
           </button>
-        )} */}
-        {isMobile ? (
-          <BurgerMenu isClicked={isMenuOpen} onClick={handleBurgerClick} />
-        ) : (
-          <Menu layout="head" />
         )}
+        {location.pathname !== "/dolphin" && (
+          <BurgerMenu isClicked={isMenuOpen} onClick={handleBurgerClick} />
+        )}
+        <Menu layout="head" />
       </div>
 
       {/* Molchanovs — строгое подводное меню */}

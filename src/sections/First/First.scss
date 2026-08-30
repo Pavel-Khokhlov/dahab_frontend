@@ -5,7 +5,7 @@
   justify-content: flex-start;
   width: 100vw;
   height: 100dvh;
-  background: url("@/assets/images/background/mainV.webp");
+  // background: url("@/assets/images/background/mainV.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -13,34 +13,34 @@
   padding: 15vh 0 5vh;
   // Фон по умолчанию для портретной ориентации
   // background-image: url("./assets/images/background/mainV.webp");
-  background-image: -webkit-image-set(
+  /* background-image: -webkit-image-set(
     url("@/assets/images/background/mainV.webp") type("image/webp")
-  );
+  ); */
 
   // Медиа-запрос для альбомной ориентации
-  @media (orientation: landscape) and (min-width: 601px) {
+  /* @media (orientation: landscape) and (min-width: 601px) {
     // background-image: url("./assets/images/background/mainH.webp");
     background-image: -webkit-image-set(
       url("@/assets/images/background/mainH.webp") type("image/webp")
     );
-  }
+  } */
 
   // Для мобильных устройств можно добавить дополнительные проверки
-  @media (max-aspect-ratio: 3/4) {
+  /* @media (max-aspect-ratio: 3/4) {
     // Соотношение сторон как у смартфона
     // background-image: url("./assets/images/background/mainV.webp");
     background-image: -webkit-image-set(
       url("@/assets/images/background/mainV.webp") type("image/webp")
     );
-  }
+  } */
 
-  @media (min-aspect-ratio: 4/3) {
+  /* @media (min-aspect-ratio: 4/3) {
     // Соотношение сторон как у планшета/десктопа
     // background-image: url("./assets/images/background/mainH.webp");
     background-image: -webkit-image-set(
       url("@/assets/images/background/mainH.webp") type("image/webp")
     );
-  }
+  } */
   &__title {
     @include main-title;
     opacity: 0.9;

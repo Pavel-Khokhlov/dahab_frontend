@@ -1,13 +1,14 @@
 // WhyDahabSection.tsx
 import React from "react";
-import dahabImg from "@/assets/images/background/bluehole.webp";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
 import { useInView } from "react-intersection-observer";
+
 import icons from "@/assets/images/icons_dahab";
+import SectionGradient from "../SectionGradient";
+import BlueHoleImg from "@/assets/images/background/bluehole.webp";
 
 import "./WhyDahab.scss";
-
 interface WhyDahabItem {
   id: string;
   type: string;
@@ -103,50 +104,16 @@ const WhyDahabCard: React.FC<{ item: WhyDahabItem; index: number }> = ({
 
 const WhyDahabSection: React.FC = () => {
   const t = useTranslator();
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Сработает только один раз
-    threshold: 0.2, // 20% элемента видно
-  });
-
   return (
-    <section className="why-dahab" id="dahab">
-      <div className="why-dahab__background">
-        <div className="why-dahab__gradient-circle why-dahab__gradient-circle--1"></div>
-        <div className="why-dahab__gradient-circle why-dahab__gradient-circle--2"></div>
-        <div className="why-dahab__gradient-circle why-dahab__gradient-circle--3"></div>
-      </div>
-
-      <div className="why-dahab__container">
-        <h2
-          ref={ref}
-          className="why-dahab__title"
-          style={{
-            opacity: inView ? 1 : 0,
-            transform: inView ? "translateY(0)" : "translateY(50px)",
-            transition: "all 0.6s ease",
-          }}
-        >
-          {t.title.why}{" "}
-          <span className="why-dahab__highlight">{t.title.dahab}</span>?
-        </h2>
-
-        {/* Блок с фотографией на всю ширину */}
-        <div className="why-dahab__full-image-wrapper">
-          <img
-            src={dahabImg}
-            alt="Дахаб - мировая столица фридайвинга"
-            className="why-dahab__full-image"
-          />
-        </div>
-
-        <p className="why-dahab__subtitle">
-          {t.text.dahabTextOne} <strong>{t.text.dahabTextTwo}</strong>
-        </p>
-
-        <div className="why-dahab__divider"></div>
-
-        <p className="why-dahab__description">{t.text.dahabConditions}</p>
-
+    <SectionGradient
+      id="dahab"
+      titleOne={t.title.why}
+      titleTwo={t.title.dahab}
+      textOne={t.text.dahabTextOne}
+      textTwo={t.text.dahabTextTwo}
+      imagePath={BlueHoleImg}
+    >
+      <>
         <div className="why-dahab__grid">
           {whyDahabData.map((item, index) => (
             <WhyDahabCard key={item.id} item={item} index={index} />
@@ -157,8 +124,8 @@ const WhyDahabSection: React.FC = () => {
           <img src={icons.star} className="why-dahab__card-icon" />
           <em>{t.text.dahabFooter}</em>
         </div>
-      </div>
-    </section>
+      </>
+    </SectionGradient>
   );
 };
 

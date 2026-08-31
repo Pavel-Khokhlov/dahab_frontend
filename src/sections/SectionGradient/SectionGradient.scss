@@ -1,0 +1,242 @@
+.gradient {
+  position: relative;
+  padding: $section-padding;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  background: #0a1628;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  overflow: hidden;
+
+  // Декоративные градиентные круги (водная тема)
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  &__gradient-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: float 20s ease-in-out infinite alternate;
+
+    &--1 {
+      width: 500px;
+      height: 500px;
+      top: -200px;
+      right: -100px;
+      background: radial-gradient(
+        circle,
+        var(--primary-brand),
+        transparent 70%
+      );
+      animation-duration: 25s;
+    }
+
+    &--2 {
+      width: 400px;
+      height: 400px;
+      bottom: -150px;
+      left: -100px;
+      background: radial-gradient(circle, #7b2ffc, transparent 70%);
+      animation-duration: 20s;
+      animation-delay: 5s;
+    }
+
+    &--3 {
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #00ff87, transparent 70%);
+      animation-duration: 30s;
+      animation-delay: 10s;
+      opacity: 0.15;
+    }
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__badge {
+    @include filter-blur;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.2rem;
+    background: rgba(var(--primary-white-rgb), 0.06);
+    border: 1px solid rgba(var(--primary-white-rgb), 0.08);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: rgba(var(--primary-white-rgb), 0.7);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+
+    &-icon {
+      font-size: 1rem;
+    }
+  }
+
+  &__title {
+    font-size: 90px;
+    font-weight: 400;
+    color: var(--primary-white);
+    line-height: 1.2;
+    margin: 0 auto 20px;
+    width: 70%;
+
+    @media (max-width: 768px) {
+      font-size: 40px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 40px;
+      width: 100%;
+    }
+  }
+
+  &__highlight {
+    background: linear-gradient(135deg, var(--primary-brand), #7b2ffc, #00ff87);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s ease-in-out infinite;
+  }
+
+  &__subtitle {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: rgba(var(--primary-white-rgb), 0.8);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+
+    strong {
+      color: var(--primary-white);
+      font-weight: 600;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__divider {
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--primary-brand) 45%,
+      #7b2ffc 55%,
+      transparent 100%
+    );
+    border-radius: 2px;
+    margin: 1.5rem auto 2rem;
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    color: rgba(var(--primary-white-rgb), 0.6);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+
+    @media (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+
+  &__full-image-wrapper {
+    width: 100vw;
+    height: 70vh;
+    min-height: 500px;
+    max-height: 800px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: #0a1628;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+    // Используем mask-image для более плавного перехода
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 25%,
+      black 75%,
+      transparent 100%
+    );
+
+    @media (max-width: 768px) {
+      height: 50vh;
+      min-height: 350px;
+      margin-top: 1.5rem;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 20%,
+        black 80%,
+        transparent 100%
+      );
+    }
+
+    @media (max-width: 480px) {
+      height: 20vh;
+      min-height: 200px;
+      margin-top: 1rem;
+      -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      );
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 15%,
+        black 85%,
+        transparent 100%
+      );
+    }
+  }
+
+  &__full-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}

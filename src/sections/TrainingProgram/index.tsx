@@ -1,8 +1,10 @@
 // TrainingProgramSection.tsx
 import React from "react";
-import "./TrainingProgram.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
+import SectionCircle from "../SectionCircle";
+
+import "./TrainingProgram.scss";
 
 const dataPage = {
   subtitle: {
@@ -38,18 +40,12 @@ const TrainingProgramSection: React.FC = () => {
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
   return (
-    <section className="training-program">
-      {/* Декоративные водные элементы */}
-      <div className="training-program__water-bubble training-program__water-bubble--1"></div>
-      <div className="training-program__water-bubble training-program__water-bubble--2"></div>
-      <div className="training-program__water-bubble training-program__water-bubble--3"></div>
-
-      <div className="training-program__container">
-        <h2 className="training-program__title">{t.title.program}</h2>
-        <p className="training-program__subtitle">
-          {dataPage.subtitle[currentLang]}
-        </p>
-
+    <SectionCircle
+      id="program"
+      title={t.title.program}
+      subtitle={dataPage.subtitle[currentLang]}
+    >
+      <>
         <ul className="training-program__list">
           {dataPage.list[currentLang].map((item) => {
             return <li key={item}>{item}</li>;
@@ -59,8 +55,8 @@ const TrainingProgramSection: React.FC = () => {
         <p className="training-program__footnote">
           <em>{dataPage.footer[currentLang]}</em>
         </p>
-      </div>
-    </section>
+      </>
+    </SectionCircle>
   );
 };
 

@@ -1,8 +1,10 @@
 // FamilyFormatSection.tsx
 import React from "react";
-import "./FamilyFormat.scss";
 import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
+import SectionCircle from "../SectionCircle";
+
+import "./FamilyFormat.scss";
 
 const dataPage = {
   subtitle: {
@@ -42,21 +44,13 @@ const FamilyFormatSection: React.FC = () => {
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
   return (
-    <section className="family-format" id="family">
-      {/* Декоративные водные элементы */}
-      <div className="family-format__water-bubble family-format__water-bubble--1"></div>
-      <div className="family-format__water-bubble family-format__water-bubble--2"></div>
-      <div className="family-format__water-bubble family-format__water-bubble--3"></div>
-
-      <div className="family-format__container">
-        <h2 className="family-format__title">{t.title.family}</h2>
-
-        <p className="family-format__lead">{dataPage.subtitle[currentLang]}</p>
-
-        <p className="family-format__description">
-          {dataPage.text[currentLang]}
-        </p>
-
+    <SectionCircle
+      id="family"
+      title={t.title.family}
+      subtitle={dataPage.subtitle[currentLang]}
+      description={dataPage.text[currentLang]}
+    >
+      <>
         <div className="family-format__opportunities">
           <span className="family-format__opportunities-label">
             {dataPage.options[currentLang]}
@@ -76,8 +70,8 @@ const FamilyFormatSection: React.FC = () => {
             {dataPage.important[currentLang]}
           </p>
         </div>
-      </div>
-    </section>
+      </>
+    </SectionCircle>
   );
 };
 

@@ -3,6 +3,7 @@ import "./TrainingDay.scss";
 import { useInView } from "react-intersection-observer";
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
+import SectionGradient from "../SectionGradient";
 
 export interface PageItem {
   id: string;
@@ -143,51 +144,15 @@ const TrainingDaySection = () => {
   });
 
   return (
-    <section className="training-day">
-      {/* Декоративные градиентные круги */}
-      <div className="training-day__background">
-        <div className="training-day__gradient-circle training-day__gradient-circle--1" />
-        <div className="training-day__gradient-circle training-day__gradient-circle--2" />
-        <div className="training-day__gradient-circle training-day__gradient-circle--3" />
-      </div>
-
-      <div className="training-day__container">
-        {/* Бэдж */}
-        {/* <div className="training-day__badge">
-          <span className="training-day__badge-icon">🌊</span>
-          Расписание дня
-        </div> */}
-
-        {/* Заголовок */}
-        <h2
-          ref={ref}
-          className="training-day__title"
-          style={{
-            opacity: inView ? 1 : 0,
-            transform: inView ? "translateY(0)" : "translateY(50px)",
-            transition: "all 0.6s ease",
-          }}
-        >
-          {t.title.dayOne}{" "}
-          <span className="training-day__highlight">{t.title.dayTwo}?</span>
-        </h2>
-
-        {/* Блок с фотографией на всю ширину */}
-        <div className="why-dahab__full-image-wrapper">
-          <img
-            src={dayImg}
-            alt="Дахаб - мировая столица фридайвинга"
-            className="why-dahab__full-image"
-          />
-        </div>
-
-        <p className="training-day__subtitle">
-          <strong>{t.subtitle.dayOne}</strong> — {t.subtitle.dayTwo}
-        </p>
-
-        <div className="training-day__divider" />
-
-        {/* Таймлайн в виде карточной сетки */}
+    <SectionGradient
+      id="dahab"
+      titleOne={t.title.dayOne}
+      titleTwo={t.title.dayTwo}
+      textOne={t.subtitle.dayOne}
+      textTwo={t.subtitle.dayTwo}
+      imagePath={dayImg}
+    >
+      <>
         <div className="training-day__grid">
           {pageData.map((item, index) => (
             <div
@@ -248,8 +213,8 @@ const TrainingDaySection = () => {
           <span className="training-day__footnote-icon">💙</span>
           <em>{t.text.dayFooter}</em>
         </div>
-      </div>
-    </section>
+      </>
+    </SectionGradient>
   );
 };
 

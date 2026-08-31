@@ -14,7 +14,7 @@ $transition: all 0.3s ease;
 .pricing-section {
   position: relative;
   padding: $section-padding;
-  background-color: $bg-color;
+  background-color: var(--primary-white);
   font-family:
     "Inter",
     -apple-system,
@@ -22,6 +22,7 @@ $transition: all 0.3s ease;
     "Segoe UI",
     Roboto,
     sans-serif;
+  z-index: 2;
 
   &__container {
     max-width: 1200px;
@@ -67,7 +68,7 @@ $transition: all 0.3s ease;
   // Popular card styling
   &--popular {
     border-color: $primary-color;
-    background: #ffffff;
+    background: var(--primary-white);
     transform: scale(1.02);
     box-shadow: 0 15px 35px rgba(0, 123, 255, 0.15);
 
@@ -87,7 +88,7 @@ $transition: all 0.3s ease;
     left: 50%;
     transform: translateX(-50%);
     background: $primary-color;
-    color: #fff;
+    color: var(--primary-white);
     font-size: 0.75rem;
     font-weight: 600;
     padding: 0.35rem 1.5rem;

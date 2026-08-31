@@ -4,6 +4,7 @@ import { useTranslator } from "@/context/TranslationContext";
 import FooterSection from "@/components/Footer";
 import Header from "@/components/Header";
 import SectionMain from "@/sections/SectionMain";
+import DolphinHouseSection from "@/sections/Dolphin/DolphinHouse";
 
 
 function DolphinPage() {
@@ -21,6 +22,7 @@ function DolphinPage() {
         titleSecond={t.title.dolphinSecond}
         subtitle={t.subtitle.dolphin}
       />
+      <DolphinHouseSection />
       <FooterSection />
     </>
   );

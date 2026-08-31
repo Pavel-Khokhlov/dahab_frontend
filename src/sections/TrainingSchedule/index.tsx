@@ -1,35 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useTranslator } from "@/context/TranslationContext";
 import LogoIcon from "@/components/LogoIcon";
 import icons from "@/assets/images/icons_schedule";
 
 import "./TrainingSchedule.scss";
+import SectionCircle from "../SectionCircle";
 
 const TrainingScheduleSection: React.FC = () => {
   const t = useTranslator();
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // const today = new Date();
-  // const dayOfWeek = today.getDay();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.2 },
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const schedule = [
     { day: "monday", type: "training" },
@@ -42,17 +20,15 @@ const TrainingScheduleSection: React.FC = () => {
   ] as const;
 
   return (
-    <section className="schedule__wrapper" ref={sectionRef}>
-      <div className={`schedule__body ${isVisible ? "visible" : ""}`}>
-        <h2 className="schedule__title">{t.title.weekSchedule}</h2>
-
+    <SectionCircle id="schedule" title={t.title.weekSchedule}>
+      <>
         <div className="schedule__grid">
           {schedule.map((item, index) => {
             const iconUrl = icons[item.type];
             return (
               <div
                 key={item.day}
-                className={`schedule__item ${isVisible ? "visible" : ""}`}
+                className={`schedule__item visible`}
                 style={{ transitionDelay: `${index * 0.1}s` }}
               >
                 <img src={iconUrl} className="day-icon" />
@@ -63,16 +39,16 @@ const TrainingScheduleSection: React.FC = () => {
           })}
         </div>
 
-        <div className={`schedule__note ${isVisible ? "visible" : ""}`}>
+        <div className={`schedule__note visible`}>
           <p className="schedule__note-text">{t.text.weekFooter}</p>
         </div>
 
         <LogoIcon color={"var(--primary-brand)"} size={40} />
-        <div className={`brand-section ${isVisible ? "visible" : ""}`}>
+        <div className={`brand-section visible`}>
           <span className="brand-name">molchanovs</span>
         </div>
-      </div>
-    </section>
+      </>
+    </SectionCircle>
   );
 };
 

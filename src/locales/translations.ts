@@ -37,6 +37,8 @@ export const translations = {
       program: "Comprehensive training program",
       dayOne: "A Typical",
       dayTwo: "Training Day",
+      dolphinOne: "Legendary Home of",
+      dolphinTwo: "Wild Dolphins",
     },
     subtitle: {
       verify: "The code has been sent to your e-mail",
@@ -75,7 +77,10 @@ export const translations = {
         "Every dive is a step towards harmony with yourself and the ocean",
       detail: "Detail...",
       certificates: "issued certificates",
-      students: "сompleted training"
+      students: "сompleted training",
+      dolphinTextOne: "The U-shaped Sataya Coral Reef embraces a calm, turquoise lagoon—",
+      dolphinTextTwo: "the world’s ultimate hotspot for wild spinner dolphins.",
+      dolphinFooter: "Dive into authentic ocean life: no barriers, no pools, no performances - just freedom and a pure sense of the wild!",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -158,6 +163,8 @@ export const translations = {
       program: "Комплексная программа подготовки",
       dayOne: "Как проходит",
       dayTwo: "тренировочный день",
+      dolphinOne: "Дом дельфинов",
+      dolphinTwo: "легендарный риф Сатайя",
     },
     subtitle: {
       verify: "Код подтверждения отправлен на вашу почту",
@@ -168,7 +175,7 @@ export const translations = {
       feedbacks: "Отзывы наших гостей",
       dayOne: "От дыхания до глубины",
       dayTwo: "каждый этап выстроен для максимального комфорта и прогресса",
-      dolphin: "Египет · Аэропорт · Харгада или Марса Алам",
+      dolphin: "Египет · Аэропорт · Хургада или Марса Алам",
     },
     text: {
       main: "Погружение",
@@ -193,7 +200,10 @@ export const translations = {
       dayFooter: "Каждое погружение — шаг к гармонии с собой и океаном",
       detail: "Подробнее...",
       certificates: "выдано сертификатов",
-      students: "прошли обучение"
+      students: "прошли обучение",
+      dolphinTextOne: "Подковообразный коралловый риф Сатайя скрывает внутри штилевую бирюзовую лагуну —",
+      dolphinTextTwo: "признанный мировой хаб диких дельфинов-спиннеров.",
+      dolphinFooter: "Погрузитесь в настоящую жизнь океана без барьеров и дельфинариев!",
     },
     placeholder: {
       email: "example@mail.ru",

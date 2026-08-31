@@ -45,5 +45,7 @@ export default defineConfig({
     hmr: {
       clientPort: 5555, // Для правильного WebSocket
     },
+    // ✅ Добавьте эту настройку для SPA роутинга
+    historyApiFallback: true,
   },
 });

@@ -1,9 +1,9 @@
 import dayImg from "@/assets/images/background/trainingday.webp";
-import "./TrainingDay.scss";
-import { useInView } from "react-intersection-observer";
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
 import SectionGradient from "../SectionGradient";
+
+import "./TrainingDay.scss";
 
 export interface PageItem {
   id: string;
@@ -138,10 +138,6 @@ const TrainingDaySection = () => {
   const t = useTranslator();
   const { globalUIStore } = useStore();
   const currentLang = globalUIStore.currentLocale;
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Сработает только один раз
-    threshold: 0.2, // 20% элемента видно
-  });
 
   return (
     <SectionGradient

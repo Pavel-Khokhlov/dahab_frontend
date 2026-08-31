@@ -1,13 +1,46 @@
-import { defineConfig } from "vite";
+import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
+import type { Connect } from "vite";
+import type { IncomingMessage, ServerResponse } from 'http';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// ✅ Плагин с правильной типизацией
+function spaFallbackPlugin(): Plugin {
+  return {
+    name: "spa-fallback",
+    configureServer(server) {
+      // Возвращаем функцию для middleware
+      return () => {
+        server.middlewares.use(
+          (
+            req: IncomingMessage,
+            res: ServerResponse,
+            next: Connect.NextFunction,
+          ) => {
+            // Пропускаем запросы к статическим файлам и API
+            if (
+              req.url?.includes(".") ||
+              req.url?.startsWith("/@") ||
+              req.url?.startsWith("/api")
+            ) {
+              return next();
+            }
+            // Перенаправляем все остальные запросы на index.html
+            req.url = "/";
+            next();
+          },
+        );
+      };
+    },
+  };
+}
+
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), spaFallbackPlugin()],
   optimizeDeps: {
     include: ["use-visitor-location"], // Принудительно включить пакет в предварительную сборку
   },
@@ -45,7 +78,5 @@ export default defineConfig({
     hmr: {
       clientPort: 5555, // Для правильного WebSocket
     },
-    // ✅ Добавьте эту настройку для SPA роутинга
-    historyApiFallback: true,
   },
 });

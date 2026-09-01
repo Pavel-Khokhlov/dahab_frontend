@@ -94,7 +94,7 @@ const DolphinPriceSection: React.FC = () => {
       <>
         <ul className="dolphin__list">
           {dolphinPriceData.features[currentLang].map((feature, index) => (
-            <li key={index} className="dolphin__item tour">
+            <li key={index} className="dolphin__item start">
               <p className="dolphin__text">
                 {feature
                   .split(":")

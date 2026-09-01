@@ -20,7 +20,7 @@ const FooterSection = () => {
             <span className={styles.footerName}>{t.footer.molchanovs}</span>
           </div>
           <div className={styles.footerMeta}>
-            <span>2020 - {currentYear}</span>
+            <span>2022 - {currentYear}</span>
             <span className={styles.footerDot}>•</span>
             <span>{t.footer.text}</span>
           </div>

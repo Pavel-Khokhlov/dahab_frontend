@@ -26,9 +26,9 @@ $font-size-main-title: 100px;
 $font-size-main-subtitle: 40px;
 $font-size-section-title: 48px;
 $font-size-section-subtitle: 30px;
-$font-size-section-subtitle-small: 20px;
+$font-size-section-subtitle-small: min(26px, 4.5vw);
 $font-size-text-main: 18px;
-$font-size-text-second: 20px;
+$font-size-text-second: min(20px, 3.5vw);
 $font-size-text-link: 16px;
 $font-size-text-button: 15px;
 $font-size-text-description: 14px;
@@ -50,7 +50,7 @@ $font-weight-main-title: 700;
 $font-weight-main-subtitle: 500;
 $font-weight-section-title: 700;
 $font-weight-section-subtitle: 500;
-$font-weight-section-subtitle-small: 400;
+$font-weight-section-subtitle-small: 500;
 $font-weight-text-main: 400;
 $font-weight-text-second: 400;
 $font-weight-text-link: 500;
@@ -147,14 +147,6 @@ $font-weight-text-description: 400;
   letter-spacing: 0;
   opacity: 0.9;
   margin: 0 0 min(16px, 3vw);
-
-  @media (max-width: 768px) {
-    font-size: $font-size-section-subtitle-small * 0.9; // 17px
-  }
-
-  @media (max-width: 480px) {
-    font-size: $font-size-section-subtitle-small * 0.8; // 15px
-  }
 }
 
 // ----- Основной текст -----
@@ -178,10 +170,6 @@ $font-weight-text-description: 400;
   line-height: $line-height-text-second;
   letter-spacing: 0.01em;
   color: var(--text-second);
-
-  @media (max-width: 480px) {
-    font-size: $font-size-text-second * 0.7; // 14.4px
-  }
 }
 
 // ----- Текст-ссылка -----

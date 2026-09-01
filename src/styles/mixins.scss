@@ -59,3 +59,34 @@
   text-align: center;
   margin: 0 0 min(50px, 10vw);
 }
+
+@mixin list-main {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  flex: 1;
+}
+
+@mixin checklist-item {
+  padding: 0.4rem 0 0.4rem 1.75rem;
+  position: relative;
+  font-size: 0.95rem;
+  color: #d4e8f5;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+
+  &.start {
+    text-align: start;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary-brand);
+    font-weight: 600;
+  }
+}

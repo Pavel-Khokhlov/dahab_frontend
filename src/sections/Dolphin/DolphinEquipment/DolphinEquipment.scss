@@ -1,0 +1,61 @@
+.dolphin-equipment {
+  position: relative;
+  padding: min(100px, 15vw) 20px;
+  background: linear-gradient(145deg, #0b1a2e 0%, #0f2847 100%);
+  color: #f0f7ff;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  &__title {
+    @include title-gd-text;
+  }
+  &__subtitle {
+    @include section-subtitle-small;
+  }
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+
+    li {
+      @include filter-blur;
+      @include text-second;
+      position: relative;
+      color: rgba(255, 255, 255, 0.92);
+      padding: 0.8rem 1.5rem 0.8rem 3rem;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      width: min(820px, 100%);
+      margin: 0 auto;
+      text-align: start;
+      box-sizing: border-box;
+
+      &::before {
+        content: "▹";
+        position: absolute;
+        left: 1.3rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--primary-brand);
+        font-size: 16px;
+        line-height: 1;
+        text-shadow: 0 0 20px rgba(90, 200, 250, 0.3);
+      }
+    }
+  }
+  &__text {
+    @include text-second;
+    &.additional {
+      width: min(500px, 100%);
+      margin: 0 auto;
+    }
+  }
+}

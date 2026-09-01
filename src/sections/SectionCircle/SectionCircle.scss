@@ -128,13 +128,22 @@
     }
   }
 
+  &__price {
+    font-size: min(50px, 10vw);
+    font-weight: 700;
+    color: var(--primary-brand);
+    padding-bottom: min(30px, 5vw);
+    border-bottom: 2px solid rgba(90, 200, 250, 0.2);
+    margin-bottom: min(30px, 5vw);
+  }
+
   &__description {
-    font-size: 1.15rem;
+    font-size: min(24px, 4.5vw);
     font-weight: 400;
-    color: rgba(200, 230, 255, 0.9);
+    color: var(--primary-white);
     text-align: center;
     line-height: 1.7;
-    margin-bottom: 2.5rem;
+    margin-bottom: min(30px, 5vw);
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
 
     @media (max-width: 480px) {

@@ -2,17 +2,12 @@
 .family-format {
   &__opportunities {
     @include filter-blur;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 1.5rem;
-    padding: 1.8rem 2.2rem;
-    margin-bottom: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    // background: rgba(255, 255, 255, 0.05);
+    border-radius: min(20px, 4vw);
+    padding: min(30px, 4vw) min(40px, 6vw);
+    margin-bottom: min(50px, 10vw);
+    // border: 1px solid rgba(255, 255, 255, 0.2);
     border-left: 2px solid var(--primary-brand);
-
-    @media (max-width: 480px) {
-      padding: 1.2rem 1.2rem;
-      border-radius: 1rem;
-    }
   }
 
   &__opportunities-label {
@@ -30,13 +25,12 @@
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
 
     li {
       position: relative;
       font-size: 1.1rem;
       font-weight: 400;
-      color: rgba(255, 255, 255, 0.92);
+      color: rgba(var(--primary-white-rgb), 0.92);
       padding: 0.5rem 0 0.5rem 2rem;
       line-height: 1.5;
       transition: all 0.3s ease;
@@ -54,7 +48,7 @@
       }
 
       &:hover {
-        color: #ffffff;
+        color: var(--primary-white);
         transform: translateX(6px);
       }
 
@@ -66,13 +60,12 @@
   }
 
   &__important {
+    @include filter-blur;
     background: linear-gradient(
       135deg,
       rgba(90, 200, 250, 0.08),
       rgba(50, 150, 200, 0.03)
     );
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
     border-radius: 1.5rem;
     padding: 1.8rem 2.2rem;
     border: 1px solid rgba(90, 200, 250, 0.15);

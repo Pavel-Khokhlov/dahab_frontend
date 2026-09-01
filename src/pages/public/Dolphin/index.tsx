@@ -5,6 +5,7 @@ import FooterSection from "@/components/Footer";
 import Header from "@/components/Header";
 import SectionMain from "@/sections/SectionMain";
 import DolphinHouseSection from "@/sections/Dolphin/DolphinHouse";
+import DolphinPriceSection from "@/sections/Dolphin/DolphinPrice";
 
 
 function DolphinPage() {
@@ -23,6 +24,7 @@ function DolphinPage() {
         subtitle={t.subtitle.dolphin}
       />
       <DolphinHouseSection />
+      <DolphinPriceSection />
       <FooterSection />
     </>
   );

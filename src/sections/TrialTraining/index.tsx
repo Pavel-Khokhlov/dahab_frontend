@@ -7,6 +7,7 @@ import trialImgH from "@/assets/images/background/trialH.webp";
 import TgIcon from "@/assets/images/icons/telegram_black.svg";
 
 import styles from "./Trial.module.scss";
+import Button from "@/components/Button";
 
 interface TrialCard {
   id: string;
@@ -178,14 +179,13 @@ const TrialSection2: React.FC = () => {
                     </li>
                   ))}
                 </ul>
-                <button
-                  className={styles.bookButton}
+                <Button
                   type="button"
-                  onClick={() => handleBook(card.title[currentLang])}
-                >
-                  {t.button.bookin}
-                  <img src={TgIcon} className={styles.bookButtonIcon} />
-                </button>
+                  title={t.button.bookin}
+                  icon={TgIcon}
+                  message={card.title[currentLang]}
+                  onClick={handleBook}
+                />
               </div>
             </article>
           ))}

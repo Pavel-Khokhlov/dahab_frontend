@@ -1,8 +1,14 @@
+// PageBackground.scss
+
 .background {
   position: relative;
   min-height: 100dvh;
+  min-height: 100vh; // fallback
   width: 100%;
+  overflow: hidden;
+  isolation: isolate;
 
+  // Основной фон
   &::before {
     content: "";
     position: fixed;
@@ -10,13 +16,25 @@
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100vw;
+    height: 100vh; // fallback
+    height: 100dvh;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: -2;
+    
+    // Оптимизация производительности
+    will-change: background-image, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    
+    // Плавное появление
     animation: fadeBackground 0.5s ease-in-out;
   }
 
+  // Фоновые изображения
   &.main::before {
     background-image: url("@/assets/images/background/mainV.webp");
   }
@@ -25,36 +43,81 @@
     background-image: url("@/assets/images/background/dolphinV.webp");
   }
 
-  // Добавляем затемнение поверх фона
+  // Затемнение
   &::after {
     content: "";
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh; // fallback
-    height: 100dvh; // динамическая высота
+    height: 100dvh;
     background: rgba(0, 0, 0, 0.3);
-    pointer-events: none; // чтобы не блокировать клики
+    z-index: -1;
+    pointer-events: none;
     animation: fadeOverlay 0.5s ease-in-out;
+    
+    // Оптимизация
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+  }
+
+  // Состояние перехода
+  &.transitioning::before {
+    animation: fadeBackground 0.5s ease-in-out;
   }
 }
 
-// Анимации для плавного появления
+// Анимации
 @keyframes fadeBackground {
-  from {
+  0% {
     opacity: 0;
+    transform: scale(1.05);
   }
-  to {
+  100% {
     opacity: 1;
+    transform: scale(1);
   }
 }
 
 @keyframes fadeOverlay {
-  from {
+  0% {
     opacity: 0;
   }
-  to {
+  100% {
     opacity: 1;
+  }
+}
+
+// Поддержка старых браузеров
+@supports not (height: 100dvh) {
+  .background {
+    min-height: 100vh;
+    
+    &::before,
+    &::after {
+      height: 100vh;
+    }
+  }
+}
+
+// Медиа-запросы
+@media (prefers-reduced-motion: reduce) {
+  .background {
+    &::before,
+    &::after {
+      animation: none;
+    }
+  }
+  
+  @keyframes fadeBackground {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }

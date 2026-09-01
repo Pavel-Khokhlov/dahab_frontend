@@ -4,6 +4,7 @@ import { useInView } from "react-intersection-observer";
 import TgIcon from "@/assets/images/icons/telegram_white.svg";
 
 import "./PricingSection.scss";
+import Button from "@/components/Button";
 
 const plans = [
   {
@@ -104,13 +105,14 @@ const PricingSection = () => {
                 {plan.description[currentLang]}
               </p>
               <p className="pricing-card__price">{plan.price[currentLang]}</p>
-              <button
-                className="pricing-card__button"
-                onClick={() => handleBook(plan.message[currentLang])}
-              >
-                {t.button.bookin}
-                <img src={TgIcon} className="pricing-card__icon" />
-              </button>
+              <Button
+                type="button"
+                title={t.button.bookin}
+                isBGWhite={true}
+                icon={TgIcon}
+                message={plan.message[currentLang]}
+                onClick={handleBook}
+              />
               {plan.mark && (
                 <p className="pricing-card__mark">* {plan.mark[currentLang]}</p>
               )}

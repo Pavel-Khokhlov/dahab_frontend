@@ -31,7 +31,9 @@
 @mixin matte-glass-active {
   background: rgba(var(--color-ocean-rgb), 0.5);
   border: 1px solid rgba(var(--color-accent-rgb), 0.3);
-  box-shadow: 0 20px 50px -12px rgba(var(--primary-black-rgb), 0.6);
+  // box-shadow: 0 20px 50px -12px rgba(var(--primary-black-rgb), 0.6);
+  border-radius: 10px;
+  padding: min(20px, 3vw) min(30px, 4vw);
 }
 
 @mixin filter-blur {

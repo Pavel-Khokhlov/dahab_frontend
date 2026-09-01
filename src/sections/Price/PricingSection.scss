@@ -121,29 +121,7 @@ $transition: all 0.3s ease;
     margin-bottom: 2rem;
     letter-spacing: -0.02em;
   }
-
-  &__button {
-    @include flex-center-row;
-    background: $primary-color;
-    color: var(--primary-white);
-    border: none;
-    border-radius: 50px;
-    padding: 0.9rem 3rem;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: $transition;
-    gap: 10px;
-
-    &:hover {
-      background: $primary-hover;
-      transform: scale(1.02);
-    }
-  }
-  &__icon {
-    width: 30px;
-    height: 30px;
-  }
+  
   &__mark {
     position: absolute;
     bottom: 10px;

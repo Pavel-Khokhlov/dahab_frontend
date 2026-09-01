@@ -217,46 +217,6 @@
   }
 }
 
-.bookButton {
-  @include flex-center-row;
-  gap: 10px;
-  background: linear-gradient(135deg, #4fc3f7, #0288d1);
-  border: none;
-  border-radius: 60px;
-  padding: 0.9rem 1.5rem;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #0b1a2e;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.2s ease,
-    opacity 0.2s;
-  width: 100%;
-  margin-top: 0.5rem;
-  letter-spacing: 0.02em;
-
-  &Icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 8px 24px rgba(79, 195, 247, 0.35);
-  }
-
-  &:active {
-    transform: scale(0.97);
-    opacity: 0.85;
-  }
-
-  &:focus-visible {
-    outline: 3px solid #81d4fa;
-    outline-offset: 4px;
-  }
-}
-
 // Responsive
 @media (max-width: 800px) {
   .heading {

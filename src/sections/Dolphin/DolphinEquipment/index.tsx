@@ -60,10 +60,10 @@ const DolphinEquipmentSection = () => {
           );
         })}
       </ul>
-      <h4 className="dolphin-equipment__subtitle">
+      <h4 className="dolphin-equipment__subtitle add">
         {dolphinEquipmentData.subtitle[currentLang]}
       </h4>
-      <p className="dolphin-equipment__text additional">
+      <p className="dolphin-equipment__text add">
         {dolphinEquipmentData.additionalText[currentLang]}
       </p>
     </section>

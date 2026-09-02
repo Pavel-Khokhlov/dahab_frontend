@@ -13,6 +13,11 @@
   }
   &__subtitle {
     @include section-subtitle-small;
+    &.add {
+      margin: 0 0 min(20px, 4vw);
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(var(--primary-white-rgb), 0.3);
+    }
   }
   &__list {
     list-style: none;
@@ -39,23 +44,18 @@
       box-sizing: border-box;
 
       &::before {
-        content: "▹";
-        position: absolute;
-        left: 1.3rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--primary-brand);
-        font-size: 16px;
-        line-height: 1;
-        text-shadow: 0 0 20px rgba(90, 200, 250, 0.3);
+        @include simbol("▹");
+        left: 20px;
+        font-size: 24px;
       }
     }
   }
   &__text {
     @include text-second;
-    &.additional {
+    &.add {
       width: min(500px, 100%);
       margin: 0 auto;
+      opacity: 0.7;
     }
   }
 }

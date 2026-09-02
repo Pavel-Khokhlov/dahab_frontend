@@ -21,15 +21,9 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 
       &::before {
-        content: "▹";
-        position: absolute;
-        left: 1.3rem;
-        top: 50%;
-        transform: translateY(-50%);
-        color: #5ac8fa;
-        font-size: 1.4rem;
-        line-height: 1;
-        text-shadow: 0 0 20px rgba(90, 200, 250, 0.3);
+        @include simbol("▹");
+        font-size: 24px;
+        left: 20px;
       }
 
       // Водный градиент при наведении
@@ -77,11 +71,6 @@
         font-size: 16px;
         padding: 0.6rem 1rem 0.6rem 2.5rem;
         border-radius: 30px;
-
-        &::before {
-          left: 1rem;
-          font-size: 16px;
-        }
       }
     }
 

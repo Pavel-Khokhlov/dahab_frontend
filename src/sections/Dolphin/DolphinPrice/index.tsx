@@ -70,12 +70,12 @@ const DolphinPriceSection: React.FC = () => {
       ],
     },
     additionalTitle: {
-      ru: "€ Оплачивается отдельно (по желанию)",
-      en: "€ Private photo session (extra option)",
+      ru: "Оплачивается по желанию",
+      en: "Paid upon request",
     },
     additionalText: {
-      ru: "Индивидуальная фотосессия: личный сет от фотографа в воде и на борту — 250 €.",
-      en: "Want something truly personal? Book a private session with our photographer and receive your own collection of underwater and onboard images - €250 per person.",
+      ru: "⭐ Личный фотограф в море и на яхте\n+ 250 €",
+      en: "Personal photographer at sea and on a yacht\n+ 250 €",
     },
   };
 
@@ -89,13 +89,15 @@ const DolphinPriceSection: React.FC = () => {
       id="dolphinPrice"
       title={dolphinPriceData.title[currentLang]}
       price={dolphinPriceData.price}
-      description={dolphinPriceData.includes[currentLang]}
     >
       <>
-        <ul className="dolphin__list">
+        <h4 className="dolphin-price__subtitle">
+          {dolphinPriceData.includes[currentLang]}
+        </h4>
+        <ul className="dolphin-price__list">
           {dolphinPriceData.features[currentLang].map((feature, index) => (
-            <li key={index} className="dolphin__item start">
-              <p className="dolphin__text">
+            <li key={index} className="dolphin-price__item start">
+              <p className="dolphin-price__text">
                 {feature
                   .split(":")
                   .map((part, i) =>
@@ -106,14 +108,14 @@ const DolphinPriceSection: React.FC = () => {
           ))}
         </ul>
         <div className="family-format__opportunities">
-          <span className="family-format__opportunities-label">
+          <h4 className="dolphin-price__subtitle brand">
             {dolphinPriceData.activitiesTitle[currentLang]}
-          </span>
+          </h4>
           <ul className="family-format__list">
             {dolphinPriceData.activities[currentLang].map((activity) => {
               return (
                 <li key={activity}>
-                  <p className="dolphin__text">
+                  <p className="dolphin-price__text">
                     {activity
                       .split(":")
                       .map((part, i) =>
@@ -132,10 +134,10 @@ const DolphinPriceSection: React.FC = () => {
           message={"Dolphin Tour"}
           onClick={handleBook}
         />
-        <h4 className="dolphin__subtitle">
+        <h4 className="dolphin-price__subtitle top">
           {dolphinPriceData.additionalTitle[currentLang]}
         </h4>
-        <p className="dolphin__text add">
+        <p className="dolphin-price__text add">
           {dolphinPriceData.additionalText[currentLang]}
         </p>
       </>

@@ -26,7 +26,7 @@ $font-size-main-title: 100px;
 $font-size-main-subtitle: 40px;
 $font-size-section-title: 48px;
 $font-size-section-subtitle: 30px;
-$font-size-section-subtitle-small: min(26px, 4.5vw);
+$font-size-section-subtitle-small: min(30px, 4.5vw);
 $font-size-text-main: 18px;
 $font-size-text-second: min(20px, 3.5vw);
 $font-size-text-link: 16px;
@@ -50,7 +50,7 @@ $font-weight-main-title: 700;
 $font-weight-main-subtitle: 500;
 $font-weight-section-title: 700;
 $font-weight-section-subtitle: 500;
-$font-weight-section-subtitle-small: 500;
+$font-weight-section-subtitle-small: 400;
 $font-weight-text-main: 400;
 $font-weight-text-second: 400;
 $font-weight-text-link: 500;
@@ -145,8 +145,8 @@ $font-weight-text-description: 400;
   font-weight: $font-weight-section-subtitle-small;
   line-height: $line-height-section-subtitle-small;
   letter-spacing: 0;
-  opacity: 0.9;
-  margin: 0 0 min(16px, 3vw);
+  opacity: 1;
+  margin: 0 0 min(20px, 3vw);
 }
 
 // ----- Основной текст -----

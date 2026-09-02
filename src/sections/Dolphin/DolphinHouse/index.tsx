@@ -24,12 +24,12 @@ const DolphinHaouseData: WhyDahabItem[] = [
     id: "location-one",
     type: "location",
     title: {
-      ru: "Локация No1 в мире для безопасного плавания",
-      en: "The world's #1 location for a safe",
+      ru: "Локация No1 в мире",
+      en: "The world's #1 location",
     },
     text: {
-      ru: "с дельфинами в живой природе.",
-      en: "free swim with dolphins in the wild.",
+      ru: "безопасное плавание с дельфинами в живой природе.",
+      en: "safety free swim with dolphins in the wild.",
     },
   },
   {

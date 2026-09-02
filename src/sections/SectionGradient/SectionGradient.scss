@@ -93,21 +93,12 @@
   }
 
   &__title {
-    font-size: 90px;
+    font-size: min(80px, 10vw);
     font-weight: 400;
     color: var(--primary-white);
     line-height: 1.2;
     margin: 0 auto 20px;
-    width: 70%;
-
-    @media (max-width: 768px) {
-      font-size: 40px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 40px;
-      width: 100%;
-    }
+    width: min(800px, 100%);
   }
 
   &__highlight {

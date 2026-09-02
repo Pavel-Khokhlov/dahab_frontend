@@ -97,8 +97,8 @@ body {
   position: relative;
   margin: 0;
   padding: 0;
-  min-height: 100dvh;
   min-height: 100vh; // fallback для старых браузеров
+  min-height: 100lvh;
   background: transparent;
   z-index: 0;
   // Улучшаем рендеринг

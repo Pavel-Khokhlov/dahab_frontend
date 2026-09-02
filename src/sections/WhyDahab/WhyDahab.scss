@@ -13,7 +13,7 @@
 
   &__card {
     position: relative;
-    padding: 1.5rem;
+    padding: min(15px, 3vw) min(20px, 4vw);
     background: rgba(var(--primary-white-rgb), 0.03);
     border: 1px solid rgba(var(--primary-white-rgb), 0.06);
     border-radius: 1rem;
@@ -77,6 +77,8 @@
     color: rgba(var(--primary-white-rgb), 0.7);
     font-size: 1rem;
     text-align: center;
+    width: 80%;
+    margin: 0 auto;
 
     em {
       font-style: italic;

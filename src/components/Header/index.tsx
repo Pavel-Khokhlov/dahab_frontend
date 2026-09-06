@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import BurgerMenu from "../BurgerMenu";
-import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
+// import LogoMolchanovsIcon from "../LogoMolchanovsIcon";
 import Menu from "../Menu";
 import backBlack from "@/assets/images/icons/back-black.svg";
 
 import "./Header.scss";
+import LogoIcon from "../LogoIcon";
 
 const Header = () => {
   const location = useLocation();
@@ -44,11 +45,8 @@ const Header = () => {
           onClick={() => handleLogoClick()}
           aria-label="На главную"
         >
-          <LogoMolchanovsIcon
-            colorIcon={"var(--primary-brand)"}
-            colorText={"var(--primary-black)"}
-            size={120}
-          />
+          <LogoIcon color={"var(--primary-brand)"} size={30} />
+          <p className="header__logo-text">Family Freediving</p>
         </button>
         {location.pathname === "/dolphin" && (
           <button className="header__back" onClick={() => navigate(-1)}>

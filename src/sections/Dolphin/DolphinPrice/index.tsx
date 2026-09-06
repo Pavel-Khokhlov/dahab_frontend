@@ -131,6 +131,7 @@ const DolphinPriceSection: React.FC = () => {
           type="button"
           title={t.button.bookin}
           icon={TgIcon}
+          gradient={`linear-gradient(135deg, #4fc3f7, #0288d1)`}
           message={"Dolphin Tour"}
           onClick={handleBook}
         />

@@ -186,7 +186,8 @@ const FeedbacksSection: React.FC = () => {
                     {isTg(review.link) ||
                     (globalUIStore.countryCode !== null &&
                       globalUIStore.countryCode !== "RU") ? (
-                      <a
+                      <>
+                        {/* <a
                         className="feedback-card__info"
                         href={review.link}
                         target="_blank"
@@ -199,7 +200,11 @@ const FeedbacksSection: React.FC = () => {
                             className="feedback-card__social"
                           />
                         )}
-                      </a>
+                      </a> */}
+                        <div className="feedback-card__info">
+                          <h4 className="feedback-card__name">{review.name}</h4>
+                        </div>
+                      </>
                     ) : (
                       <div className="feedback-card__info">
                         <h4 className="feedback-card__name">{review.name}</h4>

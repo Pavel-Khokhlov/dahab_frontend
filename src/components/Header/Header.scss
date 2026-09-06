@@ -38,11 +38,18 @@ $text-dim: #7f9bb0;
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     border: none;
     background: transparent;
     margin: 0;
     padding: 0;
     cursor: pointer;
+    &-text {
+      font-size: min(22px, 4vw);
+      color: var(--primary-black);
+    }
   }
 
   &__back {

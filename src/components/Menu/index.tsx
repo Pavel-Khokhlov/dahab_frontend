@@ -11,7 +11,7 @@ import { useCustomToast } from "@/hooks/useCustomToast.js";
 import "./Menu.scss";
 interface MenuProps {
   layout: "burg" | "head" | "foot";
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {

@@ -11,8 +11,8 @@ import "swiper/css/navigation";
 import "./Feedbacks.scss";
 import { useInView } from "react-intersection-observer";
 import avatars from "@/assets/images/avatars";
-import InstagramIcon from "@/assets/images/icons/insta.png";
-import TelegramIcon from "@/assets/images/icons/tg.png";
+// import InstagramIcon from "@/assets/images/icons/insta.png";
+// import TelegramIcon from "@/assets/images/icons/tg.png";
 
 // Иконка цитаты
 const QuoteIcon = () => (
@@ -49,12 +49,12 @@ const NavArrow = ({ direction }: { direction: "left" | "right" }) => (
   </svg>
 );
 
-const getSrc = (url: string) => {
+/* const getSrc = (url: string) => {
   if (url?.includes("instagram.com") || url?.includes("instagram")) {
     return InstagramIcon;
   }
   return TelegramIcon; // Иконка по умолчанию
-};
+}; */
 
 const isTg = (url: string | undefined) => {
   return url?.includes("tg://resolve");

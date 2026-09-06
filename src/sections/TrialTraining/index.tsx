@@ -182,6 +182,7 @@ const TrialSection2: React.FC = () => {
                 <Button
                   type="button"
                   title={t.button.bookin}
+                  gradient={`linear-gradient(135deg, #4fc3f7, #0288d1)`}
                   icon={TgIcon}
                   message={card.title[currentLang]}
                   onClick={handleBook}

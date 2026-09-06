@@ -109,6 +109,7 @@ export const translations = {
       enter: "Enter",
       apply: "Apply",
       bookin: "Book Now",
+      share: "share the website",
     },
     week: {
       monday: "Monday",
@@ -122,6 +123,9 @@ export const translations = {
     footer: {
       molchanovs: "Molchanovs · Dahab · Egypt",
       text: "The depth begins inside",
+    },
+    toast: {
+      successCopied: "The link has been successfully copied!",
     },
     tgMessage: `Hello! I would like to book the service {value}\nFirst name:\nLast name:\nPhone.:\nEmail:\nDate:`,
   },
@@ -232,6 +236,7 @@ export const translations = {
       enter: "Войти",
       apply: "Подтвердить",
       bookin: "Забронировать",
+      share: "Поделиться сайтом",
     },
     week: {
       monday: "Понедельник",
@@ -245,6 +250,9 @@ export const translations = {
     footer: {
       molchanovs: "Molchanovs · Дахаб · Египет",
       text: "Глубина начинается внутри",
+    },
+    toast: {
+      successCopied: "Ссылка успешно скопированна!",
     },
     tgMessage: `Здравствуйте! Хочу забронировать услугу {value}\nИмя:\nФамилия:\nТел.:\nПочта:\nДата:`,
   },

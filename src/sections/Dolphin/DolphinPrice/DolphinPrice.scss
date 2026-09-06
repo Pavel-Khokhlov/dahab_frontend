@@ -7,6 +7,7 @@
   }
   &__subtitle {
     @include section-subtitle-small;
+    color: var(--primary-white);
     &.brand {
       color: var(--primary-brand);
     }

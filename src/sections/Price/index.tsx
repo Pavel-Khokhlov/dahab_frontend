@@ -1,10 +1,10 @@
 import { useStore } from "@/store";
 import { useTranslator } from "@/context/TranslationContext";
 import { useInView } from "react-intersection-observer";
+import Button from "@/components/Button";
 import TgIcon from "@/assets/images/icons/telegram_white.svg";
 
 import "./PricingSection.scss";
-import Button from "@/components/Button";
 
 const plans = [
   {
@@ -108,7 +108,8 @@ const PricingSection = () => {
               <Button
                 type="button"
                 title={t.button.bookin}
-                isBGWhite={true}
+                textColor={`var(--primary-white)`}
+                bgColor="#007bff"
                 icon={TgIcon}
                 message={plan.message[currentLang]}
                 onClick={handleBook}

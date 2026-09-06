@@ -1,5 +1,6 @@
 import { useStore } from "@/store";
 import "./DolphinEquipment.scss";
+import Divider from "@/elements/Divider";
 
 interface EquipmentDataProps {
   title: Record<"ru" | "en", string>;
@@ -63,6 +64,7 @@ const DolphinEquipmentSection = () => {
       <h4 className="dolphin-equipment__subtitle add">
         {dolphinEquipmentData.subtitle[currentLang]}
       </h4>
+      <Divider />
       <p className="dolphin-equipment__text add">
         {dolphinEquipmentData.additionalText[currentLang]}
       </p>

@@ -1,14 +1,14 @@
+import { useEffect } from "react";
+import { useStore } from "./store";
 import { HelmetProvider } from "react-helmet-async";
 import { TranslationContext } from "./context/TranslationContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./pages/public/Main";
 import { translations } from "./locales/translations";
-import { useStore } from "./store";
-// import SchedulePage from "./pages/public/Schedule";
-import { useEffect } from "react";
 import OverlayLoader from "./components/OverleyLoader";
 import DolphinPage from "./pages/public/Dolphin";
 import PageBackground from "./components/PageBackground";
+import { Toaster } from "sonner";
 
 function App() {
   const { globalUIStore } = useStore();
@@ -26,6 +26,7 @@ function App() {
   return (
     <HelmetProvider>
       <TranslationContext.Provider value={currentTranslations}>
+        <Toaster />
         <BrowserRouter>
           <PageBackground>
             <Routes>

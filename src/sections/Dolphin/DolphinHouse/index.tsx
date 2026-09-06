@@ -25,7 +25,7 @@ const DolphinHaouseData: WhyDahabItem[] = [
     type: "location",
     title: {
       ru: "Локация No1 в мире",
-      en: "The world's #1 location",
+      en: "The world's №1 location",
     },
     text: {
       ru: "безопасное плавание с дельфинами в живой природе.",

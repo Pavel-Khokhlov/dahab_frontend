@@ -3,17 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useTranslator } from "@/context/TranslationContext";
 import SocialLinks from "../SocialLinks";
 import Lang from "../Lang";
+import Button from "../Button";
+import LinkIcon from "@/assets/images/socials/icons8-link-96.png";
+
+import { useCustomToast } from "@/hooks/useCustomToast.js";
 
 import "./Menu.scss";
-
 interface MenuProps {
   layout: "burg" | "head" | "foot";
-  onClose?: () => void;
+  onClose: () => void;
 }
 
 const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
   const t = useTranslator();
   const navigate = useNavigate();
+  const { showSuccess } = useCustomToast();
 
   const menuArr = [
     { id: "main", label: t.menu.main },
@@ -53,6 +57,16 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
     }, 300);
   };
 
+  const handleCopyUrl = async (value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      showSuccess("Ссылка на сайт скопирована!");
+      // onClose();
+    } catch (err) {
+      console.error("Ошибка копирования:", err);
+    }
+  };
+
   if (location.pathname !== "/") return null;
 
   return (
@@ -83,6 +97,17 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
         </div>
       )}
       {layout === "burg" && <SocialLinks position="menu" />}
+      {layout === "burg" && (
+        <Button
+          type="button"
+          title={"Поделиться сайтом"}
+          size="small"
+          message="https://dahab.family-freediving.com"
+          onClick={handleCopyUrl}
+          icon={LinkIcon}
+          copyPath="https://dahab.family-freediving.com"
+        />
+      )}
     </nav>
   );
 };

@@ -67,6 +67,11 @@
     position: relative;
     cursor: pointer;
     padding: 5px 0;
+    &.column {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
   }
 
   &__link {
@@ -75,6 +80,9 @@
     color: var(--primary-black);
     font-size: 22px;
     font-weight: 400;
+    &.data {
+      font-size: 16px;
+    }
     &.head {
       font-size: 18px;
       font-weight: 500;

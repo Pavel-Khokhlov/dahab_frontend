@@ -109,7 +109,7 @@ export const translations = {
       enter: "Enter",
       apply: "Apply",
       bookin: "Book Now",
-      share: "share the website",
+      share: "Share the website",
     },
     week: {
       monday: "Monday",

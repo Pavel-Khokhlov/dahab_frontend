@@ -23,7 +23,11 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
     { id: "main", label: t.menu.main },
     { id: "dahab", label: t.menu.dahab },
     { id: "price", label: t.menu.prices },
-    { id: "dolphin", label: t.menu.tour },
+    {
+      id: "dolphin",
+      label: t.menu.tour,
+      options: [" 07.11-14.11.2026", " 26.12-02.01.2027"],
+    },
     { id: "team", label: t.menu.team },
     { id: "feedbacks", label: t.menu.feedbacks },
   ];
@@ -60,7 +64,7 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
   const handleCopyUrl = async (value: string) => {
     try {
       await navigator.clipboard.writeText(value);
-      showSuccess("Ссылка на сайт скопирована!");
+      showSuccess(t.toast.successCopied);
       // onClose();
     } catch (err) {
       console.error("Ошибка копирования:", err);
@@ -78,17 +82,37 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
         <h4 className="social__title">{t.menu.navigation}:</h4>
       )}
       <ul className={`menu__list ${layout}`}>
-        {menuArr.map((item) => (
-          <li key={item.id} className={`menu__item ${layout}`}>
-            <a
-              href={`#${item.id}`}
-              className={`menu__link ${layout}`}
-              onClick={(e) => handleMenuItemClick(e, `#${item.id}`)}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {menuArr.map((item) => {
+          if (item.options) {
+            return (
+              <li key={item.id} className={`menu__item ${layout} column`}>
+                <p className={`menu__link ${layout}`}>{item.label}</p>
+                {item.options.map((option: string) => (
+                  <a
+                    key={option}
+                    href={`#${item.id}`}
+                    className={`menu__link ${layout} data`}
+                    onClick={(e) => handleMenuItemClick(e, `#${item.id}`)}
+                  >
+                    {option}
+                  </a>
+                ))}
+              </li>
+            );
+          } else {
+            return (
+              <li key={item.id} className={`menu__item ${layout}`}>
+                <a
+                  href={`#${item.id}`}
+                  className={`menu__link ${layout}`}
+                  onClick={(e) => handleMenuItemClick(e, `#${item.id}`)}
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          }
+        })}
       </ul>
 
       {layout !== "foot" && (
@@ -100,7 +124,7 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
       {layout === "burg" && (
         <Button
           type="button"
-          title={"Поделиться сайтом"}
+          title={t.button.share}
           size="small"
           message="https://dahab.family-freediving.com"
           onClick={handleCopyUrl}

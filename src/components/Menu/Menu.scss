@@ -42,7 +42,7 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 640px;
+    max-width: 740px;
     position: relative;
     z-index: 2;
     box-sizing: border-box;
@@ -67,10 +67,16 @@
     position: relative;
     cursor: pointer;
     padding: 5px 0;
+    display: flex;
+    gap: 10px;
     &.column {
       display: flex;
       flex-direction: column;
       gap: 5px;
+    }
+    // Для выпадающего меню в хедере
+    &.has-dropdown {
+      position: relative;
     }
   }
 
@@ -78,15 +84,40 @@
     width: 100%;
     text-decoration: none;
     color: var(--primary-black);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 500;
+
+    &.tour-toggle {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      padding: 0;
+      width: auto;
+
+      .tour-arrow {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+        display: inline-block;
+      }
+
+      &.active .tour-arrow {
+        transform: rotate(180deg);
+      }
+    }
+
     &.data {
       font-size: 16px;
     }
+
     &.head {
-      font-size: 18px;
-      font-weight: 500;
+      font-size: 20px;
     }
+
     &.foot {
       color: var(--color-grey);
       font-size: min(16px, 4vw);
@@ -95,6 +126,156 @@
       &:hover {
         color: var(--primary-white);
         transition: $app-transition;
+      }
+      &.data {
+        font-size: 12px;
+      }
+      &.tour-toggle {
+        color: var(--color-grey);
+      }
+    }
+  }
+}
+
+// =============================================
+// TOUR OPTIONS — для мобильной версии и футера
+// =============================================
+.tour-options {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &.open {
+    max-height: 200px;
+    opacity: 1;
+    transform: translateY(0);
+    padding: 8px 0;
+  }
+}
+
+// =============================================
+// TOUR DROPDOWN — для десктопа (header)
+// =============================================
+.tour-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 240px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  &-content {
+    background: var(--primary-white);
+    border-radius: 12px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    padding: 8px 0;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    position: relative;
+
+    // Стрелочка сверху
+    &::before {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px;
+      height: 12px;
+      background: var(--primary-white);
+      border-left: 1px solid rgba(0, 0, 0, 0.06);
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 2px 0 0 0;
+    }
+  }
+
+  &-item {
+    display: block;
+    padding: 10px 24px;
+    color: var(--primary-black, #333);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    text-align: center;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--primary-black, #000);
+    }
+
+    &:active {
+      background: rgba(0, 0, 0, 0.08);
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+  }
+}
+
+// =============================================
+// АДАПТИВНЫЕ ПРАВКИ
+// =============================================
+
+// Для десктопа
+@media (min-width: 1025px) {
+  .menu {
+    &__item {
+      &.has-dropdown {
+        .tour-toggle {
+          padding: 8px 0;
+        }
+      }
+    }
+  }
+}
+
+// Для мобильной версии (бургер-меню)
+@media (max-width: 1024px) {
+  .menu {
+    &__wrapper {
+      &.burg {
+        .tour-options {
+          .menu__link.data {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Для футера
+.menu {
+  &__wrapper {
+    &.foot {
+      .tour-options {
+        gap: 2px;
+        .menu__link.data {
+          font-size: 12px;
+          color: var(--color-grey);
+          &:hover {
+            color: var(--primary-white);
+          }
+        }
       }
     }
   }

@@ -149,6 +149,9 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
                 {showDropdown && (
                   <div className={`tour-dropdown ${openTour ? "open" : ""}`}>
                     <div className="tour-dropdown-content">
+                      <p className={`tour-dropdown-item`}>
+                        {t.text.dolphinSafari}
+                      </p>
                       {item.options.map((option: string) => (
                         <a
                           key={option}
@@ -167,6 +170,9 @@ const Menu: React.FC<MenuProps> = ({ layout, onClose }) => {
                 {/* Для мобильной версии и футера показываем как раньше */}
                 {!showDropdown && (
                   <div className={`tour-options ${openTour ? "open" : ""}`}>
+                    <p className={`menu__link ${layout} data`}>
+                      {t.text.dolphinSafari}
+                    </p>
                     {item.options.map((option: string) => (
                       <a
                         key={option}

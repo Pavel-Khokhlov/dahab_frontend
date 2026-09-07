@@ -12,7 +12,7 @@
     box-sizing: border-box;
     padding: 30px 0 10px;
     &.foot {
-      width: calc(100vw / 3);
+      width: min(500px, 80%);
       background: transparent;
       margin-top: 0px;
       padding: 0;

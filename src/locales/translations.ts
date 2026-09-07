@@ -81,6 +81,7 @@ export const translations = {
       dolphinTextOne: "The U-shaped Sataya Coral Reef embraces a calm, turquoise lagoon—",
       dolphinTextTwo: "the world’s ultimate hotspot for wild spinner dolphins.",
       dolphinFooter: "Dive into authentic ocean life: no barriers, no pools, no performances - just freedom and a pure sense of the wild!",
+      dolphinSafari: "Dolphin safari",
     },
     placeholder: {
       email: "example@mail.ru",
@@ -208,6 +209,7 @@ export const translations = {
       dolphinTextOne: "Подковообразный коралловый риф Сатайя скрывает внутри штилевую бирюзовую лагуну —",
       dolphinTextTwo: "признанный мировой хаб диких дельфинов-спиннеров.",
       dolphinFooter: "Погрузитесь в настоящую жизнь океана без барьеров и дельфинариев!",
+      dolphinSafari: "Сафари с дельфинами",
     },
     placeholder: {
       email: "example@mail.ru",

@@ -1,6 +1,3 @@
-@import "@/styles/variables";
-@import "@/styles/mixins";
-
 .feedback-section {
   position: relative;
   padding: $section-padding;
@@ -119,6 +116,7 @@
   }
 
   &__badge {
+    @include filter-blur;
     display: inline-flex;
     align-items: center;
     gap: 10px;
@@ -132,7 +130,6 @@
     letter-spacing: 0.5px;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
 
     &-dot {
       width: 6px;

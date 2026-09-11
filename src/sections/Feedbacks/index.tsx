@@ -5,14 +5,15 @@ import { useTranslator } from "@/context/TranslationContext";
 import { useStore } from "@/store";
 import { reviews } from "@/data/feedbacks";
 
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "./Feedbacks.scss";
 import { useInView } from "react-intersection-observer";
 import avatars from "@/assets/images/avatars";
 // import InstagramIcon from "@/assets/images/icons/insta.png";
 // import TelegramIcon from "@/assets/images/icons/tg.png";
+
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import "./Feedbacks.scss";
 
 // Иконка цитаты
 const QuoteIcon = () => (

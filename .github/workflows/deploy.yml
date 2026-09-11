@@ -54,11 +54,12 @@ jobs:
             --timeout 4m
 
   notify:
-    needs: [build]
+    needs: [build, deploy]
     if: always()
     uses: ./.github/workflows/notify.yml
     with:
       build_result: ${{ needs.build.result }}
+      deploy_result: ${{ needs.deploy.result }}
     secrets:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}

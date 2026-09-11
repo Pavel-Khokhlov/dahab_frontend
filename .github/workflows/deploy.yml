@@ -7,6 +7,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      image_sha: ${{ steps.build-push.outputs.image_sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -14,6 +16,7 @@ jobs:
         run: docker login -u ${{ vars.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
 
       - name: Build and Push image
+        id: build-push
         env:
           IMAGE_SHA: ${{ vars.DOCKER_USER }}/dahab-front:sha-${{ github.sha }}
           IMAGE_LATEST: ${{ vars.DOCKER_USER }}/dahab-front:latest
@@ -21,6 +24,34 @@ jobs:
           docker build -t $IMAGE_SHA -t $IMAGE_LATEST .
           docker push $IMAGE_SHA
           docker push $IMAGE_LATEST
+          echo "image_sha=sha-${{ github.sha }}" >> $GITHUB_OUTPUT
+          
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 
+ 
+      - name: Configure kubectl
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        run: |
+          mkdir -p ~/.kube
+          echo "$KUBE_CONFIG" | base64 -d > ~/.kube/config  
+ 
+      - name: Install Helm
+        uses: azure/setup-helm@v4 
+ 
+      - name: Deploy with Helm
+        env:
+          IMAGE_TAG: ${{ needs.build.outputs.image_sha }}
+        run: |
+          helm upgrade --install dahab-frontend ./helm/frontend \
+            -n dahab
+            --reuse-values \
+            --set image.tag="$IMAGE_TAG" \
+            --wait \
+            --timeout 4m
 
   notify:
     needs: [build]
